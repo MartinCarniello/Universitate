@@ -1,3 +1,9 @@
+%h1
+
+= render 'searchlight_form', search: @search, url: users_path
+
+%h2 Results
+
 .w3-container
   %ul.w3-ul.w3-card-4
     - @users.each do |user|

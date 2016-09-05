@@ -1,0 +1,9 @@
+
+= form_for @search, url: url, method: :get do |f|
+
+  %fieldset
+    = f.label 'Nombre y Apellido'
+    = f.text_field :complete_name_like
+
+  %button{type: :reset} Clear
+  = f.submit 'Search'
