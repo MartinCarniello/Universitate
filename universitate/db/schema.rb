@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905233515) do
+ActiveRecord::Schema.define(version: 20160906170153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,20 @@ ActiveRecord::Schema.define(version: 20160905233515) do
     t.index ["teacher_profile_id"], name: "index_subjects_teacher_profiles_on_teacher_profile_id", using: :btree
   end
 
+  create_table "teacher_experiences", force: :cascade do |t|
+    t.integer  "teacher_profile_id"
+    t.string   "name_of_the_place"
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string   "description"
+    t.integer  "experience_type"
+    t.index ["teacher_profile_id"], name: "index_teacher_experiences_on_teacher_profile_id", using: :btree
+  end
+
   create_table "teacher_profiles", force: :cascade do |t|
     t.string  "description"
     t.integer "user_id"
+    t.decimal "hour_rate"
   end
 
   create_table "users", force: :cascade do |t|
