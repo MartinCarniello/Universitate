@@ -28,3 +28,13 @@ es:
     users:
       index:
         view_button: Ver
+    sign_in:
+      have_account: No tenés una cuenta?
+      sign_up: Registrarse
+      password: Contraseña
+      forgot_password: Olvidaste tu contraseña?
+      reset_password: para recuperar tu contraseña
+      click: hacé click
+      here: aquí
+      log_in: Acceder
+      log_in_title: Iniciar Sesión
