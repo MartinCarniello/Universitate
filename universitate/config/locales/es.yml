@@ -38,3 +38,18 @@ es:
       here: aquí
       log_in: Acceder
       log_in_title: Iniciar Sesión
+    sign_up:
+      sign_up_title: Registrarse
+      sign_up: Registrarse
+      have_account: Ya tenés una cuenta?
+      sign_in: iniciá sesión
+      password_length: caracteres mínimos
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
