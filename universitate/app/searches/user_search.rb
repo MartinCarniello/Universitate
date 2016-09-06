@@ -11,4 +11,8 @@ class UserSearch < Searchlight::Search
     query.where("first_name || ' ' || last_name ILIKE ?", "%#{options[:complete_name_like]}%")
   end
 
+  def search_subject_eq
+    query.joins(teacher_profile: :subjects).where("subjects.id = ?", options[:subject_eq])
+  end
+
 end

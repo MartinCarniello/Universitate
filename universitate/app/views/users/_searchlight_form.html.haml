@@ -5,5 +5,9 @@
     = f.label 'Nombre y Apellido'
     = f.text_field :complete_name_like
 
+  %fieldset
+    = f.label 'Materias'
+    = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] }
+
   %button{type: :reset} Clear
   = f.submit 'Search'
