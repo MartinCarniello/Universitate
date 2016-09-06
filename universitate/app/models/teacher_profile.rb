@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  description :string
-#  subjects    :string           is an Array
 #  user_id     :integer
+#  hour_rate   :decimal(, )
 #
 
 class TeacherProfile < ApplicationRecord
