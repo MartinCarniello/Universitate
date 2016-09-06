@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = User.find(params[:id])
+    @teacher = TeacherProfile.find(params[:id])
+    @experience = TeacherExperience.find(@teacher.id)
   end
 
   def search_params
