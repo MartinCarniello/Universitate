@@ -24,3 +24,7 @@ es:
     roles:
       student: Alumno
       teacher: Profesor
+  views:
+    users:
+      index:
+        view_button: Ver
