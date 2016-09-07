@@ -1,0 +1,12 @@
+%h1
+= @teacher.first_name
+%br
+= @teacher.last_name
+%br
+= @teacher.email
+%br
+= @teacher.subjects.map(&:name)
+%br
+= @teacher.teacher_profile.experience.experience_type + ': ' +@experience.name_of_the_place
+%br
+= @teacher.id

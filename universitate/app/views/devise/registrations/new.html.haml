@@ -39,10 +39,10 @@
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control input-sm bounceIn animation-delay2'
           .controls
             = I18n.t('views.sign_up.have_account')
-            = link_to I18n.t('views.sign_up.sign_in'), new_user_session_path, class: 'primary-font login-link'
+            = link_to I18n.t('views.sign_up.sign_in'), new_user_session_path, class: 'primary-font'
             %hr/
           .form-group
             .controls.text-right
-              = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay7 login-link' do
+              = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay7' do
                 = fa_icon 'plus-circle'
                 = I18n.t('views.sign_up.sign_up')

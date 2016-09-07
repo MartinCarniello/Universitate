@@ -18,7 +18,7 @@
             %i.fa.fa-plus-circle
             = I18n.t('views.sign_in.sign_up')
       .panel-body
-        = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-login') do |f|
+        = form_for(resource, url: user_session_path, class: 'form-login') do |f|
           .form-group
             = f.label :email
             = f.email_field :email, autofocus: true, class: 'form-control input-sm bounceIn animation-delay2'
@@ -37,6 +37,6 @@
             = link_to I18n.t('views.sign_in.here'), user_password_path, method: :post
             = I18n.t('views.sign_in.reset_password')
           %hr/
-          = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay5 login-link pull-right' do
+          = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay5 pull-right' do
             = fa_icon 'sign-in'
             = I18n.t('views.sign_in.log_in')

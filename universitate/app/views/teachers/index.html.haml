@@ -1,0 +1,25 @@
+.w3-container
+  =link_to "Sign in" , user_session_path, method: :post, class: 'view-button btn pull-right'
+  .panel.panel-default
+    .panel-heading
+      %h2
+        Filtros
+    .panel-body
+      = render 'searchlight_form', search: @search, url: teachers_path
+
+  %h2 Results
+
+  %ul.w3-ul.w3-card-4
+    - @teachers.each do |teacher|
+      %li.w3-padding-16
+        = link_to teacher_path(teacher), class: 'view-button btn btn-info btn-lg pull-right' do
+          = I18n.t("views.users.index.view_button")
+        = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px;"
+        %br/
+        %span.w3-xlarge
+          = teacher.display_name
+        %br/
+        %h4.grey
+          = teacher.subjects.map(&:name).join(", ")
+
+= link_to "#{current_user.try(:email)} Sign out", destroy_user_session_path, method: :delete, class: 'view-button btn pull-right'
