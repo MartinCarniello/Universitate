@@ -8,8 +8,6 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = User.find(params[:id])
-    @teacherProfile= TeacherProfile.find(params[:id])
-    @experience = TeacherExperience.find(@teacherProfile.id)
   end
 
   def search_params

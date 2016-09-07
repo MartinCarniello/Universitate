@@ -33,6 +33,9 @@ class User < ApplicationRecord
 
   has_one :teacher_profile
   has_many :subjects, through: :teacher_profile
+  has_many :experiences, through: :teacher_profile
+
+  delegate :description, :hour_rate, :user_id, to: :teacher_profile, prefix: true
 
   def display_name
     "#{first_name} #{last_name}"

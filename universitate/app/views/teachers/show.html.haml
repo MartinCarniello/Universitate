@@ -7,8 +7,12 @@
             %img{:src => "/assets/empty_user.png"}
           %div.col-xs-6.col-sm-12.col-md-6
             %strong.font-14.text-center
-              =@teacher.first_name
-              =@teacher.last_name
+              = @teacher.first_name
+              = @teacher.last_name
+            %p
+              = @teacher.teacher_profile_description
+            %p
+              = @teacher.teacher_profile_hour_rate
             %small.block.text-muted
               =@teacher.email
             .seperator
