@@ -27,6 +27,7 @@ Role.find_or_create_by(name: :teacher)
   if !User.find_by(email: user[:email])
     user = User.create!(user)
     user.add_role :teacher
+    user.create_teacher_profile(description: "Testing #{user.first_name}")
   end
 end
 

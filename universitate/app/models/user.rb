@@ -22,7 +22,7 @@
 #
 
 class User < ApplicationRecord
-  rolify before_add: :generate_teacher_profile
+  rolify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -39,11 +39,5 @@ class User < ApplicationRecord
 
   def display_name
     "#{first_name} #{last_name}"
-  end
-
-  private
-
-  def generate_teacher_profile(role)
-    create_teacher_profile if role.name == 'teacher'
   end
 end

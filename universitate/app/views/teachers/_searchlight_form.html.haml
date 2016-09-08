@@ -7,7 +7,7 @@
 
   %fieldset
     = f.label 'Materias'
-    = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] }
+    = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , include_blank: true
 
   %button{type: :reset} Clear
   = f.submit 'Search'

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160906170153) do
   create_table "teacher_profiles", force: :cascade do |t|
     t.string  "description"
     t.integer "user_id"
+    t.decimal "hour_rate"
   end
 
   create_table "users", force: :cascade do |t|

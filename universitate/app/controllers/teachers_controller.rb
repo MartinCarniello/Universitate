@@ -15,10 +15,16 @@ class TeachersController < ApplicationController
   end
 
   def new
-    @teacher_profile=TeacherProfile.new
+    @teacher_profile = current_user.build_teacher_profile
   end
 
 def create
-  redirect_to root_path
+  if current_user.create_teacher_profile(params.require(:teacher_profile).permit(:description, :hour_rate)).valid?
+    current_user.add_role(:teacher)
+    redirect_to root_path
+  else
+    @teacher_profile = current_user.teacher_profile
+    render :new
+  end
 end
 end
