@@ -1,5 +1,8 @@
+
 .w3-container
-  =link_to "Sign in" , user_session_path, method: :post, class: 'view-button btn pull-right'
+  = link_to "Sign in" , user_session_path, method: :post, class: 'view-button btn pull-right'
+  %div.grey-container
+    = link_to " I wanna be a teacher", new_teacher_path, class: 'btn btn-sm btn-info fa fa-magic fa-lg'
   .panel.panel-default
     .panel-heading
       %h2

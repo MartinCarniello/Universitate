@@ -1,0 +1,12 @@
+= form_for(@teacher_profile, :url => url_for(:controller => 'teachers' ,:action => 'create' )) do |f|
+  .form-group
+    = f.label :description
+    %br/
+    = f.text_field :description, class: 'form-control input-sm bounceIn animation-delay2'
+  .form-group
+    = f.label :hour_rate
+    %br/
+    = f.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay2'
+  .form-group
+    .controls.text-right
+      = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay7'

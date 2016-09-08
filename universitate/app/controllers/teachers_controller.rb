@@ -13,4 +13,12 @@ class TeachersController < ApplicationController
   def search_params
     @search_params ||= params.delete(:user_search) || {}
   end
+
+  def new
+    @teacher_profile=TeacherProfile.new
+  end
+
+def create
+  redirect_to root_path
+end
 end
