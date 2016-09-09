@@ -1,28 +1,33 @@
-
 .w3-container
-  = link_to "Sign in" , user_session_path, method: :post, class: 'view-button btn pull-right'
-  %div.grey-container
-    = link_to " I wanna be a teacher", new_teacher_path, class: 'btn btn-sm btn-info fa fa-magic fa-lg'
+  .grey-container
+    = link_to new_teacher_path, class: 'btn btn-sm btn-success' do
+      = fa_icon 'magic', class: 'fa-lg'
+      = I18n.t("views.users.index.wanna_be_teacher")
+    = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info pull-right'
   .panel.panel-default
     .panel-heading
-      %h2
+      %h2.text-center
         Filtros
+    
     .panel-body
-      = render 'searchlight_form', search: @search, url: teachers_path
+      = render 'teacher_filters', search: @search, url: teachers_path
 
-  %h2 Results
-
-  %ul.w3-ul.w3-card-4
-    - @teachers.each do |teacher|
-      %li.w3-padding-16
-        = link_to teacher_path(teacher), class: 'view-button btn btn-info btn-lg pull-right' do
-          = I18n.t("views.users.index.view_button")
-        = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px;"
-        %br/
-        %span.w3-xlarge
-          = teacher.display_name
-        %br/
-        %h4.grey
-          = teacher.subjects.map(&:name).join(", ")
+  .panel.panel-default
+    .panel-body
+      %h2.text-center
+        Profesores
+      %br/
+      %ul.w3-ul.w3-card-4
+        - @teachers.each do |teacher|
+          %li.w3-padding-16
+            = link_to teacher_path(teacher), class: 'view-button btn btn-primary btn-lg pull-right' do
+              = I18n.t("views.users.index.view_button")
+            = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px;"
+            %br/
+            %span.w3-xlarge
+              = teacher.display_name
+            %br/
+            %h4.grey
+              = teacher.subjects.map(&:name).join(", ")
 
 = link_to "#{current_user.try(:email)} Sign out", destroy_user_session_path, method: :delete, class: 'view-button btn pull-right'

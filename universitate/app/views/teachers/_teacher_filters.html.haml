@@ -1,0 +1,22 @@
+
+= form_for @search, url: url, method: :get, class: 'form-login' do |f|
+
+  .row
+    .col-xs-6
+      .form-group
+        = f.label 'Nombre y Apellido'
+        %br/
+        = f.text_field :complete_name_like, class: 'form-control'
+
+    .col-xs-6
+      .form-group
+        = f.label 'Materias'
+        %br/
+        = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control'
+  %hr/
+
+  .pull-right
+    = link_to root_path, class: 'btn btn-danger' do
+      = fa_icon 'times-circle'
+      = I18n.t("views.users.index.teacher_filters.reset")
+    = f.submit I18n.t("views.users.index.teacher_filters.search"), class: 'btn btn-info'

@@ -28,6 +28,11 @@ es:
     users:
       index:
         view_button: Ver
+        sign_in: Iniciar Sesión
+        wanna_be_teacher: Quiero ser Profesor
+        teacher_filters:
+          search: Buscar
+          reset: Borrar Filtros
     sign_in:
       have_account: No tenés una cuenta?
       sign_up: Registrarse

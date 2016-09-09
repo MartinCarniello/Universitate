@@ -16,5 +16,5 @@
               = value
     - if user_signed_in?
       = render 'layouts/aside'
-    #main-container
+    %div{ class: "#{'#main-container' if user_signed_in?}" }
       = yield
