@@ -1,9 +1,12 @@
 .w3-container
-  .grey-container
-    = link_to new_teacher_path, class: 'btn btn-sm btn-success' do
-      = fa_icon 'magic', class: 'fa-lg'
-      = I18n.t("views.users.index.wanna_be_teacher")
-    = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info pull-right'
+  - if user_signed_in? && !current_user.has_role?(:teacher)
+    .grey-container
+      = link_to new_teacher_path, class: 'btn btn-sm btn-success' do
+        = fa_icon 'magic', class: 'fa-lg'
+        = I18n.t("views.users.index.wanna_be_teacher")
+  - if !user_signed_in?
+    .grey-container.text-right
+      = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info'
   .panel.panel-default
     .panel-heading
       %h2.text-center
@@ -29,5 +32,3 @@
             %br/
             %h4.grey
               = teacher.subjects.map(&:name).join(", ")
-
-= link_to "#{current_user.try(:email)} Sign out", destroy_user_session_path, method: :delete, class: 'view-button btn pull-right'

@@ -58,3 +58,11 @@ es:
         last_name: Apellido
         password: Contraseña
         password_confirmation: Confirmar Contraseña
+  devise:
+    sessions:
+      user:
+        signed_in: Has iniciado sesión correctamente
+        signed_out: Has terminado la sesión correctamente
+    failure:
+      user:
+        not_found_in_database: Usuario y/o contraseña incorrecta

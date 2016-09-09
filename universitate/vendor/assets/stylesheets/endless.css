@@ -305,9 +305,8 @@ aside {
   position: absolute;
   display: block;
   float: left;
-  width: 194px;
+  width: 250px;
   z-index: 100;
-  padding-top: 45px;
   bottom: 0;
   left: 0;
   background-color: #323447;
@@ -1051,7 +1050,7 @@ a.list-group-item {
   background: #b2d5dc;
   border: 1px solid #6bafbd;
 }
-.alert.alert-success {
+.alert.alert-success, .alert-notice {
   color: #1b601c;
   background: #b2e7d3;
   border: 1px solid #65cea7;
@@ -1304,8 +1303,7 @@ a.list-group-item {
 #main-container {
   position: relative;
   min-height: 800px;
-  padding-top: 45px;
-  margin-left: 194px;
+  margin-left: 250px;
 }
 @media (max-width: 480px) {
   #main-container {
