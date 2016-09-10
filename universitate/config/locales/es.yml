@@ -40,6 +40,7 @@ es:
       show:
         about_me: Acerca de mi
         home: Inicio
+        profile: Perfil
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción
