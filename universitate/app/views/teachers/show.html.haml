@@ -1,43 +1,43 @@
-%div.col-md-3col-sm-3
-  %div.padding-md
-    %div.row
-      %div.col-md-3.col-sm-3
-        %div.row
-          %div.col-xs-6.col-sm-12.col-md-6.text-center
-            %img{:src => "/assets/empty_user.png"}
-          %div.col-xs-6.col-sm-12.col-md-6
-            %strong.font-14.text-center
-              = @teacher.first_name
-              = @teacher.last_name
-            %p
-              = @teacher.teacher_profile_description
-            %p
-              = @teacher.teacher_profile_hour_rate
-            %small.block.text-muted
-              = @teacher.email
-            .seperator
 
-
-%div.col-md-9.col-sm-9
-  %div.tab-content
-    %div.tab-pane.fade.in.active
+%div#breadcrumb
+  = link_to root_path, class: 'btn btn-sm' do
+    = fa_icon 'home', class: 'fa-lg'
+    = I18n.t("views.teacher_profile.show.home")
+  %div.col-md-3col-sm-3
+    %div.padding-md
       %div.row
-        %div.col-md-6
-          %div.panel.panel-default.fadeInDown.animation-delay2
-            %div.panel-heading
-              %h4 About me
-              %div.panel-body
-                %p
-                = "Add teacher description"
-  %div.panel.m-top-md
-  %h4.headline
-    My Skill
-    %span.line
-  %dl
-    - @teacher.subjects.each do |subject|
-      %dt
-        = subject.name
-        %br
+        %div.col-md-3.col-sm-3
+          %div.row
+            %div.col-xs-6.col-sm-12.col-md-6.text-center
+              %img{:src => "/assets/empty_user.png"}
+            %div.col-xs-6.col-sm-12.col-md-6
+              %strong.font-14.text-center
+                = @teacher.first_name
+                = @teacher.last_name
+              %p
+                = @teacher.teacher_profile_hour_rate
+              %small.block.text-muted
+                = @teacher.email
+              .seperator
 
 
-
+  %div.col-md-9.col-sm-9
+    %div.tab-content
+      %div.tab-pane.fade.in.active
+        %div.row
+          %div.col-md-6
+            %div.panel.panel-default.fadeInDown.animation-delay2
+              %div.panel-heading
+                %h4= I18n.t("views.teacher_profile.show.about_me")
+                %div.panel-body
+                  %p
+                  = @teacher.teacher_profile_description
+    %div.panel.m-top-md
+    %h4.headline
+      My Skill
+      %span.line
+    %dl
+      - @teacher.subjects.each do |subject|
+        %dt
+          = subject.name
+          %br

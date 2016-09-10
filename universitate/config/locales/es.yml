@@ -36,6 +36,10 @@ es:
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
+    teacher_profile:
+      show:
+        about_me: Acerca de mi
+        home: Inicio      
     sign_in:
       have_account: No tenés una cuenta?
       sign_up: Registrarse

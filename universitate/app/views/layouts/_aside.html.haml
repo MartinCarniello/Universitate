@@ -14,7 +14,8 @@
             = @user.display_name
           %ul.list-inline
             %li
-              = link_to "Perfil", teacher_path(@user)
+              - if current_user.has_role?(:teacher)
+                = link_to "Perfil", teacher_path(current_user)
       / /user-block
       .search-block
       / /search-block
