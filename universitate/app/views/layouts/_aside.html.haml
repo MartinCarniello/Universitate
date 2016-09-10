@@ -1,3 +1,5 @@
+- @user = current_user.decorate
+
 %aside.fixed.skin-6
   .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
     .sidebar-inner.scrollable-sidebar{:style => "overflow: hidden; width: auto; height: 100%;"}
@@ -9,10 +11,10 @@
         %img{:src => "/assets/empty_user.png"}/
         .detail
           %strong
-            = current_user.display_name
+            = @user.display_name
           %ul.list-inline
             %li
-              = link_to "Perfil", teacher_path(current_user)
+              = link_to "Perfil", teacher_path(@user)
       / /user-block
       .search-block
       / /search-block

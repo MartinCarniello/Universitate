@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  brand:
+    pre: UNIVERSITA
+    post: TE
   rolify:
     roles:
       student: Alumno

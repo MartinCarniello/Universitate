@@ -8,11 +8,11 @@ class UserSearch < Searchlight::Search
   end
 
   def search_complete_name_like
-    query.where("first_name || ' ' || last_name ILIKE ?", "%#{options[:complete_name_like]}%")
+    query.with_display_name(options[:complete_name_like])
   end
 
   def search_subject_eq
-    query.joins(teacher_profile: :subjects).where("subjects.id = ?", options[:subject_eq])
+    query.with_subjects(options[:subject_eq])
   end
 
 end

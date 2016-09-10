@@ -35,9 +35,8 @@ class User < ApplicationRecord
   has_many :subjects, through: :teacher_profile
   has_many :experiences, through: :teacher_profile
 
-  delegate :description, :hour_rate, :user_id, to: :teacher_profile, prefix: true
+  scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
+  scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 
-  def display_name
-    "#{first_name} #{last_name}"
-  end
+  delegate :description, :hour_rate, :user_id, to: :teacher_profile, prefix: true
 end

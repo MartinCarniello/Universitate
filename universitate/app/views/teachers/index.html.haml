@@ -21,7 +21,7 @@
         Profesores
       %br/
       %ul.w3-ul.w3-card-4
-        - @teachers.each do |teacher|
+        - UserDecorator.decorate_collection(@teachers).each do |teacher|
           %li.w3-padding-16
             = link_to teacher_path(teacher), class: 'view-button btn btn-primary btn-lg pull-right' do
               = I18n.t("views.users.index.view_button")
