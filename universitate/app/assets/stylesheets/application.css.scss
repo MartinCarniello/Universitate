@@ -21,3 +21,11 @@
 .grey {
   color: grey;
 }
+
+.red {
+  color: red;
+}
+
+.field_with_errors textarea, input, select {
+  border-color: red;
+}

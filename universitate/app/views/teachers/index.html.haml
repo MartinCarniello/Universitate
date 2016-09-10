@@ -7,28 +7,7 @@
   - if !user_signed_in?
     .grey-container.text-right
       = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info'
-  .panel.panel-default
-    .panel-heading
-      %h2.text-center
-        Filtros
-    
-    .panel-body
-      = render 'teacher_filters', search: @search, url: teachers_path
 
-  .panel.panel-default
-    .panel-body
-      %h2.text-center
-        Profesores
-      %br/
-      %ul.w3-ul.w3-card-4
-        - UserDecorator.decorate_collection(@teachers).each do |teacher|
-          %li.w3-padding-16
-            = link_to teacher_path(teacher), class: 'view-button btn btn-primary btn-lg pull-right' do
-              = I18n.t("views.users.index.view_button")
-            = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px;"
-            %br/
-            %span.w3-xlarge
-              = teacher.display_name
-            %br/
-            %h4.grey
-              = teacher.subjects.map(&:name).join(", ")
+  = render 'teacher_filters', search: @search, url: teachers_path
+
+  = render 'teachers_table', teachers: @teachers

@@ -39,7 +39,12 @@ es:
     teacher_profile:
       show:
         about_me: Acerca de mi
-        home: Inicio      
+        home: Inicio
+      edit:
+        updated_successfuly: Los datos de perfil se han guardado correctamente
+        description: Descripción
+        hour_rate: Precio por Hora
+        submit_button: Guardar
     sign_in:
       have_account: No tenés una cuenta?
       sign_up: Registrarse
@@ -65,6 +70,12 @@ es:
         last_name: Apellido
         password: Contraseña
         password_confirmation: Confirmar Contraseña
+    errors:
+      models:
+        teacher_profile:
+          attributes:
+            description:
+              blank: La descripción no puede estar vacía
   devise:
     sessions:
       user:
