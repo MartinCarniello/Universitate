@@ -12,199 +12,108 @@
         .detail
           %strong
             = @user.display_name
-          %ul.list-inline
-            %li
-              - if current_user.has_role?(:teacher)
-                = link_to "Perfil", teacher_path(current_user)
       / /user-block
       .search-block
       / /search-block
       .main-menu
         %ul
-          %li.active
-            %a{:href => "index.html"}
+          %li{class: "#{'active' if controller_name == 'teachers' && action_name == 'index'}"}
+            = link_to root_path do
               %span.menu-icon
-                %i.fa.fa-desktop.fa-lg
+                = fa_icon 'group', class: 'fa-lg'
               %span.text
-                Dashboard
+                = I18n.t('views.aside.teachers')
               %span.menu-hover
-          %li.openable
-            %a{:href => "#"}
-              %span.menu-icon
-                %i.fa.fa-file-text.fa-lg
-              %span.text
-                Page
-              %span.menu-hover
-            %ul.submenu
-              %li
-                %a{:href => "login.html"}
-                  %span.submenu-label Sign in
-              %li
-                %a{:href => "register.html"}
-                  %span.submenu-label Sign up
-              %li
-                %a{:href => "lock_screen.html"}
-                  %span.submenu-label Lock Screen
-              %li
-                %a{:href => "profile.html"}
-                  %span.submenu-label Profile
-              %li
-                %a{:href => "blog.html"}
-                  %span.submenu-label Blog
-              %li
-                %a{:href => "single_post.html"}
-                  %span.submenu-label Single Post
-              %li
-                %a{:href => "landing.html"}
-                  %span.submenu-label Landing
-              %li
-                %a{:href => "search_result.html"}
-                  %span.submenu-label Search Result
-              %li
-                %a{:href => "chat.html"}
-                  %span.submenu-label Chat Room
-              %li
-                %a{:href => "movie.html"}
-                  %span.submenu-label Movie Gallery
-              %li
-                %a{:href => "pricing.html"}
-                  %span.submenu-label Pricing
-              %li
-                %a{:href => "invoice.html"}
-                  %span.submenu-label Invoice
-              %li
-                %a{:href => "faq.html"}
-                  %span.submenu-label FAQ
-              %li
-                %a{:href => "contact.html"}
-                  %span.submenu-label Contact
-              %li
-                %a{:href => "error404.html"}
-                  %span.submenu-label Error404
-              %li
-                %a{:href => "error500.html"}
-                  %span.submenu-label Error500
-              %li
-                %a{:href => "blank.html"}
-                  %span.submenu-label Blank
-          %li.openable
-            %a{:href => "#"}
-              %span.menu-icon
-                %i.fa.fa-tag.fa-lg
-              %span.text
-                Component
-              %span.badge.badge-success.bounceIn.animation-delay5 9
-              %span.menu-hover
-            %ul.submenu
-              %li
-                %a{:href => "ui_element.html"}
-                  %span.submenu-label UI Features
-              %li
-                %a{:href => "button.html"}
-                  %span.submenu-label Button &amp; Icons
-              %li
-                %a{:href => "tab.html"}
-                  %span.submenu-label Tab
-              %li
-                %a{:href => "nestable_list.html"}
-                  %span.submenu-label Nestable List
-              %li
-                %a{:href => "calendar.html"}
-                  %span.submenu-label Calendar
-              %li
-                %a{:href => "table.html"}
-                  %span.submenu-label Table
-              %li
-                %a{:href => "widget.html"}
-                  %span.submenu-label Widget
-              %li
-                %a{:href => "form_element.html"}
-                  %span.submenu-label Form Element
-              %li
-                %a{:href => "form_wizard.html"}
-                  %span.submenu-label Form Wizard
+          %li{class: "#{'active' if controller_name == 'teachers' && action_name == 'show'}"}
+            - if current_user.has_role?(:teacher)
+              = link_to teacher_path(current_user) do
+                %span.menu-icon
+                  = fa_icon 'user', class: 'fa-lg'
+                %span.text
+                  = I18n.t('views.aside.profile')
+                %span.menu-hover
           %li
-            %a{:href => "timeline.html"}
+            = link_to '#' do
               %span.menu-icon
-                %i.fa.fa-clock-o.fa-lg
+                = fa_icon 'wechat', class: 'fa-lg'
               %span.text
-                Timeline
+                = I18n.t('views.aside.chat')
               %span.menu-hover
           %li
-            %a{:href => "gallery.html"}
+            = link_to '#' do
               %span.menu-icon
-                %i.fa.fa-picture-o.fa-lg
+                = fa_icon 'institution', class: 'fa-lg'
               %span.text
-                Gallery
+                = I18n.t('views.aside.institutions')
               %span.menu-hover
           %li
-            %a{:href => "inbox.html"}
+            = link_to '#' do
               %span.menu-icon
-                %i.fa.fa-envelope.fa-lg
+                = fa_icon 'book', class: 'fa-lg'
               %span.text
-                Inbox
-              %span.badge.badge-danger.bounceIn.animation-delay6 4
+                = I18n.t('views.aside.group_classes')
               %span.menu-hover
-          %li
-            %a{:href => "email_selection.html"}
-              %span.menu-icon
-                %i.fa.fa-tasks.fa-lg
-              %span.text
-                Email Template
-              %small.badge.badge-warning.bounceIn.animation-delay7 New
-              %span.menu-hover
-          %li.openable
-            %a{:href => "#"}
-              %span.menu-icon
-                %i.fa.fa-magic.fa-lg
-              %span.text
-                Multi-Level menu
-              %span.menu-hover
-            %ul.submenu
-              %li.openable
-                %a{:href => "#"}
-                  %span.submenu-label menu 2.1
-                  %span.badge.badge-danger.bounceIn.animation-delay1.pull-right 3
-                %ul.submenu.third-level
-                  %li
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.1
-                  %li
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.2
-                  %li.openable
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.3
-                      %span.badge.badge-danger.bounceIn.animation-delay1.pull-right 2
-                    %ul.submenu.fourth-level
-                      %li
-                        %a{:href => "#"}
-                          %span.submenu-label menu 4.1
-                      %li
-                        %a{:href => "#"}
-                          %span.submenu-label menu 4.2
-              %li.openable
-                %a{:href => "#"}
-                  %span.submenu-label menu 2.2
-                  %span.badge.badge-success.bounceIn.animation-delay2.pull-right 3
-                %ul.submenu.third-level
-                  %li.openable
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.1
-                      %span.badge.badge-success.bounceIn.animation-delay1.pull-right 2
-                    %ul.submenu.fourth-level
-                      %li
-                        %a{:href => "#"}
-                          %span.submenu-label menu 4.1
-                      %li
-                        %a{:href => "#"}
-                          %span.submenu-label menu 4.2
-                  %li
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.2
-                  %li
-                    %a{:href => "#"}
-                      %span.submenu-label menu 3.3
+
+          / %li.openable
+          /   %a{:href => "#"}
+          /     %span.menu-icon
+          /       %i.fa.fa-file-text.fa-lg
+          /     %span.text
+          /       Page
+          /     %span.menu-hover
+          /   %ul.submenu
+          /     %li
+          /       %a{:href => "login.html"}
+          /         %span.submenu-label Sign in
+          /     %li
+          /       %a{:href => "register.html"}
+          /         %span.submenu-label Sign up
+          /     %li
+          /       %a{:href => "lock_screen.html"}
+          /         %span.submenu-label Lock Screen
+          /     %li
+          /       %a{:href => "profile.html"}
+          /         %span.submenu-label Profile
+          /     %li
+          /       %a{:href => "blog.html"}
+          /         %span.submenu-label Blog
+          /     %li
+          /       %a{:href => "single_post.html"}
+          /         %span.submenu-label Single Post
+          /     %li
+          /       %a{:href => "landing.html"}
+          /         %span.submenu-label Landing
+          /     %li
+          /       %a{:href => "search_result.html"}
+          /         %span.submenu-label Search Result
+          /     %li
+          /       %a{:href => "chat.html"}
+          /         %span.submenu-label Chat Room
+          /     %li
+          /       %a{:href => "movie.html"}
+          /         %span.submenu-label Movie Gallery
+          /     %li
+          /       %a{:href => "pricing.html"}
+          /         %span.submenu-label Pricing
+          /     %li
+          /       %a{:href => "invoice.html"}
+          /         %span.submenu-label Invoice
+          /     %li
+          /       %a{:href => "faq.html"}
+          /         %span.submenu-label FAQ
+          /     %li
+          /       %a{:href => "contact.html"}
+          /         %span.submenu-label Contact
+          /     %li
+          /       %a{:href => "error404.html"}
+          /         %span.submenu-label Error404
+          /     %li
+          /       %a{:href => "error500.html"}
+          /         %span.submenu-label Error500
+          /     %li
+          /       %a{:href => "blank.html"}
+          /         %span.submenu-label Blank
+
       / /main-menu
     .slimScrollBar{:style => "background: rgb(0, 0, 0); width: 0px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 456.037px;"}
     .slimScrollRail{:style => "width: 0px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"}

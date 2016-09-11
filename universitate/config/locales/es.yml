@@ -28,6 +28,12 @@ es:
       student: Alumno
       teacher: Profesor
   views:
+    aside:
+      profile: Perfil
+      teachers: Profesores
+      chat: Chat
+      institutions: Instituciones
+      group_classes: Clases Grupales
     users:
       index:
         view_button: Ver
