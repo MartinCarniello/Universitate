@@ -8,41 +8,29 @@
       %li
         = I18n.t("views.teacher_profile.show.profile")
     .row
-      .col-md-3col-sm-3
-        .padding-md
-          .row
-            .col-md-3.col-sm-3
-              .row
-                .col-xs-6.col-sm-12.col-md-6.text-center
-                  %img{:src => "/assets/empty_user.png"}
-                .col-xs-6.col-sm-12.col-md-6
-                  %strong.font-14.text-center
-                    = @teacher.first_name
-                    = @teacher.last_name
-                  %p
-                    = @teacher.teacher_profile_hour_rate
-                  %small.block.text-muted
-                    = @teacher.email
-                  .seperator
-
-
-      .col-md-9.col-sm-9
+      .panel.panel-default
+        .panel-tab.clearfix
+          %ul.tab-bar
+            %li.active
+              %a{"data-toggle" => "tab", :href => "#profile"}
+                %i.fa.fa-user
+                  = I18n.t("views.teacher_profile.show.profile")
+            %li
+              %a{"data-toggle" => "tab", :href => "#edit-profile"}
+                %i.fa.fa-pencil
+                  = I18n.t("views.teacher_profile.show.edit-profile")
+      .panel-body
         .tab-content
-          .tab-pane.fade.in.active
-            .row
-              .col-md-6
-                .panel.panel-default.fadeInDown.animation-delay2
-                  .panel-heading
-                    %h4= I18n.t("views.teacher_profile.show.about_me")
-                    .panel-body
-                      %p
-                      = @teacher.teacher_profile_description
-        .panel.m-top-md
-        %h4.headline
-          My Skill
-          %span.line
-        %dl
-          - @teacher.subjects.each do |subject|
-            %dt
-              = subject.name
-              %br
+          #profile.tab-pane.fade.active.in
+            = render 'teacher_show_profile'
+
+            = render 'teacher_show_description'
+
+            = render 'teacher_show_work_experience'
+
+            = render 'teacher_show_study_experience'
+
+
+          #edit-profile.tab-pane.fade
+            %h1
+            Hola

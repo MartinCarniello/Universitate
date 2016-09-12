@@ -1,0 +1,14 @@
+.col-md-9.col-sm-9
+  .row
+    %h4.headline
+      = I18n.t("views.teacher_profile.show.studies")
+    .panel.panel-default.fadeInDown.animation-delay4
+      #accordion.panel-group
+        %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#experience.name_of_the_place"}
+          %p
+          - @teacher.experiences.each do |experience|
+            -if experience.experience_type == 'study'
+              = experience.name_of_the_place
+        #experience.name_of_the_place.panel-collapse.collapse.in
+          .panel-body
+            Anim

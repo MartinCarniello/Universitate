@@ -47,6 +47,10 @@ es:
         about_me: Acerca de mi
         home: Inicio
         profile: Perfil
+        edit-profile: Editar
+        subjects: Areas de enseñansa
+        work_experience: Experiencia laboral
+        studies: Educación
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción
