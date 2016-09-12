@@ -34,6 +34,10 @@ es:
       chat: Chat
       institutions: Instituciones
       group_classes: Clases Grupales
+    chats:
+      index:
+        chats_table:
+          chats_title: Chats
     users:
       index:
         view_button: Ver
@@ -42,6 +46,8 @@ es:
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
+        teachers_table:
+          teachers_title: Profesores
     teacher_profile:
       show:
         about_me: Acerca de mi

@@ -32,8 +32,8 @@
                 %span.text
                   = I18n.t('views.aside.profile')
                 %span.menu-hover
-          %li
-            = link_to '#' do
+          %li{class: "#{'active' if controller_name == 'chats'}"}
+            = link_to chats_path do
               %span.menu-icon
                 = fa_icon 'wechat', class: 'fa-lg'
               %span.text

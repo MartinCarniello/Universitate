@@ -1,7 +1,7 @@
 .panel.panel-default
   .panel-body
     %h2.text-center
-      Profesores
+      = I18n.t('views.users.index.teachers_table.teachers_title')
     %br/
     %ul.w3-ul.w3-card-4
       - UserDecorator.decorate_collection(teachers).each do |teacher|
