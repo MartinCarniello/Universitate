@@ -11,6 +11,11 @@ body{
 .chat {
     height: calc(100vh - 180px);
 }
+.chat-table-scrollable {
+  overflow-y: scroll;
+  // overflow: hidden;
+  outline: none;
+}
 .decor-default {
     background-color: #ffffff;
 }
@@ -83,13 +88,13 @@ body{
     margin: 0 0 20px;
 }
 .chat-body .answer.left {
-    padding: 0 0 0 58px;
+    padding: 20px 0 0 107px;
     text-align: left;
     float: left;
 }
 .chat-body .answer {
     position: relative;
-    max-width: 600px;
+    // max-width: 600px;
     overflow: hidden;
     clear: both;
 }
@@ -97,11 +102,11 @@ body{
     left: 0;
 }
 .chat-body .answer .avatar {
-    bottom: 36px;
+    bottom: 0px;
 }
 .chat .avatar {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     position: absolute;
 }
 .chat .avatar img {
@@ -155,7 +160,7 @@ body{
 }
 /*RIGHT*/
 .chat-body .answer.right {
-    padding: 0 58px 0 0;
+    padding: 20px 107px 0 0;
     text-align: right;
     float: right;
 }

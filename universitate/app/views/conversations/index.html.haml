@@ -1,0 +1,11 @@
+.w3-container
+  %div#breadcrumb
+    %ul.breadcrumb.text-right
+      %li
+        = link_to root_path, class: 'btn btn-sm' do
+          = fa_icon 'home', class: 'fa-lg'
+          = I18n.t("views.teacher_profile.show.home")
+      %li
+        = I18n.t("views.conversations.index.conversation")
+
+  = render 'conversations_table', conversations: @conversations

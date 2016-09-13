@@ -1,8 +1,0 @@
-.panel.panel-default
-  .panel-body
-    %h2.text-center
-      = I18n.t('views.chats.index.chats_table.chats_title')
-    %br/
-    %ul.w3-ul.w3-card-4
-      - ChatDecorator.decorate_collection(chats).each do |chat|
-        = render 'chat_table_row', chat: chat

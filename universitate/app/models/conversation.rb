@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id             :integer          not null, primary key
+#  first_user_id  :integer
+#  second_user_id :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Conversation < ApplicationRecord
   belongs_to :first_user, class_name: 'User'
   belongs_to :second_user, class_name: 'User'

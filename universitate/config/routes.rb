@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :teachers
 
-  resources :chats
+  resources :conversations
 
   root 'teachers#index'
 end

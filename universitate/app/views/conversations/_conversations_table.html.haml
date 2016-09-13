@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-body
+    %h2.text-center
+      = I18n.t('views.conversations.index.conversations_table.conversations_title')
+    %br/
+    %ul.w3-ul.w3-card-4
+      - ConversationDecorator.decorate_collection(conversations).each do |conversation|
+        = render 'conversation_table_row', conversation: conversation

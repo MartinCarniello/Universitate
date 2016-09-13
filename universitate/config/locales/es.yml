@@ -31,13 +31,17 @@ es:
     aside:
       profile: Perfil
       teachers: Profesores
-      chat: Chat
+      conversation: Chat
       institutions: Instituciones
       group_classes: Clases Grupales
-    chats:
+    conversations:
       index:
-        chats_table:
-          chats_title: Chats
+        conversation: Chats
+        conversations_table:
+          conversations_title: Chats
+      show:
+        conversations_table:
+          write_message: Escribe un mensaje...
     users:
       index:
         view_button: Ver
