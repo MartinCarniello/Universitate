@@ -14,8 +14,9 @@
  *= require bootstrap.min
  *= require endless-landing.min
  *= require endless.css
- *= require_tree .
+ *= require chosen.min
  *= require_self
+ *= require_tree .
  */
 
 .grey {

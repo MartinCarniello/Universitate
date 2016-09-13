@@ -56,6 +56,9 @@ es:
         description: Descripción
         hour_rate: Precio por Hora
         submit_button: Guardar
+        subjects: Materias
+      new:
+        title: Carga tu perfil
     sign_in:
       have_account: No tenés una cuenta?
       sign_up: Registrarse

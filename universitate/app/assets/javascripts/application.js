@@ -24,4 +24,5 @@
 //= require endless.js
 //= require endless_form.js
 //= require endless_wizard.js
+//= require chosen.jquery.min
 //= require_tree .

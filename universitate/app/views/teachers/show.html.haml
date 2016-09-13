@@ -10,14 +10,17 @@
     .row
       .panel.panel-default
         .panel-tab.clearfix
-          %ul.tab-bar
+          %ul.tab-bar.grey-tab
             %li.active
-              %a{"data-toggle" => "tab", :href => "#profile"}
-                %i.fa.fa-user
-                  = I18n.t("views.teacher_profile.show.profile")
-            %li
-              %a{"data-toggle" => "tab", :href => "#edit-profile"}
-                %i.fa.fa-pencil
+              %a{"data-toggle" => "tab", :href => "##profile"}
+                %span.block.text-center
+                  %i.fa.fa-user.fa-2x
+                = I18n.t("views.teacher_profile.show.profile")
+            -if current_user.id == @teacher.id
+              %li
+                %a{"data-toggle" => "tab", :href => "#edit-profile"}
+                  %span.block.text-center
+                    %i.fa.fa-edit.fa-2x
                   = I18n.t("views.teacher_profile.show.edit-profile")
       .panel-body
         .tab-content
@@ -30,7 +33,5 @@
 
             = render 'teacher_show_studies'
 
-
           #edit-profile.tab-pane.fade
-            %h1
-            Hola
+            %h1 Es lala
