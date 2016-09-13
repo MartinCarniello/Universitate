@@ -39,5 +39,5 @@ class User < ApplicationRecord
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 
 
-  delegate :description, :hour_rate, :user_id, to: :teacher_profile, prefix: true
+  delegate :description, :hour_rate, :user_id, :works, :studies, to: :teacher_profile, prefix: true
 end
