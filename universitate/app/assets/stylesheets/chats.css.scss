@@ -15,6 +15,11 @@ body{
   overflow-y: scroll;
   // overflow: hidden;
   outline: none;
+  min-height: 900px;
+
+  .col-inside-lg {
+    min-height: 900px;
+  }
 }
 .decor-default {
     background-color: #ffffff;
@@ -194,7 +199,7 @@ body{
     padding: 20px;
     background: #46be8a;
 }
-.chat-body .answer-add input {
+.chat-body .answer-add textarea {
     border: none;
     background: none;
     display: block;
@@ -203,6 +208,32 @@ body{
     line-height: 20px;
     padding: 0;
     color: #ffffff;
+
+    // Placeholder color
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: white;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: white;
+       opacity: 1;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: white;
+       opacity: 1;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: white;
+    }
+
+    &:focus {
+        border: none;
+        overflow: auto;
+        outline: none;
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
 }
 .chat input {
     -webkit-appearance: none;
