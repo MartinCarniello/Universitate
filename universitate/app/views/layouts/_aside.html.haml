@@ -1,4 +1,5 @@
 - @user = current_user.decorate
+- user_unreaded_messages = @user.unreaded_messages
 
 %aside.fixed.skin-6
   .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
@@ -38,6 +39,9 @@
                 = fa_icon 'wechat', class: 'fa-lg'
               %span.text
                 = I18n.t('views.aside.conversation')
+              - if user_unreaded_messages > 0
+                %span.badge.badge-success.bounceIn.animation-delay5
+                  = user_unreaded_messages
               %span.menu-hover
           %li
             = link_to '#' do

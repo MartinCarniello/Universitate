@@ -5,6 +5,9 @@
   %br/
   %span.w3-xlarge
     = conversation.linked_user_display_name
+  - if conversation.unreaded_messages > 0
+    %span.badge.badge-success.bounceIn.animation-delay5
+      = conversation.unreaded_messages
   %br/
   %h4.grey
-    = conversation.last_message
+    = conversation.last_message_with_name

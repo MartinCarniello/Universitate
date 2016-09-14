@@ -12,7 +12,7 @@
 #
 
 class Message < ApplicationRecord
-  before_create :assign_conversation
+  before_create :assign_conversation, :increment_receiver_message_count!
 
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
@@ -31,5 +31,9 @@ class Message < ApplicationRecord
     else
       Conversation.create(first_user: sender, second_user: receiver)
     end
+  end
+
+  def increment_receiver_message_count!
+    conversation.increment_message_count!(receiver)
   end
 end

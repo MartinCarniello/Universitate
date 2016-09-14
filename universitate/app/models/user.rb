@@ -39,4 +39,12 @@ class User < ApplicationRecord
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 
   delegate :description, :hour_rate, :user_id, to: :teacher_profile, prefix: true
+
+  def conversations
+    Conversation.member(self)
+  end
+
+  def unreaded_messages
+    conversations.unreaded_messages(id).first.sum
+  end
 end
