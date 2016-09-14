@@ -22,7 +22,7 @@
 #
 
 class User < ApplicationRecord
-  rolify before_add: :generate_teacher_profile
+  rolify
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -32,14 +32,19 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_one :teacher_profile
+  has_many :subjects, through: :teacher_profile
+  has_many :experiences, through: :teacher_profile, source: :teacher_experience
 
-  def display_name
-    "#{first_name} #{last_name}"
+  scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
+  scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
+
+  delegate :description, :hour_rate, :user_id, :works, :studies, to: :teacher_profile, prefix: true
+
+  def conversations
+    Conversation.member(self)
   end
 
-  private
-
-  def generate_teacher_profile(role)
-    create_teacher_profile if role.name == 'teacher'
+  def unreaded_messages
+    conversations.unreaded_messages(id).first.sum || 0
   end
 end

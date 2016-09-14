@@ -7,6 +7,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    - if user_signed_in?
+      = render 'layouts/aside'
+    %div{ id: "#{'main-container' if user_signed_in?}" }
+      - flash.each do |key, value|
+        %div{class: "text-center alert alert-#{key}"}
+          = link_to '#', class: 'close', data: {dismiss: "alert"} do
+            ×
+          = value
+      = yield

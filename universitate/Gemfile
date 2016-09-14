@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#build chosen select multiple
+#gem 'chosen-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,6 +46,16 @@ gem 'carrierwave'
 
 # Roles
 gem 'rolify'
+
+#Filters
+gem 'searchlight'
+
+# Icons
+gem "font-awesome-rails"
+
+# Models decorators
+gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

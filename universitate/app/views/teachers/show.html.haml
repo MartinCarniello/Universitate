@@ -1,0 +1,37 @@
+.w3-container
+  %div#breadcrumb
+    %ul.breadcrumb.text-right
+      %li
+        = link_to root_path, class: 'btn btn-sm' do
+          = fa_icon 'home', class: 'fa-lg'
+          = I18n.t("views.teacher_profile.show.home")
+      %li
+        = I18n.t("views.teacher_profile.show.profile")
+    .row
+      .panel.panel-default
+        .panel-tab.clearfix
+          %ul.tab-bar.grey-tab
+            %li.active
+              %a{"data-toggle" => "tab", :href => "##profile"}
+                %span.block.text-center
+                  %i.fa.fa-user.fa-2x
+                = I18n.t("views.teacher_profile.show.profile")
+            -if current_user.id == @teacher.id
+              %li
+                %a{"data-toggle" => "tab", :href => "#edit-profile"}
+                  %span.block.text-center
+                    %i.fa.fa-edit.fa-2x
+                  = I18n.t("views.teacher_profile.show.edit-profile")
+      .panel-body
+        .tab-content
+          #profile.tab-pane.fade.active.in
+            = render 'teacher_show_profile'
+
+            = render 'teacher_show_description'
+
+            = render 'teacher_show_works'
+
+            = render 'teacher_show_studies'
+
+          #edit-profile.tab-pane.fade
+            %h1 Es lala

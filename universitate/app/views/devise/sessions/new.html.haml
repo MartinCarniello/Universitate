@@ -1,17 +1,42 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.login-wrapper
+  .text-center
+    %h2.fadeInUp.animation-delay8{ style: 'font-weight:bold' }
+      %span.text-success
+        = I18n.t('brand.pre')
+      %span{ style: 'color:#ccc; text-shadow:0 1px #fff; margin-left: -5px;' }
+        = I18n.t('brand.post')
+  .login-widget.animation-delay1
+    .panel.panel-default
+      .panel-heading.clearfix
+        .pull-left
+          = fa_icon 'lock', class: 'fa-lg'
+          = I18n.t('views.sign_in.log_in_title')
+        .pull-right
+          %span{ style:'font-size:11px;' }
+            = I18n.t('views.sign_in.have_account')
+          = link_to new_user_registration_path, class: 'btn btn-default btn-xs login-link', style: 'margin-top:-2px;' do
+            %i.fa.fa-plus-circle
+            = I18n.t('views.sign_in.sign_up')
+      .panel-body
+        = form_for(resource, url: user_session_path, class: 'form-login') do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, class: 'form-control input-sm bounceIn animation-delay2'
+          .form-group
+            = f.label 'Contraseña'
+            = f.password_field :password, autocomplete: "off", class: 'form-control input-sm bounceIn animation-delay2'
+          //- if devise_mapping.rememberable?
+          //  .form-group
+          //    %label.label-checkbox.inline
+          //      = f.check_box :remember_me
+          //    = f.label :remember_me
+          .form-group
+            = I18n.t('views.sign_in.forgot_password')
+            %br/
+            = I18n.t('views.sign_in.click')
+            = link_to I18n.t('views.sign_in.here'), user_password_path, method: :post
+            = I18n.t('views.sign_in.reset_password')
+          %hr/
+          = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay5 pull-right' do
+            = fa_icon 'sign-in'
+            = I18n.t('views.sign_in.log_in')

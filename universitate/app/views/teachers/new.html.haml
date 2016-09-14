@@ -1,0 +1,18 @@
+%h3.title
+  = I18n.t('views.teacher_profile.new.title')
+.w3-container
+  = form_for(@teacher_profile, :url => url_for(:controller => 'teachers' ,:action => 'create' )) do |f|
+    .form-group
+      %label
+        = I18n.t('views.teacher_profile.edit.description')
+      %br/
+      = f.text_area :description, class: 'form-control input-l bounceIn animation-delay2'
+    .form-group
+      %label
+        = I18n.t('views.teacher_profile.edit.hour_rate')
+      %br/
+      = f.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay3'
+    .form-group
+      .controls.text-right
+        = link_to 'Cancelar', root_path, class: 'btn btn-danger btn-sm'
+        = f.submit I18n.t('views.teacher_profile.edit.submit_button'), class: 'btn btn-success btn-sm'

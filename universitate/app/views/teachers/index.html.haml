@@ -1,0 +1,14 @@
+.w3-container
+  - if user_signed_in? && !current_user.has_role?(:teacher)
+    .grey-container
+      = link_to new_teacher_path, class: 'btn btn-sm btn-success' do
+        = fa_icon 'magic', class: 'fa-lg'
+        = I18n.t("views.users.index.wanna_be_teacher")
+  - if !user_signed_in?
+    .grey-container.text-right
+      = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info'
+
+  = render 'teacher_filters', search: @search, url: teachers_path
+
+  = render 'teachers_table', teachers: @teachers
+  = render 'test'

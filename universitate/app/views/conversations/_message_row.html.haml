@@ -1,0 +1,9 @@
+%div{ class: "answer #{message.css_class}" }
+  .avatar
+    = image_tag message.sender_avatar_url
+  .name
+    = message.sender_display_name
+  .text
+    = message.message
+  .time
+    = message.datetime_creation

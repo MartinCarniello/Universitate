@@ -10,7 +10,23 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require bootstrap.min
- *= require_tree .
+ *= require endless-landing.min
+ *= require endless.css
+ *= require chosen.min
  *= require_self
+ *= require_tree .
  */
+
+.grey {
+  color: grey;
+}
+
+.red {
+  color: red;
+}
+
+.field_with_errors textarea, input, select {
+  border-color: red;
+}

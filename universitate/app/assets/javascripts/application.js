@@ -14,4 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
+//= require pace.min.js
+//= require jquery.cookie.min.js
+//= require jquery.popupoverlay.min.js
+//= require jquery.slimscroll.min.js
+//= require jquery.flot.min.js
+//= require parsley.min.js
+//= require modernizr.min.js
+//= require endless.js
+//= require endless_form.js
+//= require endless_wizard.js
+//= require jquery.nicescroll.min.js
+//= require chosen.jquery.min
 //= require_tree .

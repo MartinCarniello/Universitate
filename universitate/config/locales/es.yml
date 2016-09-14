@@ -20,7 +20,91 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  brand:
+    pre: UNIVERSITA
+    post: TE
   rolify:
     roles:
       student: Alumno
       teacher: Profesor
+  views:
+    aside:
+      profile: Perfil
+      teachers: Profesores
+      conversation: Chat
+      institutions: Instituciones
+      group_classes: Clases Grupales
+    conversations:
+      index:
+        conversation: Chats
+        conversations_table:
+          conversations_title: Chats
+      show:
+        conversations_table:
+          write_message: Escribe un mensaje...
+    users:
+      index:
+        view_button: Ver
+        sign_in: Iniciar Sesión
+        wanna_be_teacher: Quiero ser Profesor
+        teacher_filters:
+          search: Buscar
+          reset: Borrar Filtros
+        teachers_table:
+          teachers_title: Profesores
+    teacher_profile:
+      show:
+        about_me: Acerca de mi
+        home: Inicio
+        profile: Perfil
+        edit-profile: Editar
+        subjects: Areas de enseñansa
+        work_experience: Experiencia laboral
+        studies: Educación
+      edit:
+        updated_successfuly: Los datos de perfil se han guardado correctamente
+        description: Descripción
+        hour_rate: Precio por Hora
+        submit_button: Guardar
+        subjects: Materias
+      new:
+        title: Carga tu perfil
+    sign_in:
+      have_account: No tenés una cuenta?
+      sign_up: Registrarse
+      password: Contraseña
+      forgot_password: Olvidaste tu contraseña?
+      reset_password: para recuperar tu contraseña
+      click: hacé click
+      here: aquí
+      log_in: Acceder
+      log_in_title: Iniciar Sesión
+    sign_up:
+      sign_up_title: Registrarse
+      sign_up: Registrarse
+      have_account: Ya tenés una cuenta?
+      sign_in: iniciá sesión
+      password_length: caracteres mínimos
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
+    errors:
+      models:
+        teacher_profile:
+          attributes:
+            description:
+              blank: La descripción no puede estar vacía
+  devise:
+    sessions:
+      user:
+        signed_in: Has iniciado sesión correctamente
+        signed_out: Has terminado la sesión correctamente
+    failure:
+      user:
+        not_found_in_database: Usuario y/o contraseña incorrecta

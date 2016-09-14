@@ -1,0 +1,51 @@
+.w3-container {
+  padding: 0.01em 16px
+}
+
+ul.w3-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.w3-ul li {
+  padding: 6px 16px 6px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+ul.w3-ul li:last-child {
+  border-bottom:none;
+}
+
+.w3-card-4,.w3-hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.w3-padding-16 {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  min-height: 130px;
+}
+
+.view-button {
+  margin-top: 1.5%;
+}
+
+.w3-xlarge {
+  font-size:24px !important;
+}
+
+.w3-left {
+  float:left !important;
+}
+
+.w3-circle {
+  border-radius:50% !important;
+}
+
+.w3-margin-right {
+  margin-right:16px !important;
+}
+.w3-padding-16:hover {
+  border: 2px solid #ddd;
+}

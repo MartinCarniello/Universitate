@@ -1,29 +1,48 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.login-wrapper
+  .text-center
+    %h2.fadeInUp.animation-delay8{ style: 'font-weight:bold' }
+      %span.text-success
+        = I18n.t('brand.pre')
+      %span{ style: 'color:#ccc; text-shadow:0 1px #fff; margin-left: -5px;' }
+        = I18n.t('brand.post')
+  .login-widget.animation-delay1
+    .panel.panel-default
+      .panel-heading.clearfix
+        .pull-left
+          = fa_icon 'plus-circle', class: 'fa-lg'
+          = I18n.t('views.sign_up.sign_up_title')
+      .panel-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-login') do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :first_name
+            %br/
+            = f.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2'
+          .form-group
+            = f.label :last_name
+            %br/
+            = f.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay2'
+          .form-group
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, class: 'form-control input-sm bounceIn animation-delay2'
+          .form-group
+            = f.label :password
+            - if @minimum_password_length
+              %em
+                = "(#{@minimum_password_length} #{I18n.t('views.sign_up.password_length')})"
+            %br/
+            = f.password_field :password, autocomplete: "off", class: 'form-control input-sm bounceIn animation-delay2'
+          .form-group
+            = f.label :password_confirmation
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control input-sm bounceIn animation-delay2'
+          .controls
+            = I18n.t('views.sign_up.have_account')
+            = link_to I18n.t('views.sign_up.sign_in'), new_user_session_path, class: 'primary-font'
+            %hr/
+          .form-group
+            .controls.text-right
+              = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay7' do
+                = fa_icon 'plus-circle'
+                = I18n.t('views.sign_up.sign_up')

@@ -1,0 +1,15 @@
+.content.container-fluid.bootstrap.snippets
+  .row.row-broken
+    .col-xs-12.chat.chat-table-scrollable.hidden{tabindex: "5001"}
+      .col-inside-lg.decor-default
+        .chat-body
+          - MessageDecorator.decorate_collection(@messages).each do |message|
+            = render 'message_row', message: message
+
+          .answer-add
+            = form_for @message, url: conversation_path, method: :put, remote: true do |f|
+              = f.hidden_field :sender_id
+              = f.hidden_field :receiver_id
+              = f.hidden_field :conversation_id
+              = f.text_area :message, placeholder: I18n.t('views.conversations.show.conversations_table.write_message')
+              %span.answer-btn.answer-btn-2

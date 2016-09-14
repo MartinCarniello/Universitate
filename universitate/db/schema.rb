@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905013040) do
+ActiveRecord::Schema.define(version: 20160913225204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "first_user_id"
+    t.integer  "second_user_id"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "first_user_messages_count",  default: 0
+    t.integer  "second_user_messages_count", default: 0
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "message"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "conversation_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -25,11 +43,33 @@ ActiveRecord::Schema.define(version: 20160905013040) do
     t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
+  create_table "subjects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects_teacher_profiles", id: false, force: :cascade do |t|
+    t.integer "subject_id"
+    t.integer "teacher_profile_id"
+    t.index ["subject_id"], name: "index_subjects_teacher_profiles_on_subject_id", using: :btree
+    t.index ["teacher_profile_id"], name: "index_subjects_teacher_profiles_on_teacher_profile_id", using: :btree
+  end
+
+  create_table "teacher_experiences", force: :cascade do |t|
+    t.integer  "teacher_profile_id"
+    t.string   "name_of_the_place"
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string   "description"
+    t.integer  "experience_type"
+    t.index ["teacher_profile_id"], name: "index_teacher_experiences_on_teacher_profile_id", using: :btree
+  end
+
   create_table "teacher_profiles", force: :cascade do |t|
     t.string  "description"
-    t.string  "subjects",    array: true
     t.integer "user_id"
-    t.index ["subjects"], name: "index_teacher_profiles_on_subjects", using: :gin
+    t.decimal "hour_rate"
   end
 
   create_table "users", force: :cascade do |t|
