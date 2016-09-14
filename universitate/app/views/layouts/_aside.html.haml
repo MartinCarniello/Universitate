@@ -1,5 +1,5 @@
 - @user = current_user.decorate
-- user_unreaded_messages = @user.unreaded_messages
+- user_unreaded_messages = @user.unreaded_messages || 0
 
 %aside.fixed.skin-6
   .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
