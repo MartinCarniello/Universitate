@@ -7,7 +7,7 @@
             = render 'message_row', message: message
 
           .answer-add
-            = form_for @message, url: conversation_path, method: :put, remote: true do |f|
+            = form_for @message, url: (@conversation.persisted? ? conversation_path : conversations_path), method: (@conversation.persisted? ? :put : :post), remote: (@conversation.persisted? ? true : false) do |f|
               = f.hidden_field :sender_id
               = f.hidden_field :receiver_id
               = f.hidden_field :conversation_id

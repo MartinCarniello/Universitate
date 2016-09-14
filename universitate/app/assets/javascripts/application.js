@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap.min
 //= require pace.min.js
 //= require jquery.cookie.min.js
@@ -28,3 +27,13 @@
 //= require chosen-jquery
 //= require chosen.jquery.min
 //= require_tree .
+
+function ready() {
+  $(".js-row-clickable").unbind("click").bind({
+    click: function(e) {
+      window.location = $(this).data().href;
+    }
+  });
+}
+
+$(document).ready(ready);

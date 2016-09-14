@@ -1,6 +1,4 @@
-%li.w3-padding-16
-  = link_to teacher_path(teacher), class: 'view-button btn btn-primary btn-lg pull-right' do
-    = I18n.t("views.users.index.view_button")
+%li.w3-padding-16.js-row-clickable{ data: { href: teacher_path(teacher) } }
   = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px;"
   %br/
   %span.w3-xlarge
