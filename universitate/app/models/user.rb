@@ -45,6 +45,6 @@ class User < ApplicationRecord
   end
 
   def unreaded_messages
-    conversations.unreaded_messages(id).first.sum
+    conversations.unreaded_messages(id).first.sum || 0
   end
 end
