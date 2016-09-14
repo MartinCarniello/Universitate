@@ -4,7 +4,7 @@
       .col-md-3.col-sm-3
         .row
           .col-xs-6.col-sm-12.col-md-6.text-center
-            %img{:src => "/assets/empty_user.png"}
+            = image_tag @teacher.avatar_url
           .col-xs-6.col-sm-12.col-md-6
             %strong.font-14.text-center
               = @teacher.first_name
