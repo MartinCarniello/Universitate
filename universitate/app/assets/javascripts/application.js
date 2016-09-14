@@ -27,13 +27,14 @@
 //= require chosen-jquery
 //= require chosen.jquery.min
 //= require_tree .
+(function() {
+  function ready() {
+    $(".js-row-clickable").unbind("click").bind({
+      click: function(e) {
+        window.location = $(this).data().href;
+      }
+    });
+  }
 
-function ready() {
-  $(".js-row-clickable").unbind("click").bind({
-    click: function(e) {
-      window.location = $(this).data().href;
-    }
-  });
-}
-
-$(document).ready(ready);
+  $(document).ready(ready);
+})();
