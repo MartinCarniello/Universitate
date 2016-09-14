@@ -9,7 +9,7 @@
           = link_to destroy_user_session_path,  method: :delete, class: 'btn btn-sm' do
             = fa_icon 'power-off', class: 'fa-lg'
       .user-block.clearfix
-        %img{:src => "/assets/empty_user.png"}/
+        = image_tag @user.avatar_url
         .detail
           %strong
             = @user.display_name
