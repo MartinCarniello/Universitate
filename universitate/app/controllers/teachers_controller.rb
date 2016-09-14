@@ -22,7 +22,8 @@ class TeachersController < ApplicationController
   end
 
   def create
-    if current_user.create_teacher_profile(params.require(:teacher_profile).permit(:description, :hour_rate)).valid?
+    binding.pry
+    if current_user.create_teacher_profile(params.require(:teacher_profile).permit(:description, :hour_rate, :subject_ids => [])).valid?
       current_user.add_role(:teacher)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path

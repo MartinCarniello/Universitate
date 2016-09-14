@@ -67,6 +67,7 @@ es:
         hour_rate: Precio por Hora
         submit_button: Guardar
         subjects: Materias
+        basicInfo: Información básica
       new:
         title: Carga tu perfil
     sign_in:
