@@ -24,6 +24,7 @@
 //= require endless_form.js
 //= require endless_wizard.js
 //= require jquery.nicescroll.min.js
+//= require chosen-jquery
 //= require chosen.jquery.min
 //= require_tree .
 
