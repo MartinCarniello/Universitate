@@ -10,12 +10,15 @@ class TeachersController < ApplicationController
     @teacher = User.find(params[:id])
   end
 
+  def edit
+  end
   def search_params
     @search_params ||= params.delete(:user_search) || {}
   end
 
   def new
     @teacher_profile = current_user.build_teacher_profile
+    @subjects = Subject.all()
   end
 
   def create
