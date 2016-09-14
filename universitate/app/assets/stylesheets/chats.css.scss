@@ -15,11 +15,15 @@ body{
   overflow-y: scroll;
   // overflow: hidden;
   outline: none;
-  min-height: 900px;
+  min-height: 800px;
 
   .col-inside-lg {
-    min-height: 900px;
+    min-height: 800px;
   }
+}
+.chat-background {
+    // background-image: url("/chat_background.png");
+    background-color: inherit !important;
 }
 .decor-default {
     background-color: #ffffff;
@@ -192,14 +196,15 @@ body{
 }
 
 /**************ADD FORM ***************/
-.chat-body .answer-add {
-    clear: both;
-    position: relative;
-    margin: 20px -20px -20px;
+.chat-inputs .answer-add {
+    position: fixed;
+    bottom: 0;
+    margin: 20px -20px 0px;
     padding: 20px;
     background: #46be8a;
+    width: 85%;
 }
-.chat-body .answer-add textarea {
+.chat-inputs .answer-add textarea {
     border: none;
     background: none;
     display: block;

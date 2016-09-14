@@ -1,11 +1,12 @@
 .content.container-fluid.bootstrap.snippets
   .row.row-broken
     .col-xs-12.chat.chat-table-scrollable.hidden{tabindex: "5001"}
-      .col-inside-lg.decor-default
+      .col-inside-lg.decor-default.chat-background
         .chat-body
           - MessageDecorator.decorate_collection(@messages).each do |message|
             = render 'message_row', message: message
 
+        .chat-inputs
           .answer-add
             = form_for @message, url: (@conversation.persisted? ? conversation_path : conversations_path), method: (@conversation.persisted? ? :put : :post), remote: (@conversation.persisted? ? true : false) do |f|
               = f.hidden_field :sender_id
