@@ -86,4 +86,7 @@ Rails.application.configure do
 
   # Action Cable URL
   config.action_cable.url = "wss://universitate.herokuapp.com/cable"
+
+  # Allowed Requests Origin
+  config.action_cable.allowed_request_origins = ['https://universitate.herokuapp.com', 'http://universitate.herokuapp.com']
 end
