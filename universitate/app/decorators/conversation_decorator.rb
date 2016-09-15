@@ -10,7 +10,7 @@ class ConversationDecorator < Draper::Decorator
   end
 
   def last_message
-    messages.order_recents.first.message
+    messages.order_recents.first
   end
 
   def linked_user
@@ -22,7 +22,8 @@ class ConversationDecorator < Draper::Decorator
   end
 
   def last_message_with_name
-    "#{current_user_sender? ? 'Yo' : linked_user.decorate.display_name}: #{last_message}"
+    last_message_aux = last_message
+    last_message_aux.sender == h.current_user ? "Yo: #{last_message_aux.message}" : "#{last_message.sender.decorate.display_name}: #{last_message_aux.message}"
   end
 
   private

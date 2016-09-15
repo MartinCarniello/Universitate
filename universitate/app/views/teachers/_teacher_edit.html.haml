@@ -1,25 +1,21 @@
 .panel.panel-default
-= form_for(@teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
+= form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
   .panel-heading
     = I18n.t('views.teacher_profile.edit.basicInfo')
   .panel-body
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.first_name')
       .col-md-10
-        = teacher_form.text_field :first_name,class: 'form-control input-sm bounceIn animation-delay2', placeholder: current_user.first_name
+        = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2', placeholder: "Nombre"
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.last_name')
       .col-md-10
-        = teacher_form.text_field :last_name,class: 'form-control input-sm bounceIn animation-delay3', placeholder: current_user.last_name
-    .form-group
-      %label.control-label.col-md-2 Email
-      .col-md-10
-        = teacher_form.text_field :email,class: 'form-control input-sm bounceIn animation-delay4', placeholder: current_user.email
+        = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3', placeholder: "Apellido"
     = teacher_form.fields_for :teacher_profile do |teacher_profile_fields|
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
         .col-md-10
-          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay5' ,placeholder: current_user.teacher_profile_description
+          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay5' , placeholder: "Descripcion"
   .panel-footer
     .form-group
       .controls.text-right

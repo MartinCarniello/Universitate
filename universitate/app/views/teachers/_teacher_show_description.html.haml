@@ -4,11 +4,11 @@
       = I18n.t("views.teacher_profile.show.about_me")
     .panel.panel-default.fadeInDown.animation-delay2
       %p
-      = @teacher.teacher_profile_description
+      = teacher.teacher_profile_description
     %h4.headline
       = I18n.t("views.teacher_profile.show.subjects")
     .panel.panel-default.fadeInDown.animation-delay3
       %dl
-        - @teacher.subjects.each do |subject|
+        - teacher.subjects.each do |subject|
           %dt
             = subject.name

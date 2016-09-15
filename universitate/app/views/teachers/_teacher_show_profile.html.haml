@@ -7,13 +7,14 @@
             = image_tag @teacher.avatar_url
           .col-xs-6.col-sm-12.col-md-6
             %strong.font-14.text-center
-              = @teacher.first_name
-              = @teacher.last_name
+              = teacher.first_name
+              = teacher.last_name
             %p
-              = @teacher.teacher_profile_hour_rate
+              = teacher.teacher_profile_hour_rate
             %small.block.text-muted
-              = @teacher.email
+              = teacher.email
             .seperator
-            = link_to new_conversation_path(linked_user_id: @teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
-              = fa_icon 'envelope-o', class: 'fa-lg'
-              Contactar
+            - if current_user.id == teacher.id
+              = link_to new_conversation_path(linked_user_id: teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
+                = fa_icon 'envelope-o', class: 'fa-lg'
+                Contactar
