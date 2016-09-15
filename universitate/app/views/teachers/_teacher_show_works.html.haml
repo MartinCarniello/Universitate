@@ -3,7 +3,7 @@
     %h4.headline
       = I18n.t("views.teacher_profile.show.work_experience")
     .panel.panel-default.fadeInDown.animation-delay4
-      #accordionWork.panel-group
+      #accordionWork
       - @teacher.teacher_profile.works.each do |work|
         .panel-heading
           %h5.panel-title

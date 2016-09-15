@@ -1,53 +1,27 @@
-
-= form_for(@teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update')) do |f|
+.panel.panel-default
+= form_for(@teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
   .panel-heading
     = I18n.t('views.teacher_profile.edit.basicInfo')
   .panel-body
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.first_name')
       .col-md-10
-        = f.text_field :first_name,class: 'form-control input-sm bounceIn animation-delay2', placeholder: current_user.first_name
+        = teacher_form.text_field :first_name,class: 'form-control input-sm bounceIn animation-delay2', placeholder: current_user.first_name
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.last_name')
       .col-md-10
-        = f.text_field :last_name,class: 'form-control input-sm bounceIn animation-delay3', placeholder: current_user.last_name
-    -# .form-group
-    -#   %label.control-label.col-md-2 Password
-    -#   .col-md-10
-    -#     %input.form-control.input-sm{:type => "password", value: current_user.password}/
+        = teacher_form.text_field :last_name,class: 'form-control input-sm bounceIn animation-delay3', placeholder: current_user.last_name
     .form-group
       %label.control-label.col-md-2 Email
       .col-md-10
-        = f.text_field :email,class: 'form-control input-sm bounceIn animation-delay4', placeholder: current_user.email
-      / /.col
-    / /form-group
-    -# .form-group
-    -#   %label.control-label.col-md-2 Gender
-    -#   .col-md-10
-    -#     %label.label-radio.inline
-    -#       %input{:checked => "checked", :name => "inline-radio", :type => "radio"}/
-    -#       %span.custom-radio
-    -#       Male
-    -#     %label.label-radio.inline
-    -#       %input{:name => "inline-radio", :type => "radio"}/
-    -#       %span.custom-radio
-    -#       Female
-      / /.col
-    / /form-group
-    .form-group
-      %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
-      .col-md-10
-        = f.text_area :teacher_profile_description ,class: 'form-control input-sm bounceIn animation-delay5' ,placeholder: current_user.teacher_profile_description
-      / /.col
-    / /form-group
-    -# .form-group
-    -#   %label.control-label.col-md-2 Phone
-    -#   .col-md-10
-    -#     %input.form-control.input-sm{:type => "text"}/
-      / /.col
-    / /form-group
+        = teacher_form.text_field :email,class: 'form-control input-sm bounceIn animation-delay4', placeholder: current_user.email
+    = teacher_form.fields_for :teacher_profile do |teacher_profile_fields|
+      .form-group
+        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
+        .col-md-10
+          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay5' ,placeholder: current_user.teacher_profile_description
   .panel-footer
     .form-group
       .controls.text-right
         = link_to 'Cancelar', root_path, class: 'btn btn-danger btn-sm'
-        = f.submit I18n.t('views.teacher_profile.edit.submit_button'), class: 'btn btn-success btn-sm'
+        = teacher_form.submit I18n.t('views.teacher_profile.edit.save_changes'), class: 'btn btn-success btn-sm'

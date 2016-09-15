@@ -10,16 +10,9 @@ class TeachersController < ApplicationController
     @teacher = User.find(params[:id])
   end
 
-  def edit
-    @teacher = User.find(params[:id])
-  end
-
   def update
-    binding.pry
     @user = User.find(params[:id])
-    params[:user].keys.each do |key|
-      @user.update_attribute(key,params[:user][key])
-    end
+    @user.update_attributes(user_params)
     flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
     redirect_to root_path
   end
@@ -34,7 +27,6 @@ class TeachersController < ApplicationController
   end
 
   def create
-    binding.pry
     if current_user.create_teacher_profile(params.require(:teacher_profile).permit(:description, :hour_rate, :subject_ids => [])).valid?
       current_user.add_role(:teacher)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
@@ -43,5 +35,11 @@ class TeachersController < ApplicationController
       @teacher_profile = current_user.teacher_profile
       render :new
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, teacher_profile_attributes: [:description, :id])
   end
 end

@@ -68,6 +68,7 @@ es:
         submit_button: Guardar
         subjects: Materias
         basicInfo: Información básica
+        save_changes: Guardar cambios
       new:
         title: Carga tu perfil
     sign_in:

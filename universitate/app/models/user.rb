@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  has_one :teacher_profile, :autosave => true
+  has_one :teacher_profile
   has_many :subjects, through: :teacher_profile
   has_many :experiences, through: :teacher_profile, source: :teacher_experience
 
@@ -39,6 +39,8 @@ class User < ApplicationRecord
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 
   delegate :description, :hour_rate, :user_id, :works, :studies, to: :teacher_profile, prefix: true
+
+  accepts_nested_attributes_for :teacher_profile
 
   def conversations
     Conversation.member(self)
