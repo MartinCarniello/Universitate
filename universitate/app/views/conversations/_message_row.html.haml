@@ -2,7 +2,9 @@
   .avatar
     = image_tag message.sender_avatar_url
   .name
-    = message.sender_display_name
+    %strong
+      %h4
+        = message.sender_display_name
   .text
     = message.message
   .time
