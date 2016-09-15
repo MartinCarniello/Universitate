@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :conversations
 
   root 'teachers#index'
+
+  # Action Cable
+  mount ActionCable.server => '/cable'
 end
