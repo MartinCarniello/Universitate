@@ -18,10 +18,10 @@
                 = I18n.t("views.teacher_profile.show.profile")
             -if current_user.id == @teacher.id
               %li
-                %a{"data-toggle" => "tab", :href => "#edit-profile"}
+                = link_to edit_teacher_path do
                   %span.block.text-center
                     %i.fa.fa-edit.fa-2x
-                  = I18n.t("views.teacher_profile.show.edit-profile")
+                = I18n.t("views.teacher_profile.show.edit-profile")
       .panel-body
         .tab-content
           #profile.tab-pane.fade.active.in
@@ -32,6 +32,3 @@
             = render 'teacher_show_works'
 
             = render 'teacher_show_studies'
-
-          #edit-profile.tab-pane.fade
-            = render 'edit'

@@ -11,7 +11,19 @@ class TeachersController < ApplicationController
   end
 
   def edit
+    @teacher = User.find(params[:id])
   end
+
+  def update
+    binding.pry
+    @user = User.find(params[:id])
+    params[:user].keys.each do |key|
+      @user.update_attribute(key,params[:user][key])
+    end
+    flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
+    redirect_to root_path
+  end
+
   def search_params
     @search_params ||= params.delete(:user_search) || {}
   end

@@ -15,5 +15,5 @@
               = @teacher.email
             .seperator
             = link_to new_conversation_path(linked_user_id: @teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
-              = fa_icon 'phone', class: 'fa-lg'
+              = fa_icon 'envelope-o', class: 'fa-lg'
               Contactar

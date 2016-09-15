@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  has_one :teacher_profile
+  has_one :teacher_profile, :autosave => true
   has_many :subjects, through: :teacher_profile
   has_many :experiences, through: :teacher_profile, source: :teacher_experience
 
