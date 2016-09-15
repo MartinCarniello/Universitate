@@ -26,7 +26,9 @@
 //= require jquery.nicescroll.min.js
 //= require chosen-jquery
 //= require chosen.jquery.min
+//= require_tree ./channels
 //= require_tree .
+
 (function() {
   function ready() {
     $(".js-row-clickable").unbind("click").bind({

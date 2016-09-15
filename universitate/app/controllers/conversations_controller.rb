@@ -30,6 +30,7 @@ class ConversationsController < ApplicationController
 
   def update
     @message = Message.create(message_required_params)
+    ActionCable.server.broadcast "messages_#{@message.conversation_id}", message: @message.message, username: @message.sender.decorate.display_name, datetime: @message.decorate.datetime_creation
   end
 
   private

@@ -1,4 +1,1 @@
-$('.chat-body .answer').last().after('<%= escape_javascript(render "conversations/message_row", message: @message.decorate) %>');
 $('#message_message').val("");
-scrollBottom();
-submitMessage();

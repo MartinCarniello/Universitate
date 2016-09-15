@@ -1,11 +1,11 @@
-(function() {
-  function scrollBottom() {
-    var chat = $(".chat-table-scrollable");
-    chat.removeClass('hidden');
-    if(chat.length > 0)
-      chat.scrollTop(chat[0].scrollHeight);
-  }
+function scrollBottom() {
+  var chat = $(".chat-table-scrollable");
+  chat.removeClass('hidden');
+  if(chat.length > 0)
+    chat.scrollTop(chat[0].scrollHeight);
+}
 
+(function() {
   function submitMessage() {
     $("#message_message").unbind("keypress").bind({
       keypress: function(event) {
