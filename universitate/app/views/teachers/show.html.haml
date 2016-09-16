@@ -7,21 +7,20 @@
           = I18n.t("views.teacher_profile.show.home")
       %li
         = I18n.t("views.teacher_profile.show.profile")
-    .row
-      .panel.panel-default
-        .panel-tab.clearfix
-          %ul.tab-bar.grey-tab
-            %li.active
-              %a{"data-toggle" => "tab", :href => "##profile"}
+    .panel.panel-default
+      .panel-tab.clearfix
+        %ul.tab-bar.grey-tab
+          %li.active
+            %a{"data-toggle" => "tab", :href => "##profile"}
+              %span.block.text-center
+                %i.fa.fa-user.fa-2x
+              = I18n.t("views.teacher_profile.show.profile")
+          - if current_user.id == @teacher.id
+            %li
+              %a{"data-toggle" => "tab", :href => "#edit-profile"}
                 %span.block.text-center
-                  %i.fa.fa-user.fa-2x
-                = I18n.t("views.teacher_profile.show.profile")
-            - if current_user.id == @teacher.id
-              %li
-                %a{"data-toggle" => "tab", :href => "#edit-profile"}
-                  %span.block.text-center
-                    %i.fa.fa-edit.fa-2x
-                  = I18n.t("views.teacher_profile.show.edit-profile")
+                  %i.fa.fa-edit.fa-2x
+                = I18n.t("views.teacher_profile.show.edit-profile")
       .panel-body
         .tab-content
           #profile.tab-pane.fade.active.in

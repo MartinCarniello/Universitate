@@ -1,14 +1,14 @@
-.col-md-9.col-sm-9
-  .row
-    %h4.headline
-      = I18n.t("views.teacher_profile.show.about_me")
+.row
+  .col-md-9.col-sm-9
+    /%h4.headline
+    /  = I18n.t("views.teacher_profile.show.about_me")
     .panel.panel-default.fadeInDown.animation-delay2
-      %p
-      = teacher.teacher_profile_description
+      .panel-heading
+        = I18n.t("views.teacher_profile.show.about_me")
+      .panel-body
+        %p
+          = teacher.teacher_profile_description
     %h4.headline
       = I18n.t("views.teacher_profile.show.subjects")
-    .panel.panel-default.fadeInDown.animation-delay3
-      %dl
-        - teacher.subjects.each do |subject|
-          %dt
-            = subject.name
+    .fadeInDown.animation-delay3
+      = select_tag(:subject_ids, options_from_collection_for_select(teacher.teacher_profile.subjects, :id, :name, teacher.teacher_profile.subject_ids), {multiple: true, class: "form-control chzn-select", disabled: true} )

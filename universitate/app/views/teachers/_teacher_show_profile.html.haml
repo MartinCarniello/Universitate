@@ -1,20 +1,19 @@
-.col-md-3col-sm-3
-  .padding-md
-    .row
-      .col-md-3.col-sm-3
-        .row
-          .col-xs-6.col-sm-12.col-md-6.text-center
-            = image_tag @teacher.avatar_url
-          .col-xs-6.col-sm-12.col-md-6
-            %strong.font-14.text-center
-              = teacher.first_name
-              = teacher.last_name
-            %p
-              = teacher.teacher_profile_hour_rate
-            %small.block.text-muted
-              = teacher.email
-            .seperator
-            - if current_user.id == teacher.id
-              = link_to new_conversation_path(linked_user_id: teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
-                = fa_icon 'envelope-o', class: 'fa-lg'
-                Contactar
+.padding-md
+  .row
+    .col-md-3.col-sm-3
+      .row
+        .col-xs-6.col-sm-12.col-md-6.text-center
+          = image_tag @teacher.avatar_url, class: 'img-thumbnail'
+        .col-xs-6.col-sm-12.col-md-6
+          %strong.font-14.text-center
+            = teacher.first_name
+            = teacher.last_name
+          %p
+            = teacher.teacher_profile_hour_rate
+          %small.block.text-muted
+            = teacher.email
+          .seperator
+          - if current_user.id == teacher.id
+            = link_to new_conversation_path(linked_user_id: teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
+              = fa_icon 'wechat', class: 'fa-lg'
+              Contactar
