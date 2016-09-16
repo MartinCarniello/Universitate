@@ -1,4 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+.pace-done {
+  margin-top: 0 !important;
+}
+.pace-running {
+  margin-top: 0 !important;
+}
 #top-nav {
   height: 45px;
   padding-right: 10px;
@@ -723,8 +729,9 @@ aside .main-menu .alert {
 #wrapper {
   position: relative;
   overflow: hidden;
-  min-height: 800px;
-  background-color: #f9f9f9;
+  height: 2000px;
+  background-image: url('/chat_background.png');
+  /*background-color: #f9f9f9;*/
 }
 @media (min-width: 768px) {
   #wrapper.sidebar-mini #top-nav .brand {
@@ -1661,7 +1668,7 @@ svg {
   margin: 0;
 }
 .chat li {
-  margin: 15px 0;
+  margin: 40px 0;
 }
 .chat li:first-child {
   margin-top: 0;
@@ -4522,9 +4529,9 @@ input[type="radio"]:active + .custom-radio {
 }
 #wrapper .chat-wrapper .chat-inner {
   position: fixed;
-  top: 40px;
-  right: 0;
-  left: 444px;
+  top: 20px;
+  right: 220px;
+  left: 440px;
   height: 100%;
   overflow-y: auto;
   transition: all 0.5s ease;
@@ -4609,8 +4616,8 @@ input[type="radio"]:active + .custom-radio {
 #wrapper .chat-wrapper .chat-inner .chat-box {
   position: fixed;
   bottom: 0;
-  left: 444px;
-  right: 0;
+  left: 450px;
+  right: 240px;
   padding: 15px;
   border-top: 1px solid #eee;
   transition: all 0.5s ease;

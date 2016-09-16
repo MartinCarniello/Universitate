@@ -1,18 +1,25 @@
 #username{ data: { username: current_user.decorate.display_name } }
 
-.content.container-fluid.bootstrap.snippets
-  .row.row-broken
-    .col-xs-12.chat.chat-table-scrollable.hidden{tabindex: "5001"}
-      .col-inside-lg.decor-default.chat-background
-        .chat-body
+.chat-wrapper
+  .slimScrollDiv{ style: 'position: relative;overflow: hidden;width: auto;height: 100%;' }
+    .chat-inner.scrollable-div{ style: 'overflow: hidden;width: auto;height: 95%;' }
+      .chat-message
+        %ul.chat
           - MessageDecorator.decorate_collection(@messages).each do |message|
             = render 'message_row', message: message
+      .chat-box.bg-white
+        .input-group
+          %textarea#chat-message.form-control.border.no-shadow.no-rounded{ placeholder: I18n.t('views.conversations.show.conversations_table.write_message') }
+          %span.input-group-btn
+            %button#message-button.btn.btn-success.no-rounded{ style: 'height: 48px;', type: "button" }
+              Send
 
-        .chat-inputs
-          .answer-add
-            = form_for @message, url: (@conversation.persisted? ? conversation_path : conversations_path), method: (@conversation.persisted? ? :put : :post), remote: (@conversation.persisted? ? true : false) do |f|
-              = f.hidden_field :sender_id
-              = f.hidden_field :receiver_id
-              = f.hidden_field :conversation_id
-              = f.text_area :message, placeholder: I18n.t('views.conversations.show.conversations_table.write_message')
-              %span.answer-btn.answer-btn-2
+.hidden
+  = form_for @message, url: (@conversation.persisted? ? conversation_path : conversations_path), method: (@conversation.persisted? ? :put : :post), remote: (@conversation.persisted? ? true : false) do |f|
+    = f.hidden_field :sender_id
+    = f.hidden_field :receiver_id
+    = f.hidden_field :conversation_id
+    = f.text_area :message, class: 'form-control border no-shadow no-rounded', placeholder: I18n.t('views.conversations.show.conversations_table.write_message')
+    %span.input-group-btn
+      %button.btn.btn-success.no-rounded{ type: "button" }
+        Send

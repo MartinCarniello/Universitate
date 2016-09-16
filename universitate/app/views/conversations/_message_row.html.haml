@@ -1,9 +1,12 @@
-%div{ class: "answer #{message.css_class}" }
-  .avatar
+%li.clearfix{ class: "#{message.css_class}" }
+  %span.chat-img{ class: "pull-#{message.css_class}" }
     = image_tag message.sender_avatar_url
-  .name
-    = message.sender_display_name
-  .text
-    = message.message
-  .time
-    = message.datetime_creation
+  .chat-body.clearfix
+    .header
+      %strong.primary-font
+        = message.sender_display_name
+      %small.pull-right.text-muted
+        %i.fa.fa-clock-o
+        = message.datetime_creation
+    %p
+      = message.message

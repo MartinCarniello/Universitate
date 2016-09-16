@@ -1,28 +1,37 @@
 function scrollBottom() {
-  var chat = $(".chat-table-scrollable");
-  chat.removeClass('hidden');
-  if(chat.length > 0)
-    chat.scrollTop(chat[0].scrollHeight);
+  $('.chat-message').slimScroll({
+    scrollTo: $('.chat-message')[0].scrollHeight
+  });
 }
 
 (function() {
+  function scrollableChat() {
+    $('.chat-message').slimScroll({
+      height: '100%',
+      start: 'bottom'
+    });
+  }
+
   function submitMessage() {
-    $("#message_message").unbind("keypress").bind({
+    $("#chat-message").unbind("keypress").bind({
       keypress: function(event) {
         if(event.which == 13) {
+          $("#message_message").val($("#chat-message").val());
           $("#new_message").submit();
         }
       }
     });
 
-    $("span.answer-btn").unbind("click").bind({
+    $("#message-button").unbind("click").bind({
       click: function() {
+        $("#message_message").val($("#chat-message").val());
         $("#new_message").submit();
       }
     });
   }
 
   function ready() {
+    scrollableChat();
     scrollBottom();
     submitMessage();
   }

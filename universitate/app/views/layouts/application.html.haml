@@ -10,10 +10,11 @@
   %body
     - if user_signed_in?
       = render 'layouts/aside'
-    %div{ id: "#{'main-container' if user_signed_in?}" }
-      - flash.each do |key, value|
-        %div{class: "text-center alert alert-#{key}"}
-          = link_to '#', class: 'close', data: {dismiss: "alert"} do
-            ×
-          = value
-      = yield
+    %div{ id: "#{'wrapper' if user_signed_in?}" }
+      %div{ id: "#{'main-container' if user_signed_in?}" }
+        - flash.each do |key, value|
+          %div{class: "text-center alert alert-#{key}"}
+            = link_to '#', class: 'close', data: {dismiss: "alert"} do
+              ×
+            = value
+        = yield
