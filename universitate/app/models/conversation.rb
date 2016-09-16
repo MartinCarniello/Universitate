@@ -2,11 +2,13 @@
 #
 # Table name: conversations
 #
-#  id             :integer          not null, primary key
-#  first_user_id  :integer
-#  second_user_id :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                         :integer          not null, primary key
+#  first_user_id              :integer
+#  second_user_id             :integer
+#  created_at                 :datetime         not null
+#  updated_at                 :datetime         not null
+#  first_user_messages_count  :integer          default(0)
+#  second_user_messages_count :integer          default(0)
 #
 
 class Conversation < ApplicationRecord

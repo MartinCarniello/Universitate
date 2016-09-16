@@ -23,6 +23,10 @@ es:
   brand:
     pre: UNIVERSITA
     post: TE
+  user:
+    genders:
+      f: Mujer
+      m: Hombre
   rolify:
     roles:
       student: Alumno
@@ -47,9 +51,11 @@ es:
         view_button: Ver
         sign_in: Iniciar Sesión
         wanna_be_teacher: Quiero ser Profesor
+        name_and_last_name: Nombre y Apellido
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
+          filters: Filtros
         teachers_table:
           teachers_title: Profesores
     teacher_profile:
@@ -96,6 +102,7 @@ es:
         last_name: Apellido
         password: Contraseña
         password_confirmation: Confirmar Contraseña
+        gender: Género
     errors:
       models:
         teacher_profile:

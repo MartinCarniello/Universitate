@@ -19,10 +19,12 @@
 #  first_name             :string
 #  last_name              :string
 #  date_of_birth          :datetime
+#  gender                 :string
 #
 
 class User < ApplicationRecord
   rolify
+  GENDER= {MALE: 'M', FEMALE:'F'}
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -35,6 +37,8 @@ class User < ApplicationRecord
   has_many :subjects, through: :teacher_profile
   has_many :experiences, through: :teacher_profile, source: :teacher_experience
 
+  validates :gender, inclusion: {in: ['F','M']}
+  
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 

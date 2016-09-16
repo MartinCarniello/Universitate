@@ -17,7 +17,7 @@
         = I18n.t('views.teacher_profile.edit.subjects')
       %select.form-control.chzn-select{:multiple => "multiple", :style => "display: none;", :name => "teacher_profile[subject_ids][]"}
         -@subjects.each do |subject|
-          %option{:value => subject.id}=subject.name
+          %option{:value => subject.id}= subject.name
     .form-group
       .controls.text-right
         = link_to 'Cancelar', root_path, class: 'btn btn-danger btn-sm'

@@ -27,6 +27,17 @@
             %br/
             = f.email_field :email, autofocus: true, class: 'form-control input-sm bounceIn animation-delay2'
           .form-group
+            .row
+              .col-xs-12
+                = f.label :gender
+            .row
+              .col-xs-12
+                - User::GENDER.values.each do |gender|
+                  %label.label-radio.inline
+                  = f.radio_button :gender, gender , checked: @user.gender == gender
+                  %span.custom-radio
+                  = I18n.t("user.genders.#{gender.downcase}")
+          .form-group
             = f.label :password
             - if @minimum_password_length
               %em
