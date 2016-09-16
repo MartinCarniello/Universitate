@@ -19,6 +19,7 @@
 #  first_name             :string
 #  last_name              :string
 #  date_of_birth          :datetime
+#  gender                 :string
 #
 
 require 'test_helper'

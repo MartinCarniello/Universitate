@@ -4,7 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    if user = User.create(params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation))
+    if user = User.create(params.require(:user).permit(:first_name, :last_name, :email, :gender, :password, :password_confirmation))
       sign_in(:user, user)
       redirect_to root_path
     end
