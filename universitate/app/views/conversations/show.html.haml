@@ -3,10 +3,16 @@
 .chat-wrapper
   .slimScrollDiv{ style: 'position: relative;overflow: hidden;width: auto;height: 100%;' }
     .chat-inner.scrollable-div{ style: 'overflow: hidden;width: auto;height: 95%;' }
+      .chat-header.bg-white
+        = image_tag @conversation.decorate.linked_user_avatar_url, size: '50x50', style: 'margin-top: -25px;'
+        %span
+          = @conversation.decorate.linked_user_display_name
+
       .chat-message
         %ul.chat
           - MessageDecorator.decorate_collection(@messages).each do |message|
             = render 'message_row', message: message
+
       .chat-box.bg-white
         .input-group
           %textarea#chat-message.form-control.border.no-shadow.no-rounded{ placeholder: I18n.t('views.conversations.show.conversations_table.write_message') }
