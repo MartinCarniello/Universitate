@@ -1,7 +1,10 @@
 function scrollBottom() {
-  $('.chat-message').slimScroll({
-    scrollTo: $('.chat-message')[0].scrollHeight
-  });
+  if($('.chat-message').lenght > 0){
+    $('.chat-message').slimScroll({
+      scrollTo: $('.chat-message')[0].scrollHeight
+    });
+  }
+
 }
 
 (function() {

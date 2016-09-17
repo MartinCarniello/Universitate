@@ -13,7 +13,7 @@
           %small.block.text-muted
             = teacher.email
           .seperator
-          - if current_user.id == teacher.id
+          - if current_user.id != teacher.id
             = link_to new_conversation_path(linked_user_id: teacher.id), class: 'btn btn-info', data: { no_turbolink: true } do
               = fa_icon 'wechat', class: 'fa-lg'
-              Contactar
+              = I18n.t('views.teacher_profile.show.contact')

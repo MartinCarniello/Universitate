@@ -1,5 +1,5 @@
 .panel.panel-default
-= form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
+= nested_form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
   .panel-heading
     = I18n.t('views.teacher_profile.edit.basicInfo')
   .panel-body
@@ -15,7 +15,25 @@
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
         .col-md-10
-          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay5' , placeholder: "Descripcion"
+          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay4' , placeholder: "Descripcion"
+      .form-group
+        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.hour_rate')
+        .col-md-10
+          = teacher_profile_fields.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay5' , placeholder: "Precio por hora"
+      .form-group
+        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.subjects')
+        .col-md-10
+          = teacher_profile_fields.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_fields.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
+      .form-group
+        %label.control-label.col-md-2= I18n.t('views.teacher_profile.show.studies')
+        .col-md-10
+      = teacher_profile_fields.fields_for :teacher_experiences do |teacher_experiences_fields|
+        .form-group
+          .col-md-10
+            = teacher_experiences_fields.text_field :name_of_the_place , class: 'form-control input-sm bounceIn animation-delay6'
+            = teacher_experiences_fields.text_field :description , class: 'form-control input-sm bounceIn animation-delay6'
+            = teacher_experiences_fields.date_field :period_start , class: 'form-control input-sm bounceIn animation-delay6'
+            = teacher_experiences_fields.date_field :period_end , class: 'form-control input-sm bounceIn animation-delay6'
   .panel-footer
     .form-group
       .controls.text-right

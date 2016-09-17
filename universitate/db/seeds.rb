@@ -18,10 +18,10 @@ Role.find_or_create_by(name: :teacher)
 ].each { |subject| Subject.create!(subject) if !Subject.find_by(name: subject[:name]) }
 
 [
-  {first_name: 'Jorge', last_name: 'Lopez', email: 'jorgelopez@gmail.com', password: '123456'},
-  {first_name: 'Hada', last_name: 'Cernudita', email: 'hada@gmail.com', password: '123456'},
-  {first_name: 'Mateiquito', last_name: 'Avantaggiatito', email: 'mate@gmail.com', password: '123456'},
-  {first_name: 'Patin', last_name: 'Gordo', email: 'patingordo@gmail.com', password: '123456'}
+  {first_name: 'Jorge', last_name: 'Lopez', gender:'M', email: 'jorgelopez@gmail.com', password: '123456'},
+  {first_name: 'Hada', last_name: 'Cernudita', gender:'F', email: 'hada@gmail.com', password: '123456'},
+  {first_name: 'Mateiquito', last_name: 'Avantaggiatito', gender:'M', email: 'mate@gmail.com', password: '123456'},
+  {first_name: 'Patin', last_name: 'Gordo', gender:'M', email: 'patingordo@gmail.com', password: '123456'}
 
 ].each do |user|
   if !User.find_by(email: user[:email])

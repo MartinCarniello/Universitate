@@ -8,13 +8,20 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = User.find(params[:id])
+    @subjects = Subject.all()
+    @studies = @teacher.teacher_profile_teacher_experiences.where(experience_type:'STUDY')
+    @works = @teacher.teacher_profile_teacher_experiences.where(experience_type:'WORK')
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(user_params)
-    flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
-    redirect_to root_path
+
+    if @user.update(user_params)
+      flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def search_params
@@ -40,6 +47,6 @@ class TeachersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, teacher_profile_attributes: [:description, :id])
+    params.require(:user).permit(:first_name, :last_name, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :teacher_experiences_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id]])
   end
 end

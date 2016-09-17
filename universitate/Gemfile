@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 
 #build chosen select multiple
 gem 'chosen-rails'
+
+#Manage nested forms
+gem "nested_form"
+gem 'cocoon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

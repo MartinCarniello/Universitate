@@ -4,14 +4,15 @@
       = I18n.t("views.teacher_profile.show.studies")
     .panel.panel-default.fadeInDown.animation-delay5
       #accordionStudy
-      - teacher.teacher_profile.studies.each do |study|
-        .panel-heading
-          %h5.panel-title
-            %a.accordion-toggle.collapsed{"data-parent" => "#accordionStudy", "data-toggle" => "collapse", :href => "##{study.id}"}
-              %p
-                = study.name_of_the_place
-        %div{class: 'panel-collapse collapse', id: study.id}
-          .panel-body
-            = "#{study.period_start.strftime("%m-%Y")} - #{study.period_end.strftime("%m-%Y")}"
-            %br/
-            = study.description
+      - if !@studies.nil?
+        - @studies.each do |study|
+          .panel-heading
+            %h5.panel-title
+              %a.accordion-toggle.collapsed{"data-parent" => "#accordionStudy", "data-toggle" => "collapse", :href => "##{study.id}"}
+                %p
+                  = study.name_of_the_place
+          %div{class: 'panel-collapse collapse', id: study.id}
+            .panel-body
+              = "#{study.period_start.strftime("%m-%Y")} - #{study.period_end.strftime("%m-%Y")}"
+              %br/
+              = study.description
