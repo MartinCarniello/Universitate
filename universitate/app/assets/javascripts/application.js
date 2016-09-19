@@ -27,6 +27,9 @@
 //= require chosen-jquery
 //= require chosen.jquery.min
 //= require chosen
+//= require inputmask
+//= require jquery.inputmask
+//= require inputmask.numeric.extensions
 
 (function() {
   function ready() {
@@ -35,6 +38,8 @@
         window.location = $(this).data().href;
       }
     });
+
+    $(".js-decimal-mask").inputmask("decimal");
   }
 
   $(document).ready(ready);
