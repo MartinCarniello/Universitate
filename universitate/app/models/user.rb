@@ -35,8 +35,7 @@ class User < ApplicationRecord
 
   has_one :teacher_profile
   has_many :subjects, through: :teacher_profile
-  has_many :teacher_experiences, through: :teacher_profile
-
+  
   validates :gender, inclusion: {in: ['F','M']}
 
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }

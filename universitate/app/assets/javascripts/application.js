@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require bootstrap-datepicker.min
 //= require pace.min.js
 //= require jquery.cookie.min.js
 //= require jquery.popupoverlay.min.js
@@ -27,6 +28,7 @@
 //= require chosen-jquery
 //= require chosen.jquery.min
 //= require chosen
+//= require datepicker
 //= require inputmask
 //= require jquery.inputmask
 //= require inputmask.numeric.extensions

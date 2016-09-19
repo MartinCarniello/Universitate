@@ -15,7 +15,7 @@ class TeachersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    binding.pry
     if @user.update(user_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path
@@ -47,6 +47,6 @@ class TeachersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :teacher_experiences_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id]])
+    params.require(:user).permit(:first_name, :last_name, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id ], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroys]])
   end
 end

@@ -1,51 +1,38 @@
-\%form.form-horizontal.form-border
-\.panel-heading
-Basic Information
-\.panel-body
-\.form-group
-\%label.control-label.col-md-2 Username
-\.col-md-10
-\%input.form-control.input-sm{:placeholder =&gt; "Username", :type =&gt; "text", :value =&gt; "John Doe"}/
-\/ /.col
-\/ /form-group
-\.form-group
-\%label.control-label.col-md-2 Password
-\.col-md-10
-\%input.form-control.input-sm{:type =&gt; "password", :value =&gt; "Password"}/
-\/ /.col
-\/ /form-group
-\.form-group
-\%label.control-label.col-md-2 Email
-\.col-md-10
-\%input.form-control.input-sm{:type =&gt; "text", :value =&gt; "john_doe@email.com"}/
-\/ /.col
-\/ /form-group
-\.form-group
-\%label.control-label.col-md-2 Gender
-\.col-md-10
-\%label.label-radio.inline
-\%input{:checked =&gt; "checked", :name =&gt; "inline-radio", :type =&gt; "radio"}/
-\%span.custom-radio
-Male
-\%label.label-radio.inline
-\%input{:name =&gt; "inline-radio", :type =&gt; "radio"}/
-\%span.custom-radio
-Female
-\/ /.col
-\/ /form-group
-\.form-group
-\%label.control-label.col-md-2 Address
-\.col-md-10
-\%textarea.form-control{:rows =&gt; "3"}
-\/ /.col
-\/ /form-group
-\.form-group
-\%label.control-label.col-md-2 Phone
-\.col-md-10
-\%input.form-control.input-sm{:type =&gt; "text"}/
-\/ /.col
-\/ /form-group
-\.panel-footer
-\.text-right
-\%button.btn.btn-sm.btn-success Update
-\%button.btn.btn-sm.btn-success{:type =&gt; "reset"} Reset
+.datepicker.dropdown-menu{:style => "display: none; top: 2911px; left: 402.828px;"}
+  .datepicker-days{:style => "display: block;"}
+    %table.table-condensed
+      %thead
+        %tr
+          %th.prev ‹
+          %th.switch{:colspan => "5"} October 2013
+          %th.next ›
+        %tr
+          %th.dow Su
+          %th.dow Mo
+          %th.dow Tu
+          %th.dow We
+          %th.dow Th
+          %th.dow Fr
+          %th.dow Sa
+      %tbody
+
+  .datepicker-months{:style => "display: none;"}
+    %table.table-condensed
+      %thead
+        %tr
+          %th.prev ‹
+          %th.switch{:colspan => "5"} 2013
+          %th.next ›
+      %tbody
+        %tr
+          %td{:colspan => "7"}
+  .datepicker-years{:style => "display: none;"}
+    %table.table-condensed
+      %thead
+        %tr
+          %th.prev ‹
+          %th.switch{:colspan => "5"} 2010-2019
+          %th.next ›
+      %tbody
+        %tr
+          %td{:colspan => "7"}

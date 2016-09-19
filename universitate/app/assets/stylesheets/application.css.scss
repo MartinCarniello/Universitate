@@ -12,6 +12,7 @@
  *
  *= require font-awesome
  *= require bootstrap.min
+ *= require datepicker
  *= require endless-landing.min
  *= require endless.css
  *= require chosen
@@ -47,4 +48,8 @@ body {
 
 .js-decimal-mask {
   text-align: left !important;
+}
+
+textarea{
+  resize:none
 }

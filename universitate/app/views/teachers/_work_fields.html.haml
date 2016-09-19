@@ -1,0 +1,40 @@
+.nested-fields
+  .form-inline
+  = f.simple_fields_for :works do |teacher_experiences_fields|
+    .row
+      .col-md-10
+        .jumbotron
+          .row
+            .form-group
+              %label.control-label.col-md-2
+                Lugar
+              .col-md-10
+                = teacher_experiences_fields.text_field :name_of_the_place , class: 'form-control input-sm bounceIn animation-delay6'
+            %br/
+            %br/
+          .row
+            .form-group
+              %label.control-label.col-md-2
+                Descripcion
+              .col-md-10
+                = teacher_experiences_fields.text_area :description , class: 'form-control input-sm bounceIn animation-delay6'
+            %br/
+            %br/
+            %br/
+          .row
+            .form-group
+              %label.control-label.col-md-2
+                Inicio
+              .col-md-10
+                = teacher_experiences_fields.text_field :period_start , class: 'datepicker form-control'
+            %br/
+            %br/
+          .row
+            .form-group
+              %label.control-label.col-md-2
+                Fin
+              .col-md-10
+                = teacher_experiences_fields.text_field :period_end , class: 'datepicker form-control'
+            %br/
+            %br/
+          = link_to_remove_association "remove", f

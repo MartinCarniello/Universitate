@@ -1,50 +1,55 @@
 .panel.panel-default
-= form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
+= simple_form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
   .panel-heading
     = I18n.t('views.teacher_profile.edit.basic_info')
   .panel-body
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.first_name')
       .col-md-8
-        = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2', placeholder: "Nombre"
+        = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2'
     %br/
     %br/
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.last_name')
       .col-md-8
-        = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3', placeholder: "Apellido"
+        = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3'
     %br/
     %br/
-    = teacher_form.fields_for :teacher_profile do |teacher_profile_fields|
+    = teacher_form.simple_fields_for :teacher_profile do |teacher_profile_form|
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
         .col-md-8
-          = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay4' , placeholder: "Descripcion"
+          = teacher_profile_form.text_area :description, class: 'form-control input-sm bounceIn animation-delay4'
       %br/
       %br/
       %br/
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.hour_rate')
         .col-md-8
-          = teacher_profile_fields.text_field :hour_rate, class: 'js-decimal-mask form-control input-sm bounceIn animation-delay5' , placeholder: "Precio por hora"
+          = teacher_profile_form.text_field :hour_rate, class: 'js-decimal-mask form-control input-sm bounceIn animation-delay5'
       %br/
       %br/
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.subjects')
         .col-md-8
-          = teacher_profile_fields.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_fields.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
+          = teacher_profile_form.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_form.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
       %br/
       %br/
+
+      .panel-heading
+      = I18n.t('views.teacher_profile.show.work_experience')
+      .panel-body
+        = render 'work_fields', f: teacher_profile_form
+        .links
+          = link_to_add_association 'Add', teacher_profile_form, :works
 
       .panel-heading
         = I18n.t('views.teacher_profile.show.studies')
       .panel-body
-        = render 'experiences_form', form: teacher_profile_fields, type: :studies
+        = render 'study_fields', f: teacher_profile_form
+        .links
+          = link_to_add_association 'Add', teacher_profile_form, :studies
 
-      .panel-heading
-        = I18n.t('views.teacher_profile.show.work_experience')
-      .panel-body
-        = render 'experiences_form', form: teacher_profile_fields, type: :works
 
   .panel-footer
     .form-group
