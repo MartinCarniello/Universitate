@@ -5,8 +5,7 @@
     %title Universitate
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
-    = javascript_include_tag :defaults, "nested_form" 
+    = javascript_include_tag 'application', controller_name
     = action_cable_meta_tag
   %body
     - if user_signed_in?

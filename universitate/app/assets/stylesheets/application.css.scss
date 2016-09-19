@@ -20,6 +20,10 @@
  *= require_tree .
  */
 
+body {
+  background-image: url('/chat_background.png');
+}
+
 .grey {
   color: grey;
 }
@@ -34,4 +38,9 @@
 
 .js-row-clickable {
   cursor: pointer;
+}
+
+.jumbotron {
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }

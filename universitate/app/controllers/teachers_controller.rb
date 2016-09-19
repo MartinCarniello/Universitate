@@ -9,8 +9,8 @@ class TeachersController < ApplicationController
   def show
     @teacher = User.find(params[:id])
     @subjects = Subject.all()
-    @studies = @teacher.teacher_profile_teacher_experiences.where(experience_type:'STUDY')
-    @works = @teacher.teacher_profile_teacher_experiences.where(experience_type:'WORK')
+    @studies = @teacher.teacher_profile_studies
+    @works = @teacher.teacher_profile_works
   end
 
   def update

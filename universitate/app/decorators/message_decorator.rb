@@ -2,7 +2,7 @@ class MessageDecorator < Draper::Decorator
   delegate_all
   
   def css_class
-    h.current_user.id == sender_id ? 'right' : 'left'
+    current_user_sender? ? 'left' : 'right'
   end
 
   def sender_avatar_url
@@ -10,7 +10,7 @@ class MessageDecorator < Draper::Decorator
   end
 
   def sender_display_name
-    h.current_user.id == sender_id ? 'Yo' : sender.decorate.display_name
+    current_user_sender? ? 'Yo' : sender.decorate.display_name
   end
 
   def message
@@ -19,5 +19,9 @@ class MessageDecorator < Draper::Decorator
 
   def datetime_creation
     created_at.strftime("%m/%d/%y %I:%M")
+  end
+
+  def current_user_sender?
+    h.current_user.id == sender_id
   end
 end

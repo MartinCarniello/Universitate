@@ -24,7 +24,7 @@
 
 class User < ApplicationRecord
   rolify
-  GENDER= {MALE: 'M', FEMALE:'F'}
+  GENDER = { MALE: 'M', FEMALE: 'F' }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -42,9 +42,9 @@ class User < ApplicationRecord
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
 
-  delegate :description, :hour_rate, :user_id, :teacher_experiences, :subjects, to: :teacher_profile, prefix: true
+  delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, to: :teacher_profile, prefix: true
 
-  accepts_nested_attributes_for :teacher_profile, :teacher_experiences
+  accepts_nested_attributes_for :teacher_profile
 
 
   def conversations

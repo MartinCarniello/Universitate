@@ -26,10 +26,12 @@
           #profile.tab-pane.fade.active.in
             = render 'teacher_show_profile', teacher: @teacher
 
-            = render 'teacher_show_description', teacher: @teacher
-
-            = render 'teacher_show_works', teacher: @works
-
-            = render 'teacher_show_studies', teacher: @studies
+            .row
+              .col-md-8.col-sm-8
+                = render 'teacher_show_description', teacher: @teacher
+                = render 'teacher_show_works', teacher: @works
+                = render 'teacher_show_studies', teacher: @studies
+              .col-md-4.col-sm-4
+                = render 'last_comments'
           #edit-profile.tab-pane.fade
             = render 'teacher_edit', teacher: @teacher, subjects: @subjects, works: @works, studies: @studies

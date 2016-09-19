@@ -1,5 +1,7 @@
+//= require ./channels/conversations.js
+
 function scrollBottom() {
-  if($('.chat-message').lenght > 0){
+  if($('.chat-message').size() > 0){
     $('.chat-message').slimScroll({
       scrollTo: $('.chat-message')[0].scrollHeight
     });

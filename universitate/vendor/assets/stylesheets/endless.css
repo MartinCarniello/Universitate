@@ -729,9 +729,7 @@ aside .main-menu .alert {
 #wrapper {
   position: relative;
   overflow: hidden;
-  height: 2000px;
-  background-image: url('/chat_background.png');
-  /*background-color: #f9f9f9;*/
+  height: 100%;
 }
 @media (min-width: 768px) {
   #wrapper.sidebar-mini #top-nav .brand {
@@ -5407,6 +5405,12 @@ input[type="radio"]:active + .custom-radio {
 }
 .chosen-container {
   width: 100% !important;
+}
+.chosen-disabled .search-choice-close {
+  display: none;
+}
+ul.chosen-choices {
+  border-radius: 5px;
 }
 .chosen-container-single .chosen-single,
 .chosen-container-multi .chosen-choices li.search-field input[type=text] {

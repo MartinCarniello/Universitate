@@ -74,7 +74,7 @@ es:
         hour_rate: Precio por Hora
         submit_button: Guardar
         subjects: Materias
-        basicInfo: Información básica
+        basic_info: Información básica
         save_changes: Guardar cambios
       new:
         title: Carga tu perfil
@@ -104,6 +104,16 @@ es:
         password: Contraseña
         password_confirmation: Confirmar Contraseña
         gender: Género
+      works:
+        name_of_the_place: Empresa
+        period_start: Fecha de Inicio
+        period_end: Fecha de Fin
+        description: Descripción
+      studies:
+        name_of_the_place: Institución
+        period_start: Fecha de Inicio
+        period_end: Fecha de Fin
+        description: Descripción
     errors:
       models:
         teacher_profile:

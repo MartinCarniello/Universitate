@@ -1,39 +1,51 @@
 .panel.panel-default
-= nested_form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
+= form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
   .panel-heading
-    = I18n.t('views.teacher_profile.edit.basicInfo')
+    = I18n.t('views.teacher_profile.edit.basic_info')
   .panel-body
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.first_name')
-      .col-md-10
+      .col-md-8
         = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2', placeholder: "Nombre"
+    %br/
+    %br/
     .form-group
       %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.last_name')
-      .col-md-10
+      .col-md-8
         = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3', placeholder: "Apellido"
+    %br/
+    %br/
     = teacher_form.fields_for :teacher_profile do |teacher_profile_fields|
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
-        .col-md-10
+        .col-md-8
           = teacher_profile_fields.text_area :description, class: 'form-control input-sm bounceIn animation-delay4' , placeholder: "Descripcion"
+      %br/
+      %br/
+      %br/
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.hour_rate')
-        .col-md-10
+        .col-md-8
           = teacher_profile_fields.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay5' , placeholder: "Precio por hora"
+      %br/
+      %br/
       .form-group
         %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.subjects')
-        .col-md-10
+        .col-md-8
           = teacher_profile_fields.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_fields.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
-      .form-group
-        %label.control-label.col-md-2= I18n.t('views.teacher_profile.show.studies')
-        .col-md-10
-      = teacher_profile_fields.fields_for :teacher_experiences do |teacher_experiences_fields|
-        .form-group
-          .col-md-10
-            = teacher_experiences_fields.text_field :name_of_the_place , class: 'form-control input-sm bounceIn animation-delay6'
-            = teacher_experiences_fields.text_field :description , class: 'form-control input-sm bounceIn animation-delay6'
-            = teacher_experiences_fields.date_field :period_start , class: 'form-control input-sm bounceIn animation-delay6'
-            = teacher_experiences_fields.date_field :period_end , class: 'form-control input-sm bounceIn animation-delay6'
+      %br/
+      %br/
+
+      .panel-heading
+        = I18n.t('views.teacher_profile.show.studies')
+      .panel-body
+        = render 'experiences_form', form: teacher_profile_fields, type: :studies
+
+      .panel-heading
+        = I18n.t('views.teacher_profile.show.work_experience')
+      .panel-body
+        = render 'experiences_form', form: teacher_profile_fields, type: :works
+
   .panel-footer
     .form-group
       .controls.text-right

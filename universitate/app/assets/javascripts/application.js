@@ -26,10 +26,7 @@
 //= require jquery.nicescroll.min.js
 //= require chosen-jquery
 //= require chosen.jquery.min
-//= require jquery_nested_form
-//= require cocoon
-//= require_tree ./channels
-//= require_tree .
+//= require chosen
 
 (function() {
   function ready() {
