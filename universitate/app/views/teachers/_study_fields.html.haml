@@ -9,7 +9,7 @@
               %label.control-label.col-md-2
                 Lugar
               .col-md-10
-                = teacher_experiences_fields.text_field :name_of_the_place , class: 'form-control input-sm bounceIn animation-delay6'
+                = teacher_experiences_fields.text_field :name_of_the_place , class: 'form-control input-sm bounceIn animation-delay4'
             %br/
             %br/
           .row
@@ -17,7 +17,7 @@
               %label.control-label.col-md-2
                 Descripcion
               .col-md-10
-                = teacher_experiences_fields.text_area :description , class: 'form-control input-sm bounceIn animation-delay6'
+                = teacher_experiences_fields.text_area :description , class: 'form-control input-sm bounceIn animation-delay4'
             %br/
             %br/
             %br/
@@ -26,7 +26,7 @@
               %label.control-label.col-md-2
                 Inicio
               .col-md-10
-                = teacher_experiences_fields.text_field :period_start , class: 'datepicker form-control'
+                = teacher_experiences_fields.text_field :period_start, value: teacher_experiences_fields.try(:object).try(:period_start).try(:strftime, '%d/%m/%Y'), class: 'js-datepicker form-control bounceIn animation-delay4'
             %br/
             %br/
           .row
@@ -34,7 +34,7 @@
               %label.control-label.col-md-2
                 Fin
               .col-md-10
-                = teacher_experiences_fields.text_field :period_end , class: 'datepicker form-control'
+                = teacher_experiences_fields.text_field :period_end, value: teacher_experiences_fields.try(:object).try(:period_end).try(:strftime, '%d/%m/%Y'), class: 'js-datepicker form-control bounceIn animation-delay4'
             %br/
             %br/
           = link_to_remove_association "remove", f

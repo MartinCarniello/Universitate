@@ -32,6 +32,7 @@
 //= require inputmask
 //= require jquery.inputmask
 //= require inputmask.numeric.extensions
+//= require inputmask.date.extensions
 
 (function() {
   function ready() {
