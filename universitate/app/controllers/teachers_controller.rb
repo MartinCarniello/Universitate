@@ -47,6 +47,6 @@ class TeachersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id ], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroys]])
+    params.require(:user).permit(:first_name, :last_name, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
   end
 end

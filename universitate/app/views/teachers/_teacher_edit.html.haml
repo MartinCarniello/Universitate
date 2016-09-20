@@ -1,5 +1,5 @@
 .panel.panel-default
-= simple_form_for(teacher,class: "form-horizontal.form-border" ,:url => url_for(:controller => 'teachers' ,:action => 'update'), method: :put) do |teacher_form|
+= simple_form_for(teacher, url: teacher_path, method: :put, html: { class: 'js-teacher-form' }) do |teacher_form|
   .panel-heading
     = I18n.t('views.teacher_profile.edit.basic_info')
   .panel-body
@@ -39,16 +39,20 @@
       .panel-heading
       = I18n.t('views.teacher_profile.show.work_experience')
       .panel-body
-        = render 'work_fields', f: teacher_profile_form
+        .form-inline
+        = teacher_profile_form.simple_fields_for :works do |teacher_experiences_fields|
+          = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association 'Add', teacher_profile_form, :works
+          = link_to_add_association 'Add', teacher_profile_form, :works, partial: 'experience_fields'
 
       .panel-heading
         = I18n.t('views.teacher_profile.show.studies')
       .panel-body
-        = render 'study_fields', f: teacher_profile_form
+        .form-inline
+        = teacher_profile_form.simple_fields_for :studies do |teacher_experiences_fields|
+          = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association 'Add', teacher_profile_form, :studies
+          = link_to_add_association 'Add', teacher_profile_form, :studies, partial: 'experience_fields'
 
 
   .panel-footer

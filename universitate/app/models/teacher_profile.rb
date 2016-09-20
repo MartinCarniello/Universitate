@@ -17,6 +17,6 @@ class TeacherProfile < ApplicationRecord
 
   validates :description, presence: true
 
-  accepts_nested_attributes_for :works
-  accepts_nested_attributes_for :studies
+  accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :studies, reject_if: :all_blank, allow_destroy: true
 end
