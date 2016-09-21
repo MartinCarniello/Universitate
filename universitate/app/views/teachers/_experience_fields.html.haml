@@ -3,6 +3,11 @@
     .col-md-10
       .jumbotron
         .row
+          = link_to_remove_association f, class: 'badge badge-danger pull-right' do
+            = fa_icon 'times-circle', class: 'fa-lg'
+          %br/
+          %br/
+        .row
           .form-group
             %label.control-label.col-md-2
               Lugar
@@ -35,4 +40,3 @@
               = f.text_field :period_end, value: f.try(:object).try(:period_end).try(:strftime, '%d/%m/%Y'), class: 'js-datepicker form-control bounceIn animation-delay4'
           %br/
           %br/
-        = link_to_remove_association "remove", f

@@ -43,7 +43,8 @@
         = teacher_profile_form.simple_fields_for :works do |teacher_experiences_fields|
           = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association 'Add', teacher_profile_form, :works, partial: 'experience_fields'
+          = link_to_add_association teacher_profile_form, :works, partial: 'experience_fields', class: 'badge badge-success' do
+            = fa_icon 'plus-circle', class: 'fa-lg'
 
       .panel-heading
         = I18n.t('views.teacher_profile.show.studies')
@@ -52,7 +53,10 @@
         = teacher_profile_form.simple_fields_for :studies do |teacher_experiences_fields|
           = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association 'Add', teacher_profile_form, :studies, partial: 'experience_fields'
+          = link_to_add_association  teacher_profile_form, :studies, partial: 'experience_fields', class: 'badge badge-success' do
+            = fa_icon 'plus-circle', class: 'fa-lg'
+
+
 
 
   .panel-footer
