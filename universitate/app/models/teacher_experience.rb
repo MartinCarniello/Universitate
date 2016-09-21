@@ -5,8 +5,8 @@
 #  id                 :integer          not null, primary key
 #  teacher_profile_id :integer
 #  name_of_the_place  :string
-#  period_start       :datetime
-#  period_end         :datetime
+#  period_start       :date
+#  period_end         :date
 #  description        :string
 #  experience_type    :integer
 #
