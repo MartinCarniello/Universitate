@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921175408) do
+ActiveRecord::Schema.define(version: 20160922015111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,8 @@ ActiveRecord::Schema.define(version: 20160921175408) do
   create_table "ratings", force: :cascade do |t|
     t.integer "teacher_profile_id"
     t.integer "value"
-    t.integer "comment_id"
+    t.string  "comment"
+    t.string  "reply"
     t.index ["teacher_profile_id"], name: "index_ratings_on_teacher_profile_id", using: :btree
   end
 
