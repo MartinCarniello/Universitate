@@ -74,8 +74,11 @@ es:
         hour_rate: Precio por Hora
         submit_button: Guardar
         subjects: Materias
+        location: Dirección
         basic_info: Información básica
         save_changes: Guardar cambios
+        add_work: Agregar Trabajo
+        add_study: Agregar Estudio
       new:
         title: Carga tu perfil
     sign_in:

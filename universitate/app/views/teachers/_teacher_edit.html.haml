@@ -4,46 +4,62 @@
     = I18n.t('views.teacher_profile.edit.basic_info')
   .panel-body
     .form-group
-      %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.first_name')
+      %label.control-label.col-md-2
+        = I18n.t('activerecord.attributes.user.first_name')
       .col-md-8
         = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2'
     %br/
     %br/
     .form-group
-      %label.control-label.col-md-2= I18n.t('activerecord.attributes.user.last_name')
+      %label.control-label.col-md-2
+        = I18n.t('activerecord.attributes.user.last_name')
       .col-md-8
         = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3'
     %br/
     %br/
+    = teacher_form.simple_fields_for :location do |teacher_location_form|
+      .form-group
+        %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.location')
+        .col-md-8
+          = teacher_location_form.hidden_field :lat
+          = teacher_location_form.hidden_field :lng
+          = text_field_tag "location_name", "", class: "form-control input-sm bounceIn animation-delay4", id: "js-location-input", name: "location[name]"
+    %br/
+    %br/
     = teacher_form.simple_fields_for :teacher_profile do |teacher_profile_form|
       .form-group
-        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.description')
+        %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.description')
         .col-md-8
           = teacher_profile_form.text_area :description, class: 'form-control input-sm bounceIn animation-delay4'
       %br/
       %br/
       %br/
       .form-group
-        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.hour_rate')
+        %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.hour_rate')
         .col-md-8
           = teacher_profile_form.text_field :hour_rate, class: 'js-decimal-mask form-control input-sm bounceIn animation-delay5'
       %br/
       %br/
       .form-group
-        %label.control-label.col-md-2= I18n.t('views.teacher_profile.edit.subjects')
+        %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.subjects')
         .col-md-8
           = teacher_profile_form.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_form.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
       %br/
       %br/
 
       .panel-heading
-      = I18n.t('views.teacher_profile.show.work_experience')
+        = I18n.t('views.teacher_profile.show.work_experience')
       .panel-body
         .form-inline
         = teacher_profile_form.simple_fields_for :works do |teacher_experiences_fields|
           = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association teacher_profile_form, :works, partial: 'experience_fields', class: 'badge badge-success' do
+          = link_to_add_association teacher_profile_form, :works, partial: 'experience_fields', class: 'btn btn-success' do
+            = I18n.t('views.teacher_profile.edit.add_work')
             = fa_icon 'plus-circle', class: 'fa-lg'
 
       .panel-heading
@@ -53,7 +69,8 @@
         = teacher_profile_form.simple_fields_for :studies do |teacher_experiences_fields|
           = render 'experience_fields', f: teacher_experiences_fields
         .links
-          = link_to_add_association  teacher_profile_form, :studies, partial: 'experience_fields', class: 'badge badge-success' do
+          = link_to_add_association  teacher_profile_form, :studies, partial: 'experience_fields', class: 'btn btn-success' do
+            = I18n.t('views.teacher_profile.edit.add_study')
             = fa_icon 'plus-circle', class: 'fa-lg'
 
 

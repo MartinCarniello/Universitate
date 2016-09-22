@@ -34,6 +34,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_one :teacher_profile
+  has_one :location
   has_many :subjects, through: :teacher_profile
   
   validates :gender, inclusion: {in: ['F','M']}
