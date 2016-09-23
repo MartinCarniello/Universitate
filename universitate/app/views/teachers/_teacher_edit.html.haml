@@ -24,7 +24,8 @@
         .col-md-8
           = teacher_location_form.hidden_field :lat
           = teacher_location_form.hidden_field :lng
-          = text_field_tag "location_name", "", class: "form-control input-sm bounceIn animation-delay4", id: "js-location-input", name: "location[name]"
+          = teacher_location_form.hidden_field :full_address
+          = text_field_tag "location_name", teacher_location_form.object.full_address, class: "form-control input-sm bounceIn animation-delay4", id: "js-location-input", name: "location[name]"
     %br/
     %br/
     = teacher_form.simple_fields_for :teacher_profile do |teacher_profile_form|
