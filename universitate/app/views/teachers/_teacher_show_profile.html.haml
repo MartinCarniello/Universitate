@@ -3,9 +3,12 @@
     .col-md-3.col-sm-3
       .row
         .col-xs-6.col-sm-12.col-md-6.text-center
-          = image_tag @teacher.avatar_url, class: 'btn btn-file img-thumbnail', onclick: "$(this).parent().find('input[type=file]').click();"
-          %input{:name => "uploaded_file", :onchange => "$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\\\|/]/).pop());", :style => "display: none;", :type => "file"}
-          %input.form-control{:style => "display: none;"}
+          = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview'
+          %input{class: "js-preview", :style => "display: none;", :type => "file", id:'loader'}
+          = form_for(current_user, :url => url_for(:controller => 'teachers' ,:action => 'update' ), method: 'put',remote: true) do |f|
+            = f.hidden_field :avatar ,{:style => "display: none;", id:'image_to_load'}
+            = f.submit class: 'btn btn-success btn-sm'
+
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
             = teacher.first_name

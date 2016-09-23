@@ -10,10 +10,37 @@
     });
   };
 
+
+
+  previewFile = function(){
+    var preview = document.getElementById('preview');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+
+    reader.onloadend = function () {
+        preview.src = reader.result;
+        document.getElementById('image_to_load').setAttribute('value',file.name);
+    }
+
+     if (file) {
+         reader.readAsDataURL(file);
+     } else {
+         preview.src = "";
+     }
+  };
+
 $(document).ready(function() {
   $(".js-teacher-form").on("cocoon:after-insert", function() {
     dateInputs();
   });
+
+  $(".js-preview").on("change", function () {
+    previewFile();
+  });
+
+  $(".js-loader").on("click", function(){
+    document.getElementById('loader').click();
+  })
 
   initAutocomplete();
 })
