@@ -79,6 +79,7 @@ es:
         save_changes: Guardar cambios
         add_work: Agregar Trabajo
         add_study: Agregar Estudio
+        update_picture: Cambiar
       new:
         title: Carga tu perfil
     sign_in:
