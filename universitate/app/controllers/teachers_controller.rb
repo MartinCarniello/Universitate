@@ -11,6 +11,8 @@ class TeachersController < ApplicationController
     @subjects = Subject.all()
     @studies = @teacher.teacher_profile_studies
     @works = @teacher.teacher_profile_works
+
+    @teacher.build_location if @teacher.location.blank?
   end
 
   def update
@@ -18,9 +20,7 @@ class TeachersController < ApplicationController
 
     if @user.update(user_params)
       @user.avatar= params[:avatar]
-      binding.pry
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
-
       @user.save!
       redirect_to root_path
     else
@@ -51,6 +51,7 @@ class TeachersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :avatar, :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+    params.require(:user).permit(:first_name, :last_name,  :avatar, :location_attributes => [:lat, :lng, :full_address], :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+
   end
 end

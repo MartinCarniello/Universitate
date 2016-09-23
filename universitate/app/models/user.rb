@@ -45,6 +45,7 @@ class User < ApplicationRecord
   delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, to: :teacher_profile, prefix: true
 
   accepts_nested_attributes_for :teacher_profile
+  accepts_nested_attributes_for :location
 
 
   def conversations
