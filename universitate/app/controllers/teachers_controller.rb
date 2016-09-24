@@ -12,13 +12,12 @@ class TeachersController < ApplicationController
     @studies = @teacher.teacher_profile_studies
     @works = @teacher.teacher_profile_works
 
-    @teacher.build_location if @teacher.location.blank?
+    #@teacher.build_location if @teacher.location.blank?
   end
 
   def update
     @user = User.find(params[:id])
     uploader = AvatarUploader.new
-
 
     if @user.update(user_params)
       uploader.store!(params[:avatar])

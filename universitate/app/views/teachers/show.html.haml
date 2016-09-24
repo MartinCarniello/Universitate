@@ -15,7 +15,7 @@
               %span.block.text-center
                 %i.fa.fa-user.fa-2x
               = I18n.t("views.teacher_profile.show.profile")
-          - if current_user.id == @teacher.id
+          - if current_user.id == @teacher.teacher_profile.id
             %li
               %a{"data-toggle" => "tab", :href => "#edit-profile"}
                 %span.block.text-center
