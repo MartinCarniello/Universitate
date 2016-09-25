@@ -3,7 +3,7 @@ class TeachersController < ApplicationController
 
   def index
     @search = UserSearch.new(search_params)
-    @teachers  = @search.results.with_role(:teacher)
+    @teachers = @search.results.with_role(:teacher).except_user(current_user)
   end
 
   def show

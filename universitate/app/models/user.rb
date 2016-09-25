@@ -41,6 +41,7 @@ class User < ApplicationRecord
 
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
+  scope :except_user, -> (user) { where.not(id: user.id) }
 
   delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, to: :teacher_profile, prefix: true
 
