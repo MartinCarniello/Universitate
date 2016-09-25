@@ -22,6 +22,7 @@
         %label.control-label.col-md-2
           = I18n.t('views.teacher_profile.edit.location')
         .col-md-8
+          = teacher_location_form.hidden_field :id
           = teacher_location_form.hidden_field :lat
           = teacher_location_form.hidden_field :lng
           = teacher_location_form.hidden_field :full_address

@@ -16,12 +16,17 @@ class TeachersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @teacher = User.find(params[:id])
 
-    if @user.update(user_params)
+    @teacher.location.try(:destroy) unless params[:location][:name].present?
+
+    if @teacher.update(user_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path
     else
+      @subjects = Subject.all()
+      @studies = @teacher.teacher_profile_studies
+      @works = @teacher.teacher_profile_works
       render :show
     end
   end
@@ -57,6 +62,7 @@ class TeachersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :location_attributes => [:lat, :lng, :full_address], :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+    params_ret = params.require(:user).permit(:first_name, :last_name, location_attributes: [:id, :lat, :lng, :full_address], teacher_profile_attributes: [:description, :id, :hour_rate, subject_ids: [], works_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], studies_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+    params[:location][:name].blank? ? params_ret.except(:location_attributes) : params_ret
   end
 end
