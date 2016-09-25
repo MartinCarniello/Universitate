@@ -12,15 +12,13 @@ class TeachersController < ApplicationController
     @studies = @teacher.teacher_profile_studies
     @works = @teacher.teacher_profile_works
 
-    #@teacher.build_location if @teacher.location.blank?
+    @teacher.build_location if @teacher.location.blank?
   end
 
   def update
     @user = User.find(params[:id])
-    uploader = AvatarUploader.new
 
     if @user.update(user_params)
-      uploader.store!(params[:avatar])
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path
     else
@@ -48,9 +46,17 @@ class TeachersController < ApplicationController
     end
   end
 
+  def upload_avatar
+    @teacher = current_user
+    @teacher.avatar = params[:avatar]
+    @teacher.save!
+
+    redirect_to teacher_path(@teacher)
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name,  :avatar, :avatar_cache, :location_attributes => [:lat, :lng, :full_address], :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+    params.require(:user).permit(:first_name, :last_name, :location_attributes => [:lat, :lng, :full_address], :teacher_profile_attributes => [:description, :id, :hour_rate, :subject_ids => [], :works_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], :studies_attributes =>[:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
   end
 end

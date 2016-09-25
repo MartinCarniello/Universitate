@@ -3,11 +3,10 @@
     .col-md-3.col-sm-3
       .row
         .col-xs-6.col-sm-12.col-md-6.text-center
-          = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview'
-          = form_for(current_user, :url => url_for(:controller => 'teachers' ,:action => 'update' ), method: 'put', :html => {:multipart => true}) do |f|
-            = f.file_field :avatar, {style: 'display: none', id:'loader', class: 'js-preview' }
-            = f.hidden_field :avatar_cache
-            = f.submit class: 'btn btn-xs btn-success', value: I18n.t('views.teacher_profile.edit.update_picture')
+          = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview', size: '200x200'
+          = form_tag upload_avatar_teachers_path, multipart: true, class: 'js-avatar-form hidden'  do |f|
+            = file_field_tag :avatar, { class: 'js-preview' }
+            = submit_tag 'Cargar'
 
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
