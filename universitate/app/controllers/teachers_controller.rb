@@ -17,10 +17,11 @@ class TeachersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    uploader = AvatarUploader.new
 
     if @user.update(user_params)
-      uploader.store!(params[:avatar])
+      if !(params[:avatar]).nil?
+        AvatarUploader.store!(params[:avatar])
+      end
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path
     else

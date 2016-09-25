@@ -3,7 +3,7 @@
     .col-md-3.col-sm-3
       .row
         .col-xs-6.col-sm-12.col-md-6.text-center
-          = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview'
+          = image_tag @teacher.avatar_url, class: 'js-loader img-thumbnail btn btn-file', id:'preview'
           = form_for(current_user, :url => url_for(:controller => 'teachers' ,:action => 'update' ), method: 'put', :html => {:multipart => true}) do |f|
             = f.file_field :avatar, {style: 'display: none', id:'loader', class: 'js-preview' }
             = f.hidden_field :avatar_cache

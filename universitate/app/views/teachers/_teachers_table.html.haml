@@ -6,3 +6,4 @@
     %ul.w3-ul.w3-card-4
       - UserDecorator.decorate_collection(teachers).each do |teacher|
         = render 'teacher_table_row', teacher: teacher
+    %ul.pagination.pagination-split 

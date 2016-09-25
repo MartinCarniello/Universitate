@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 2.5'
 #build chosen select multiple
 gem 'chosen-rails'
 
+#resize Images
+gem "mini_magick"
+
 #Manage nested forms
 gem "simple_form"
 gem 'cocoon'
