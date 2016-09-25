@@ -105,6 +105,7 @@ es:
       user:
         first_name: Nombre
         last_name: Apellido
+        email: Email
         password: Contraseña
         password_confirmation: Confirmar Contraseña
         gender: Género
@@ -120,6 +121,20 @@ es:
         description: Descripción
     errors:
       models:
+        user:
+          attributes:
+            first_name:
+              blank: El nombre no puede estar vacío
+            last_name:
+              blank: El apellido no puede estar vacío
+            email:
+              blank: El email no puede estar vacío
+            password:
+              blank: La contraseña no puede estar vacía
+            password_confirmation:
+              confirmation: La confirmación de contraseña no puede estar vacía
+            gender:
+              inclusion: Debe elegir entre hombre y mujer
         teacher_profile:
           attributes:
             description:

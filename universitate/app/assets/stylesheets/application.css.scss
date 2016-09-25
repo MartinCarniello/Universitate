@@ -33,8 +33,10 @@ body {
   color: red;
 }
 
-.field_with_errors textarea, input, select {
-  border-color: red;
+.field_with_errors {
+  textarea, input, select {
+    border-color: red !important;
+  }
 }
 
 .js-row-clickable {

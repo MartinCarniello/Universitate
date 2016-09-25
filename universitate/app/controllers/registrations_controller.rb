@@ -4,10 +4,14 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    if user = User.create(params.require(:user).permit(:first_name, :last_name, :email, :gender, :password, :password_confirmation))
-      sign_in(:user, user)
+    @user = User.new(params.require(:user).permit(:first_name, :last_name, :email, :gender, :password, :password_confirmation))
+
+    if @user.save
+      sign_in(:user, @user)
       redirect_to root_path
-      UserMailer.welcome_email(user).deliver
+      # UserMailer.welcome_email(@user).deliver
+    else
+      render :new
     end
   end
 

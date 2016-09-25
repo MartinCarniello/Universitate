@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_one :location
   has_many :subjects, through: :teacher_profile
   
+  validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}
 
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
