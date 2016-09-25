@@ -6,8 +6,6 @@
           = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview', size: '200x200'
           = form_tag upload_avatar_teachers_path, multipart: true, class: 'js-avatar-form hidden'  do |f|
             = file_field_tag :avatar, { class: 'js-preview' }
-            = submit_tag 'Cargar'
-
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
             = teacher.first_name
