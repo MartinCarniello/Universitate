@@ -77,6 +77,8 @@ group :development, :test do
   gem 'pry-stack_explorer'
 
   gem 'erb2haml'
+
+  gem 'letter_opener'
 end
 
 group :development do
