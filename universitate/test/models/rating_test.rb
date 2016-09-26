@@ -7,6 +7,7 @@
 #  value              :integer
 #  comment            :string
 #  reply              :string
+#  user_id            :integer
 #
 
 require 'test_helper'

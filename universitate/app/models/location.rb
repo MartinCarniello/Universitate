@@ -4,8 +4,8 @@
 #
 #  id           :integer          not null, primary key
 #  full_address :string
-#  lat          :integer
-#  lng          :integer
+#  lat          :decimal(, )
+#  lng          :decimal(, )
 #  user_id      :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

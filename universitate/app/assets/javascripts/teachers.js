@@ -23,6 +23,12 @@ var initAvatarUploader = function() {
   })
 }
 
+var initPopUpRating = function(){
+  $(".js-popup-rating").on("click", function(){
+
+  });
+}
+
 $(document).ready(function() {
   $(".js-teacher-form").on("cocoon:after-insert", function() {
     dateInputs();
