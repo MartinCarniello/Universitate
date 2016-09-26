@@ -1,19 +1,5 @@
 .panel.panel-white.post.panel-shadow
   .post-footer
-    = form_for @rating, url: ratings_path, method: :post, remote: true do |f|
-      = f.text_area :comment, class: 'form-control'
-      %br/
-      .pull-left.js-rating-stars
-        %input.rating{:name => "example", :type => "radio", :value => "1"}/
-        %input.rating{:name => "example", :type => "radio", :value => "2"}/
-        %input.rating{:name => "example", :type => "radio", :value => "3"}/
-        %input.rating{:name => "example", :type => "radio", :value => "4"}/
-        %input.rating{:name => "example", :type => "radio", :value => "5"}/
-      = f.button :submit, class: 'pull-right btn btn-success' do
-        %i.fa.fa-edit
-      %br/
-      %br/
-      %hr/
-    %ul.comments-list
-      - teacher.ratings.each do |rating|
+    %ul.comments-list.js-ratings
+      - teacher.ratings.recents.each do |rating|
         = render 'rating_row', rating: rating

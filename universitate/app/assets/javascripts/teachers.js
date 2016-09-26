@@ -23,9 +23,8 @@ var initAvatarUploader = function() {
   })
 }
 
-var initPopUpRating = function(){
-  $(".js-popup-rating").on("click", function(){
-  });
+var initRating = function() {
+  $('.js-rating-stars').rating();
 }
 
 $(document).ready(function() {
@@ -35,5 +34,4 @@ $(document).ready(function() {
 
   initAvatarUploader();
   initAutocomplete();
-  initPopUpRating();
 })

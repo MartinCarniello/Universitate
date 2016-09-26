@@ -21,7 +21,7 @@
               = I18n.t('views.teacher_profile.show.contact')
           .seperator
           - if current_user.id != teacher.id
-            = link_to new_rating_path(linked_user_id: teacher.id), remote: true, class: "js-popup-rating btn" do
+            = link_to new_rating_path(teacher_id: teacher.id), remote: true, class: "js-popup-rating btn" do
               = fa_icon 'star', class: 'fa-md'
               Calificar
           .new-rating

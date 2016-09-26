@@ -1,0 +1,21 @@
+%li.comment
+  %a.pull-left{:href => "#"}
+    = image_tag rating.user.avatar_url, class: 'avatar'
+  .comment-body
+    .comment-heading
+      %h4.user
+        = rating.user.decorate.display_name
+      %a{:href => "#"} Reply
+    %p
+      = rating.comment
+  - if rating.reply.present?
+    %ul.comments-list
+      %li.comment
+        %a.pull-left{:href => "#"}
+          %img.avatar{:alt => "avatar", :src => "http://bootdey.com/img/Content/user_3.jpg"}/
+        .comment-body
+          .comment-heading
+            %h4.user
+              = rating.teacher.decorate.display_name
+          %p
+            = rating.reply

@@ -1,1 +1,27 @@
-= render "test"
+.modal-dialog
+  .model-header
+    %h3.rating New Rating
+  .modal-content
+    = simple_form_for(rating ,url: ratings_path, method: :post, remote: true, html: { style: "display:inline;" } ) do |f|
+      .modal-body
+        .form-group
+          %label.control-label
+          = I18n.t("views.teacher_profile.rating.comment")
+          .col-md-10
+          = f.text_area :comment, class: "form-control", placeholder: "Ingrese un comentario"
+        .form-group
+          %label.control-label
+          = I18n.t("views.teacher_profile.rating.value")
+          .col-md-10
+          .pull-left.js-rating-stars
+            %input.rating{name: "rating[value]", type: "radio", value: "1", checked: ('checked' if rating.value == 1)}/
+            %input.rating{name: "rating[value]", type: "radio", value: "2", checked: ('checked' if rating.value == 2)}/
+            %input.rating{name: "rating[value]", type: "radio", value: "3", checked: ('checked' if rating.value == 3)}/
+            %input.rating{name: "rating[value]", type: "radio", value: "4", checked: ('checked' if rating.value == 4)}/
+            %input.rating{name: "rating[value]", type: "radio", value: "5", checked: ('checked' if rating.value == 5)}/
+          .col-md-8
+          =f.hidden_field :user_id
+          =f.hidden_field :teacher_profile_id
+      .modal-footer
+        = f.submit class: "btn btn-primary"
+        = link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"}

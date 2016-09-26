@@ -62,7 +62,10 @@ class TeachersController < ApplicationController
   end
 
   def new_rating
+    @teacher = User.find(params[:teacher_id])
     @rating = Rating.new
+    @rating.user = current_user
+    @rating.teacher_profile = @teacher.teacher_profile
   end
 
   private
