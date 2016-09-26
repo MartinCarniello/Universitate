@@ -33,6 +33,7 @@
 //= require jquery.inputmask
 //= require inputmask.numeric.extensions
 //= require inputmask.date.extensions
+//= require rating.js
 
 (function() {
   function ready() {

@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_one :teacher_profile
   has_one :location
   has_many :subjects, through: :teacher_profile
+  has_many :ratings, through: :teacher_profile
   
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}

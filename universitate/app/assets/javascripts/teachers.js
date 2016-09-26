@@ -23,6 +23,10 @@ var initAvatarUploader = function() {
   })
 }
 
+var initRating = function() {
+  $(".js-rating-stars").rating();
+}
+
 $(document).ready(function() {
   $(".js-teacher-form").on("cocoon:after-insert", function() {
     dateInputs();
@@ -30,4 +34,5 @@ $(document).ready(function() {
 
   initAvatarUploader();
   initAutocomplete();
+  initRating();
 })

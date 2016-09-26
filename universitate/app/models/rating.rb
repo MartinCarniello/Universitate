@@ -12,4 +12,6 @@
 class Rating < ApplicationRecord
   belongs_to :teacher_profile
   
+  validates :teacher_profile_id, :value, :comment, presence: true
+  validates :value, inclusion: { in: 1..5 }
 end

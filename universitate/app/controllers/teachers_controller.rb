@@ -14,6 +14,7 @@ class TeachersController < ApplicationController
     @works = @teacher.teacher_profile_works
 
     @teacher.build_location if @teacher.location.blank?
+    @rating = Rating.new(teacher_profile: @teacher.teacher_profile)
   end
 
   def update
