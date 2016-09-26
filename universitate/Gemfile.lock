@@ -64,9 +64,14 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
     arel (7.1.1)
+    autoprefixer-rails (6.4.1.1)
+      execjs
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
     carrierwave (0.10.0)
@@ -258,6 +263,7 @@ PLATFORMS
 DEPENDENCIES
   activemodel-serializers-xml!
   annotate
+  bootstrap-sass
   byebug
   carrierwave
   chosen-rails

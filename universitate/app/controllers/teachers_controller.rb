@@ -61,6 +61,10 @@ class TeachersController < ApplicationController
     redirect_to teacher_path(@teacher)
   end
 
+  def new_rating
+    @rating = Rating.new
+  end
+
   private
 
   def user_params

@@ -59,6 +59,9 @@ es:
         teachers_table:
           teachers_title: Profesores
     teacher_profile:
+      rating:
+        comment: Comentario
+        value: Puntuación
       show:
         about_me: Acerca de mi
         home: Inicio
@@ -68,6 +71,10 @@ es:
         work_experience: Experiencia laboral
         studies: Educación
         contact: Contactar
+        name_of_the_place: Establecimiento
+        description: Descripción
+        period_start: Desde
+        period_end: Hasta
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción
@@ -111,13 +118,13 @@ es:
         gender: Género
       works:
         name_of_the_place: Empresa
-        period_start: Fecha de Inicio
-        period_end: Fecha de Fin
+        period_start: Desde
+        period_end: Hasta
         description: Descripción
       studies:
         name_of_the_place: Institución
-        period_start: Fecha de Inicio
-        period_end: Fecha de Fin
+        period_start: Desde
+        period_end: Hasta
         description: Descripción
     errors:
       models:

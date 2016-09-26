@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require bootstrap-datepicker.min
+//= require bootstrap
 //= require pace.min.js
 //= require jquery.cookie.min.js
 //= require jquery.popupoverlay.min.js
