@@ -1,5 +1,6 @@
 .panel.panel-white.post.panel-shadow
   .post-footer
+    %h4 Comentarios acerca de ti
     %ul.comments-list.js-ratings
       - teacher.ratings.recents.each do |rating|
         = render 'rating_row', rating: rating
