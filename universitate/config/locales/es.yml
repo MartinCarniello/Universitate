@@ -60,8 +60,12 @@ es:
           teachers_title: Profesores
     teacher_profile:
       rating:
+        empty_ratings: El profesor no tiene comentarios
+        cancel: Cancelar
+        title: Comentario
         comment: Comentario
         value: Puntuación
+        create: Crear Comentario
       show:
         about_me: Acerca de mi
         home: Inicio
@@ -75,6 +79,7 @@ es:
         description: Descripción
         period_start: Desde
         period_end: Hasta
+        rate: Calificar
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción
@@ -146,6 +151,12 @@ es:
           attributes:
             description:
               blank: La descripción no puede estar vacía
+        rating:
+          attributes:
+            comment:
+              blank: El comentario no puede estar vacío
+            value:
+              blank: Debe elegir una puntuación
   devise:
     sessions:
       user:
