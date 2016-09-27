@@ -79,6 +79,7 @@ es:
         description: Descripción
         period_start: Desde
         period_end: Hasta
+        rate: Calificar
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción
