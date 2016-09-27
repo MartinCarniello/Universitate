@@ -15,6 +15,7 @@
  *= require datepicker
  *= require endless-landing.min
  *= require endless.css
+ *= require rating.css
  *= require chosen
  *= require chosen.min
  *= require_self
@@ -30,7 +31,11 @@ body {
 }
 
 .red {
-  color: red;
+  color: red !important;
+}
+
+.no-padding-left {
+  padding-left: 0px !important;
 }
 
 .field_with_errors {
@@ -66,4 +71,8 @@ textarea{
 .breadcrumb li {
   line-height: 27px;
   color: #000;
+}
+
+.btn-reply-rating {
+  height: 48px;
 }

@@ -32,6 +32,6 @@
                 = render 'teacher_show_works', teacher: @works
                 = render 'teacher_show_studies', teacher: @studies
               .col-md-4.col-sm-4
-                = render 'last_comments'
+                = render 'last_ratings', teacher: @teacher
           #edit-profile.tab-pane.fade
             = render 'teacher_edit', teacher: @teacher, subjects: @subjects, works: @works, studies: @studies

@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_one :teacher_profile
   has_one :location
   has_many :subjects, through: :teacher_profile
+  has_many :ratings, through: :teacher_profile
   
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}
@@ -56,5 +57,9 @@ class User < ApplicationRecord
 
   def unreaded_messages
     conversations.unreaded_messages(id).first.sum || 0
+  end
+
+  def has_already_been_rate_by?(user)
+    ratings.by_user(user).first
   end
 end

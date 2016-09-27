@@ -14,6 +14,7 @@ class TeachersController < ApplicationController
     @works = @teacher.teacher_profile_works
 
     @teacher.build_location if @teacher.location.blank?
+    @rating = Rating.new(teacher_profile: @teacher.teacher_profile)
   end
 
   def update
@@ -58,6 +59,13 @@ class TeachersController < ApplicationController
     @teacher.save!
 
     redirect_to teacher_path(@teacher)
+  end
+
+  def new_rating
+    @teacher = User.find(params[:teacher_id])
+    @rating = Rating.new
+    @rating.user = current_user
+    @rating.teacher_profile = @teacher.teacher_profile
   end
 
   private

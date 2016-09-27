@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require font-awesome
+ *= require bootstrap.min
+ *= require datepicker
+ *= require endless-landing.min
+ *= require endless.css
+ *= require rating.css
+ */
+
+/*////// RESET STYLES //////*/
+body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding: 0; width:100% !important; background-color: #FFFFFF !important;}
+table{border-collapse:collapse;}
+img, a img{border:0; outline:none; text-decoration:none;}
+h1, h2, h3, h4, h5, h6{margin:0; padding:0;}
+p{margin: 1em 0;}
+
+/*////// CLIENT-SPECIFIC STYLES //////*/
+
+/* Force Hotmail/Outlook.com to display emails at full width. */
+.ReadMsgBody{width:100%;} .ExternalClass{width:100%;}
+/* Force Hotmail/Outlook.com to display line heights normally. */
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div{line-height:100%;}
+/* Remove spacing between tables in Outlook 2007 and up. */
+table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;}
+.ExternalClass img{border:0 !important; outline:none !important; text-decoration:none !important;}
+/* GMAIL Explorer Force IMG*/
+.CToWUd{border:0 !important; outline:none !important; text-decoration:none !important;}
+/* Hotmail symbol fix for mobile devices */
+.ExternalClass img[class^=Emoji] {
+  width: 10px !important;
+  height: 10px !important;
+  display: inline !important;
+}
+/* Force Outlook 2007 and up to provide a "view in browser" message. */
+#outlook a{padding:0;}
+/* Force IE to smoothly render resized images. */
+img{-ms-interpolation-mode: bicubic;}
+/* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+body, table, td, p, a, li, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+@media screen and (max-width: 600px){
+  table[class="responsive-table"]{
+    width: 100% !important;
+}
+
+table[class="responsive-table-2"]{
+  width: 100% !important;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+td[class="titulo"]{
+  font-size: 32px !important;
+  padding: 10px 0 !important;
+}
+
+td[class="contenido"]{
+  text-align: center;
+  padding: 10px !important;
+}
+
+img[class="responsive-img"]{
+  max-width: 100% !important;
+  height: auto !important;
+  }
+}

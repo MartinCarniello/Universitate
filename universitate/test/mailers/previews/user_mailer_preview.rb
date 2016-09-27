@@ -5,4 +5,8 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome_email(User.first)
   end
 
+  def rating_mail_preview
+    UserMailer.rating_email(User.first)
+  end
+
 end

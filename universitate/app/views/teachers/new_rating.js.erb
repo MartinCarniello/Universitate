@@ -1,0 +1,3 @@
+$("#rating-modal").html("<%= j(render partial: 'new_rating', locals: { rating: @rating }) %>");
+$("#rating-modal").modal("show");
+initRating();

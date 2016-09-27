@@ -20,7 +20,10 @@
               = fa_icon 'wechat', class: 'fa-lg'
               = I18n.t('views.teacher_profile.show.contact')
           .seperator
-          - if current_user.id != teacher.id
-            = link_to root_path, class: 'js-popup-rating btn', data: { no_turbolink: true } do
-              = fa_icon 'star', class: 'fa-md'
-              Calificar
+          - if current_user.id != teacher.id && !teacher.has_already_been_rate_by?(current_user)
+            .js-rate-button
+              = link_to new_rating_path(teacher_id: teacher.id), remote: true, class: "no-padding-left js-popup-rating btn" do
+                = fa_icon 'star', class: 'fa-md'
+                = I18n.t('views.teacher_profile.show.rate')
+          .new-rating
+          #rating-modal.modal.fade

@@ -23,9 +23,16 @@ var initAvatarUploader = function() {
   })
 }
 
-var initPopUpRating = function(){
-  $(".js-popup-rating").on("click", function(){
+var initRating = function() {
+  $('.js-rating-stars').rating();
+}
 
+var initReplyComment = function(selectors) {
+  selectors.unbind("click").bind({
+    click: function(event) {
+      event.preventDefault();
+      $(this).closest(".comment-body").find(".js-reply-form").removeClass("hidden");
+    }
   });
 }
 
@@ -36,4 +43,5 @@ $(document).ready(function() {
 
   initAvatarUploader();
   initAutocomplete();
+  initReplyComment($(".js-reply-comment"));
 })

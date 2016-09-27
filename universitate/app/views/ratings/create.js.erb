@@ -1,0 +1,9 @@
+<% unless @rating.errors.empty? %>
+  $("#rating-modal").html("<%= j(render partial: 'teachers/new_rating', locals: { rating: @rating }) %>");
+  initRating();
+<% else %>
+  $("#rating-modal").modal("toggle");
+  $(".js-empty-ratings").remove();
+  $(".js-ratings").prepend('<div class="js-rating-row" data-id="<%= @rating.id %>"><%= j(render partial: "teachers/rating_row", locals: { rating: @rating }) %></div>');
+  initReplyComment($(".js-rating-row[data-id=<%= @rating.id %>] .js-reply-comment"));
+<% end %>

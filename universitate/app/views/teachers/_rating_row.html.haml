@@ -1,0 +1,37 @@
+%li.comment
+  %a.pull-left{:href => "#"}
+    = image_tag rating.user.avatar_url, class: 'avatar'
+  .comment-body
+    .comment-heading
+      %h4.user
+        = rating.user.decorate.display_name
+      - if rating.reply.blank? && rating.teacher_profile_user == current_user
+        = link_to I18n.t('views.teacher_profile.rating.reply'), '#', class: 'js-reply-comment'
+    %p
+      = rating.comment
+    - if rating.reply.blank?
+      .hidden.js-reply-form
+        = form_for rating, url: rating_path(rating), method: :put, remote: true do |f|
+          .row
+            / .col-xs-6
+            /   = f.hidden_field :id
+            /   = f.text_area :reply, class: "form-control", placeholder: "Ingrese un comentario"
+            / .col-xs-6
+            /   = f.submit
+            .col-xs-12
+              .input-group
+                = f.hidden_field :id
+                = f.text_area :reply, class: "form-control", placeholder: "Ingrese un comentario"
+                %span.input-group-btn
+                  = f.submit 'Comentar', class: 'btn btn-success btn-reply-rating'
+  - if rating.reply.present?
+    %ul.comments-list
+      %li.comment
+        %a.pull-left{:href => "#"}
+          = image_tag rating.user.avatar_url, class: 'avatar'
+        .comment-body
+          .comment-heading
+            %h4.user
+              = rating.teacher_profile_user.decorate.display_name
+          %p
+            = rating.reply
