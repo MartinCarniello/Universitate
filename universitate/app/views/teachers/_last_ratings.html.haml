@@ -6,4 +6,5 @@
           = I18n.t('views.teacher_profile.rating.empty_ratings')
       - else
         - teacher.ratings.recents.each do |rating|
-          = render 'rating_row', rating: rating
+          .js-rating-row{ data: { id: rating.id } }
+            = render 'rating_row', rating: rating

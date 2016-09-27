@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post 'upload_avatar', on: :collection
   end
 
-  resources :ratings, only: [:create]
+  resources :ratings, only: [:create, :update]
 
   resources :conversations
 

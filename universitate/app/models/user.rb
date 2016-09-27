@@ -58,4 +58,8 @@ class User < ApplicationRecord
   def unreaded_messages
     conversations.unreaded_messages(id).first.sum || 0
   end
+
+  def has_already_been_rate_by?(user)
+    ratings.by_user(user).first
+  end
 end

@@ -27,6 +27,15 @@ var initRating = function() {
   $('.js-rating-stars').rating();
 }
 
+var initReplyComment = function(selectors) {
+  selectors.unbind("click").bind({
+    click: function(event) {
+      event.preventDefault();
+      $(this).closest(".comment-body").find(".js-reply-form").removeClass("hidden");
+    }
+  });
+}
+
 $(document).ready(function() {
   $(".js-teacher-form").on("cocoon:after-insert", function() {
     dateInputs();
@@ -34,4 +43,5 @@ $(document).ready(function() {
 
   initAvatarUploader();
   initAutocomplete();
+  initReplyComment($(".js-reply-comment"));
 })

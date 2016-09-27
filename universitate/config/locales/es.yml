@@ -66,6 +66,7 @@ es:
         comment: Comentario
         value: Puntuación
         create: Crear Comentario
+        reply: Responder
       show:
         about_me: Acerca de mi
         home: Inicio

@@ -4,5 +4,6 @@
 <% else %>
   $("#rating-modal").modal("toggle");
   $(".js-empty-ratings").remove();
-  $(".js-ratings").prepend('<%= j(render partial: "teachers/rating_row", locals: { rating: @rating }) %>');
+  $(".js-ratings").prepend('<div class="js-rating-row" data-id="<%= @rating.id %>"><%= j(render partial: "teachers/rating_row", locals: { rating: @rating }) %></div>');
+  initReplyComment($(".js-rating-row[data-id=<%= @rating.id %>] .js-reply-comment"));
 <% end %>
