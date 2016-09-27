@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923185417) do
+ActiveRecord::Schema.define(version: 20160926130814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comments", force: :cascade do |t|
-    t.string  "comment"
-    t.integer "comment_replied_id"
-  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "first_user_id"
@@ -52,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160923185417) do
     t.integer "value"
     t.string  "comment"
     t.string  "reply"
+    t.integer "user_id"
     t.index ["teacher_profile_id"], name: "index_ratings_on_teacher_profile_id", using: :btree
   end
 

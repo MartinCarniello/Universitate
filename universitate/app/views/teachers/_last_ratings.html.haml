@@ -1,5 +1,9 @@
 .panel.panel-white.post.panel-shadow
   .post-footer
     %ul.comments-list.js-ratings
-      - teacher.ratings.recents.each do |rating|
-        = render 'rating_row', rating: rating
+      - if teacher.ratings.empty?
+        %h4.js-empty-ratings.text-center
+          = I18n.t('views.teacher_profile.rating.empty_ratings')
+      - else
+        - teacher.ratings.recents.each do |rating|
+          = render 'rating_row', rating: rating

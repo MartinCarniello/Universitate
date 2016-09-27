@@ -3,5 +3,6 @@
   initRating();
 <% else %>
   $("#rating-modal").modal("toggle");
+  $(".js-empty-ratings").remove();
   $(".js-ratings").prepend('<%= j(render partial: "teachers/rating_row", locals: { rating: @rating }) %>');
 <% end %>
