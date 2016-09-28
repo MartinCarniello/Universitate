@@ -1,18 +1,23 @@
 .padding-md
   .row
-    .col-md-3.col-sm-3
+    .col-md-5.col-sm-5
       .row
         .col-xs-6.col-sm-12.col-md-6.text-center
-          = image_tag @teacher.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview', size: '200x200'
+          = image_tag @user.avatar_url, class: 'js-loader btn btn-file img-thumbnail', id:'preview', size: '200x200'
           = form_tag upload_avatar_teachers_path, multipart: true, class: 'js-avatar-form hidden'  do |f|
             = file_field_tag :avatar, { class: 'js-preview' }
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
-            = teacher.first_name
-            = teacher.last_name
-          %p
+            = teacher.decorate.display_name
+          %br
+          - unless @avgrating.nil?
+            = fa_icon 'star', class: 'fa-md'
+            = @avgrating.round
+          %br
+            = fa_icon 'money', class: 'fa-md'
             = teacher.teacher_profile_hour_rate
           %small.block.text-muted
+            = fa_icon 'envelope', class: 'fa-md'
             = teacher.email
           .seperator
           - if current_user.id != teacher.id

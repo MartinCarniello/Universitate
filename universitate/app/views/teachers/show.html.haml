@@ -15,7 +15,7 @@
               %span.block.text-center
                 %i.fa.fa-user.fa-2x
               = I18n.t("views.teacher_profile.show.profile")
-          - if current_user.id == @teacher.teacher_profile.id
+          - if current_user.id == @user.id
             %li
               %a{"data-toggle" => "tab", :href => "#edit-profile"}
                 %span.block.text-center
@@ -24,14 +24,14 @@
       .panel-body
         .tab-content
           #profile.tab-pane.fade.active.in
-            = render 'teacher_show_profile', teacher: @teacher
+            = render 'teacher_show_profile', teacher: @user
 
             .row
               .col-md-8.col-sm-8
-                = render 'teacher_show_description', teacher: @teacher
+                = render 'teacher_show_description', teacher: @user ,rating: @avgrating
                 = render 'teacher_show_works', teacher: @works
                 = render 'teacher_show_studies', teacher: @studies
               .col-md-4.col-sm-4
-                = render 'last_ratings', teacher: @teacher
+                = render 'last_ratings', teacher: @user
           #edit-profile.tab-pane.fade
-            = render 'teacher_edit', teacher: @teacher, subjects: @subjects, works: @works, studies: @studies
+            = render 'teacher_edit', teacher: @user, subjects: @subjects, works: @works, studies: @studies

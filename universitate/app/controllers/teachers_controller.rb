@@ -8,27 +8,28 @@ class TeachersController < ApplicationController
   end
 
   def show
-    @teacher = User.find(params[:id])
+    @user = User.find(params[:id])
     @subjects = Subject.all()
-    @studies = @teacher.teacher_profile_studies
-    @works = @teacher.teacher_profile_works
+    @studies = @user.teacher_profile_studies
+    @works = @user.teacher_profile_works
 
-    @teacher.build_location if @teacher.location.blank?
-    @rating = Rating.new(teacher_profile: @teacher.teacher_profile)
+    @user.build_location if @user.location.blank?
+    @rating = Rating.new(teacher_profile: @user.teacher_profile)
+    @avgrating = Rating.where("teacher_profile_id = #{@user.teacher_profile.id}").average(:value)
   end
 
   def update
-    @teacher = User.find(params[:id])
+    @user = User.find(params[:id])
 
-    @teacher.location.try(:destroy) unless params[:location][:name].present?
+    @user.location.try(:destroy) unless params[:location][:name].present?
 
-    if @teacher.update(user_params)
+    if @user.update(user_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       redirect_to root_path
     else
       @subjects = Subject.all()
-      @studies = @teacher.teacher_profile_studies
-      @works = @teacher.teacher_profile_works
+      @studies = @user.teacher_profile_studies
+      @works = @user.teacher_profile_works
       render :show
     end
   end
