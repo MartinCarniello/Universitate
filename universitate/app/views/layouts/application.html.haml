@@ -8,6 +8,8 @@
     = javascript_include_tag 'application', controller_name
     = javascript_include_tag :cocoon
     = action_cable_meta_tag
+
+    = render 'favicon' 
   %body
     - if user_signed_in?
       = render 'layouts/aside'
