@@ -1,0 +1,4 @@
+one:
+  user: :one
+  description: 'Soy profesor'
+  hour_rate: 100

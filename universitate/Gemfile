@@ -82,6 +82,8 @@ group :development, :test do
   gem 'erb2haml'
 
   gem 'letter_opener'
+
+  gem 'rspec-rails'
 end
 
 group :development do

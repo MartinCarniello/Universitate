@@ -22,3 +22,20 @@
 #  gender                 :string
 #
 
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  first_name: Pedro
+  last_name: Perez
+  email: pedroperez@gmail.com
+  encrypted_password: '123456'
+
+two:
+  first_name: Pablo
+  last_name: Gonzalez
+  email: pablogonzalez@gmail.com
+  encrypted_password: '123456'
