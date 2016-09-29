@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id              :integer          not null, primary key
+#  sender_id       :integer
+#  receiver_id     :integer
+#  message         :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  conversation_id :integer
+#
+
+one_with_two:
+  sender: :one
+  receiver: :two
+  message: 'Hola, cómo andás?'
+  conversation: :one
+
+two_with_one:
+  sender: :two
+  receiver: :one
+  message: 'Todo bien, vos?'
+  conversation: :one
