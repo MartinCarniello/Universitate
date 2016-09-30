@@ -9,13 +9,14 @@
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
             = teacher.decorate.display_name
-          %br
-          - unless @avgrating.nil?
-            = fa_icon 'star', class: 'fa-md'
-            = @avgrating.round
-          %br
-            = fa_icon 'money', class: 'fa-md'
-            = teacher.teacher_profile_hour_rate
+          - if teacher.teacher_profile_avg_rating.present?
+            %br
+              = fa_icon 'star', class: 'fa-md'
+              = teacher.teacher_profile_avg_rating.round
+          - if teacher.teacher_profile_hour_rate.present?
+            %br
+              = fa_icon 'money', class: 'fa-md'
+              = teacher.teacher_profile_hour_rate
           %small.block.text-muted
             = fa_icon 'envelope', class: 'fa-md'
             = teacher.email
@@ -31,4 +32,3 @@
                 = fa_icon 'star', class: 'fa-md'
                 = I18n.t('views.teacher_profile.show.rate')
           .new-rating
-          #rating-modal.modal.fade

@@ -3,7 +3,8 @@
   initRating();
 <% else %>
   $("#rating-modal").modal("toggle");
-  $(".js-empty-ratings").remove();
+  $(".js-empty-ratings").html('<%= I18n.t("views.teacher_profile.rating.ratings_title") %>');
   $(".js-ratings").prepend('<div class="js-rating-row" data-id="<%= @rating.id %>"><%= j(render partial: "teachers/rating_row", locals: { rating: @rating }) %></div>');
+  $(".js-show-profile").html("<%= j(render partial: 'teachers/teacher_show_profile', locals: { teacher: @user }) %>");
   initReplyComment($(".js-rating-row[data-id=<%= @rating.id %>] .js-reply-comment"));
 <% end %>

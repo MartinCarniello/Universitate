@@ -1,5 +1,5 @@
-- @user = current_user.decorate
-- user_unreaded_messages = @user.unreaded_messages || 0
+- @current_user = current_user.decorate
+- user_unreaded_messages = @current_user.unreaded_messages || 0
 
 %aside.fixed.skin-6
   .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
@@ -9,10 +9,10 @@
           = link_to destroy_user_session_path,  method: :delete, class: 'btn btn-sm' do
             = fa_icon 'power-off', class: 'fa-lg'
       .user-block.clearfix
-        = image_tag @user.avatar_url
+        = image_tag @current_user.avatar_url
         .detail
           %strong
-            = @user.display_name
+            = @current_user.display_name
       / /user-block
       / /search-block
       .main-menu
@@ -24,7 +24,7 @@
               %span.text
                 = I18n.t('views.aside.teachers')
               %span.menu-hover
-          %li{class: "#{'active' if controller_name == 'teachers' && action_name == 'show'}"}
+          %li{class: "#{'active' if controller_name == 'teachers' && action_name == 'show' && @user.try(:==, current_user)}"}
             - if current_user.has_role?(:teacher)
               = link_to teacher_path(current_user) do
                 %span.menu-icon

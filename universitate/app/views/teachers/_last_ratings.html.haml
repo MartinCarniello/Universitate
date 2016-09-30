@@ -1,11 +1,13 @@
 .panel.panel-white.post.panel-shadow
   .post-footer
-    %h4 Comentarios acerca de ti
-    %ul.comments-list.js-ratings
-      - if teacher.ratings.empty?
-        %h4.js-empty-ratings.text-center
-          = I18n.t('views.teacher_profile.rating.empty_ratings')
-      - else
+    - if teacher.ratings.empty?
+      %h4.js-empty-ratings.text-center
+        = I18n.t('views.teacher_profile.rating.empty_ratings')
+      %ul.comments-list.js-ratings
+    - else
+      %h4.js-empty-ratings.text-center
+        = I18n.t('views.teacher_profile.rating.ratings_title')
+      %ul.comments-list.js-ratings
         - teacher.ratings.recents.each do |rating|
           .js-rating-row{ data: { id: rating.id } }
             = render 'rating_row', rating: rating

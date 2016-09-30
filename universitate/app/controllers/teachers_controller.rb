@@ -15,7 +15,6 @@ class TeachersController < ApplicationController
 
     @user.build_location if @user.location.blank?
     @rating = Rating.new(teacher_profile: @user.teacher_profile)
-    @avgrating = Rating.where("teacher_profile_id = #{@user.teacher_profile.id}").average(:value)
   end
 
   def update

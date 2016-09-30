@@ -46,7 +46,7 @@ class User < ApplicationRecord
   scope :except_user, -> (user) { where.not(id: user.id) }
   
 
-  delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, :rating, to: :teacher_profile, prefix: true
+  delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, :rating, :avg_rating, to: :teacher_profile, prefix: true
 
   accepts_nested_attributes_for :teacher_profile
   accepts_nested_attributes_for :location

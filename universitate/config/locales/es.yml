@@ -60,6 +60,7 @@ es:
           teachers_title: Profesores
     teacher_profile:
       rating:
+        ratings_title: Comentarios acerca de ti
         empty_ratings: El profesor no tiene comentarios
         cancel: Cancelar
         title: Comentario

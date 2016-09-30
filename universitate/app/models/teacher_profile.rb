@@ -19,4 +19,8 @@ class TeacherProfile < ApplicationRecord
 
   accepts_nested_attributes_for :works, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :studies, reject_if: :all_blank, allow_destroy: true
+
+  def avg_rating
+    ratings.average(:value)
+  end
 end
