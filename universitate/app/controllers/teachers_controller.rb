@@ -24,7 +24,7 @@ class TeachersController < ApplicationController
 
     if @user.update(user_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
-      redirect_to root_path
+      redirect_to teacher_path
     else
       @subjects = Subject.all()
       @studies = @user.teacher_profile_studies

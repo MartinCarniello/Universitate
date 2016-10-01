@@ -6,7 +6,7 @@
       #accordionWork
       - if !@works.nil?
         - @works.each do |work|
-          .panel-heading
+          .panel-heading{style:"background-color: #EFEFEF"}
             %h5.panel-title
               %a.accordion-toggle.collapsed{"data-parent" => "#accordionWork", "data-toggle" => "collapse", :href => "##{work.id}"}
                 %p

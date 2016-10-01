@@ -3,9 +3,9 @@
     .col-md-5.col-sm-5
       .row
         .col-xs-6.col-sm-12.col-md-6.text-center
-          = image_tag @user.avatar_url, class: "#{current_user.id == teacher.id ? 'img-thumbnail js-loader btn btn-file' : 'img-thumbnail' }" , size: '200x200'
+          = image_tag @user.avatar_url, class: "#{current_user.id == teacher.id ? 'js-loader img btn btn-file' : 'img' }" , size: '200x200'
           = form_tag upload_avatar_teachers_path, multipart: true, class: 'js-avatar-form hidden'  do |f|
-            = file_field_tag :avatar
+            = file_field_tag :avatar, class: 'js-preview'
         .col-xs-6.col-sm-12.col-md-6
           %strong.font-14.text-center
             = teacher.decorate.display_name

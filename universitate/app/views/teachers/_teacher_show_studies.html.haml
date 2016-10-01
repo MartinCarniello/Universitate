@@ -6,7 +6,7 @@
       #accordionStudy
       - if !@studies.nil?
         - @studies.each do |study|
-          .panel-heading
+          .panel-heading{style:"background-color: #EFEFEF"}
             %h5.panel-title
               %a.accordion-toggle.collapsed{"data-parent" => "#accordionStudy", "data-toggle" => "collapse", :href => "##{study.id}"}
                 %p
