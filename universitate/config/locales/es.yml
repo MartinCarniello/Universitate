@@ -60,6 +60,8 @@ es:
           teachers_title: Profesores
     teacher_profile:
       rating:
+        create_success: El comentario ha sido creado de manera exitosa
+        update_success: Se ha respondido al comentario de manera exitosa
         ratings_title: Comentarios acerca de ti
         empty_ratings: El profesor no tiene comentarios
         cancel: Cancelar
