@@ -10,20 +10,20 @@
     .panel.panel-default
       .panel-tab.clearfix
         %ul.tab-bar.grey-tab
-          %li.active
+          %li{ class: "#{'active' if @tab == 'profile'}" }
             %a{"data-toggle" => "tab", :href => "##profile"}
               %span.block.text-center
                 %i.fa.fa-user.fa-2x
               = I18n.t("views.teacher_profile.show.profile")
           - if current_user.id == @user.id
-            %li
+            %li{ class: "#{'active' if @tab == 'edit-profile'}" }
               %a{"data-toggle" => "tab", :href => "#edit-profile"}
                 %span.block.text-center
                   %i.fa.fa-edit.fa-2x
                 = I18n.t("views.teacher_profile.show.edit-profile")
       .panel-body
         .tab-content
-          #profile.tab-pane.fade.active.in
+          #profile.tab-pane.fade{ class: "#{'active in' if @tab == 'profile'}" }
             .js-show-profile
               = render 'teacher_show_profile', teacher: @user
 
@@ -34,6 +34,6 @@
                 = render 'teacher_show_studies', teacher: @studies
               .col-md-4.col-sm-4
                 = render 'last_ratings', teacher: @user
-          #edit-profile.tab-pane.fade
+          #edit-profile.tab-pane.fade{ class: "#{'active in' if @tab == 'edit-profile'}" }
             = render 'teacher_edit', teacher: @user, subjects: @subjects, works: @works, studies: @studies
 #rating-modal.modal.fade

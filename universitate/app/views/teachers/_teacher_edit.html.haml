@@ -7,14 +7,14 @@
       %label.control-label.col-md-2
         = I18n.t('activerecord.attributes.user.first_name')
       .col-md-8
-        = teacher_form.text_field :first_name, class: 'form-control input-sm bounceIn animation-delay2'
+        = teacher_form.input :first_name, label: false, input_html: { class: 'form-control input-sm bounceIn animation-delay2' }
     %br/
     %br/
     .form-group
       %label.control-label.col-md-2
         = I18n.t('activerecord.attributes.user.last_name')
       .col-md-8
-        = teacher_form.text_field :last_name, class: 'form-control input-sm bounceIn animation-delay3'
+        = teacher_form.input :last_name, label: false, input_html: { class: 'form-control input-sm bounceIn animation-delay3' }
     %br/
     %br/
     = teacher_form.simple_fields_for :location do |teacher_location_form|

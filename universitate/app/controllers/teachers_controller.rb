@@ -8,6 +8,7 @@ class TeachersController < ApplicationController
   end
 
   def show
+    @tab = params[:tab] || 'profile'
     @user = User.find(params[:id])
     @subjects = Subject.all()
     @studies = @user.teacher_profile_studies
@@ -22,13 +23,16 @@ class TeachersController < ApplicationController
 
     @user.location.try(:destroy) unless params[:location][:name].present?
 
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
-      redirect_to teacher_path
+      @tab = 'profile'
+      redirect_to teacher_path(@user)
     else
       @subjects = Subject.all()
       @studies = @user.teacher_profile_studies
       @works = @user.teacher_profile_works
+      @user.build_location if @user.location.blank?
+      @tab = 'edit-profile'
       render :show
     end
   end

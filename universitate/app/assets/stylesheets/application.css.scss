@@ -42,6 +42,10 @@ body {
   textarea, input, select {
     border-color: red !important;
   }
+
+  .error {
+    color: red !important;
+  }
 }
 
 .js-row-clickable {
