@@ -1,3 +1,4 @@
+- ratings = teacher.ratings.recents.page(page)
 .panel.panel-white.post.panel-shadow
   .post-footer
     - if teacher.ratings.empty?
@@ -8,6 +9,8 @@
       %h4.js-empty-ratings.text-center
         = I18n.t('views.teacher_profile.rating.ratings_title')
       %ul.comments-list.js-ratings
-        - teacher.ratings.recents.each do |rating|
+        - ratings.each do |rating|
           .js-rating-row{ data: { id: rating.id } }
             = render 'rating_row', rating: rating
+        .text-center.js-load-more-ratings
+          = render 'load_more_ratings', teacher: teacher, page: page + 1

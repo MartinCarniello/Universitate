@@ -56,12 +56,16 @@ gem 'devise'
 
 # Images
 gem 'carrierwave'
+gem 'cloudinary'
 
 # Roles
 gem 'rolify'
 
-#Filters
+# Filters
 gem 'searchlight'
+
+# Pagination
+gem 'kaminari'
 
 # Icons
 gem "font-awesome-rails"

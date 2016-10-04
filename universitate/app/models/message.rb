@@ -12,6 +12,7 @@
 #
 
 class Message < ApplicationRecord
+  paginates_per 15
   before_create :assign_conversation, :increment_receiver_message_count!
 
   belongs_to :sender, class_name: 'User'
@@ -22,6 +23,7 @@ class Message < ApplicationRecord
 
   scope :sender, -> (sender) { where(sender: sender) }
   scope :order_recents, -> { order('created_at DESC') }
+  scope :order_lasts, -> { order('created_at ASC') }
 
   private
 

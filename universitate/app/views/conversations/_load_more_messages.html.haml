@@ -1,0 +1,5 @@
+= link_to conversation_load_more_messages_path(conversation_id: conversation.id, page: page), remote: true, class: 'btn btn-success', data: { disable_with: "<i class='fa fa-refresh fa-spin'> </i> #{I18n.t('loading')}" } do
+  = I18n.t('views.conversations.show.conversations_table.load_more_messages')
+  = fa_icon 'plus'
+%br/
+%br/

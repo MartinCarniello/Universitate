@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  loading: Cargando...
   brand:
     pre: UNIVERSITA
     post: TE
@@ -42,10 +43,13 @@ es:
       index:
         conversation: Chats
         conversations_table:
-          conversations_title: Chats
+          conversations_title: CHATS
+          conversations_empty_title: No se encontraron conversaciones
       show:
         conversations_table:
           write_message: Escribe un mensaje...
+          load_more_messages: Cargar más
+          load_failed: No hay más mensajes para cargar
     users:
       index:
         view_button: Ver
@@ -55,15 +59,19 @@ es:
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
-          filters: Filtros
+          filters: FILTROS
         teachers_table:
-          teachers_title: Profesores
+          teachers_title: PROFESORES
+          teachers_empty_title: No se encontraron profesores
     teacher_profile:
       rating:
         create_success: El comentario ha sido creado de manera exitosa
         update_success: Se ha respondido al comentario de manera exitosa
+        load_failed: No hay más comentarios para cargar
+        load_success: Se cargaron más comentarios
         ratings_title: Comentarios acerca de ti
         empty_ratings: El profesor no tiene comentarios
+        load_more_ratings: Cargar más
         cancel: Cancelar
         title: Comentario
         comment: Comentario

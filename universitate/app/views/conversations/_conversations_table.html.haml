@@ -1,8 +1,20 @@
 .panel.panel-default
   .panel-body
-    %h2.text-center
-      = I18n.t('views.conversations.index.conversations_table.conversations_title')
+    %h2.text-center.text-success
+      %strong
+        = I18n.t('views.conversations.index.conversations_table.conversations_title')
+    %hr/
     %br/
-    %ul.w3-ul.w3-card-4
-      - ConversationDecorator.decorate_collection(conversations).each do |conversation|
-        = render 'conversation_table_row', conversation: conversation
+    - if conversations.empty?
+      .text-center
+        %h3.grey
+          %strong
+            = I18n.t('views.conversations.index.conversations_table.conversations_empty_title')
+        %br/
+    - else
+      %ul.w3-ul.w3-card-4
+        - ConversationDecorator.decorate_collection(conversations).each do |conversation|
+          = render 'conversation_table_row', conversation: conversation
+      .text-center
+        %ul.pagination.pagination-split 
+          = paginate conversations

@@ -11,6 +11,8 @@
 #
 
 class Rating < ApplicationRecord
+  paginates_per 4
+
   belongs_to :teacher_profile
   belongs_to :user
 

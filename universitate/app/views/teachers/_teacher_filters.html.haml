@@ -1,7 +1,8 @@
 .panel.panel-default
   .panel-heading
     %h2.text-center
-      = I18n.t("views.users.index.teacher_filters.filters")
+      %strong.orange
+        = I18n.t("views.users.index.teacher_filters.filters")
 
   .panel-body
     = form_for @search, url: url, method: :get, class: 'form-login' do |f|
@@ -21,7 +22,9 @@
       %hr/
 
       .pull-right
-        = link_to root_path, class: 'btn btn-danger' do
+        = link_to root_path, class: 'btn btn-danger', style: 'margin-right: 10px;' do
           = fa_icon 'times-circle'
           = I18n.t("views.users.index.teacher_filters.reset")
-        = f.submit I18n.t("views.users.index.teacher_filters.search"), class: 'btn btn-info'
+        = f.button type: 'submit', class: 'btn btn-info' do
+          = fa_icon 'search'
+          = I18n.t("views.users.index.teacher_filters.search")
