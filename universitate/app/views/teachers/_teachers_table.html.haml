@@ -1,9 +1,20 @@
 .panel.panel-default
   .panel-body
-    %h2.text-center
-      = I18n.t('views.users.index.teachers_table.teachers_title')
+    %h2.text-center.text-success
+      %strong
+        = I18n.t('views.users.index.teachers_table.teachers_title')
+    %hr/
     %br/
-    %ul.w3-ul.w3-card-4
-      - UserDecorator.decorate_collection(teachers).each do |teacher|
-        = render 'teacher_table_row', teacher: teacher
-    %ul.pagination.pagination-split 
+    - if teachers.empty?
+      .text-center
+        %h3.grey
+          %strong
+            = I18n.t('views.users.index.teachers_table.teachers_empty_title')
+        %br/
+    - else
+      %ul.w3-ul.w3-card-4
+        - UserDecorator.decorate_collection(teachers).each do |teacher|
+          = render 'teacher_table_row', teacher: teacher
+      .text-center
+        %ul.pagination.pagination-split 
+          = paginate teachers

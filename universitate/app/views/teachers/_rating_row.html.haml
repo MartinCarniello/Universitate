@@ -13,11 +13,6 @@
       .hidden.js-reply-form
         = form_for rating, url: rating_path(rating), method: :put, remote: true do |f|
           .row
-            / .col-xs-6
-            /   = f.hidden_field :id
-            /   = f.text_area :reply, class: "form-control", placeholder: "Ingrese un comentario"
-            / .col-xs-6
-            /   = f.submit
             .col-xs-12
               .input-group
                 = f.hidden_field :id
@@ -28,10 +23,11 @@
     %ul.comments-list
       %li.comment
         %a.pull-left{:href => "#"}
-          = image_tag rating.user.avatar_url, class: 'avatar'
+          = image_tag rating.teacher_profile.user.avatar_url, class: 'avatar'
         .comment-body
           .comment-heading
             %h4.user
               = rating.teacher_profile_user.decorate.display_name
           %p
             = rating.reply
+%hr/

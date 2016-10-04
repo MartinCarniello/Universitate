@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   def index
-    @conversations = Conversation.member(current_user).order_recents
+    @conversations = Conversation.member(current_user).order_recents.page(params[:page])
   end
 
   def new
@@ -17,9 +17,10 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @page = params[:page] || 1
     @conversation = Conversation.find(params[:id])
     @message = Message.new(conversation: @conversation, sender: current_user, receiver: @conversation.decorate.linked_user)
-    @messages = @conversation.messages
+    @messages = @conversation.messages.order_recents.page(@page)
     @conversation.clear_messages_count!(current_user)
   end
 
@@ -31,6 +32,13 @@ class ConversationsController < ApplicationController
   def update
     @message = Message.create(message_required_params)
     ActionCable.server.broadcast "messages_#{@message.conversation_id}", message: @message.message, username: @message.sender.decorate.display_name, datetime: @message.decorate.datetime_creation
+  end
+
+  def load_more_messages
+    @page = params[:page]
+    @conversation = Conversation.find(params[:conversation_id])
+    @messages = @conversation.messages.order_recents.page(@page)
+    flash.now[:danger] = I18n.t('views.conversations.show.conversations_table.load_failed') if @messages.empty?
   end
 
   private

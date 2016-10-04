@@ -8,9 +8,11 @@ Rails.application.routes.draw do
     post 'upload_avatar', on: :collection
   end
 
-  resources :ratings, only: [:create, :update]
+  resources :ratings, only: [:index, :create, :update]
 
-  resources :conversations
+  resources :conversations do
+    get :load_more_messages
+  end
 
   root 'teachers#index'
 

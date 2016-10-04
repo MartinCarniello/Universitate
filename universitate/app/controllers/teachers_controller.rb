@@ -5,10 +5,12 @@ class TeachersController < ApplicationController
     @search = UserSearch.new(search_params)
     @teachers = @search.results.with_role(:teacher)
     @teachers = @teachers.except_user(current_user) if user_signed_in?
+    @teachers = @teachers.page(params[:page])
   end
 
   def show
     @tab = params[:tab] || 'profile'
+    @page = params[:page] || 1
     @user = User.find(params[:id])
     @subjects = Subject.all()
     @studies = @user.teacher_profile_studies

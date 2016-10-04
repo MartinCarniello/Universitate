@@ -5656,7 +5656,7 @@ ul.chosen-choices {
   color: #6bafbd;
 }
 .text-success {
-  color: #65cea7;
+  color: #65cea7 !important;
 }
 .text-warning {
   color: #f3ce85;

@@ -1,0 +1,3 @@
+= link_to ratings_path(teacher_id: teacher.id, page: page), remote: true, class: 'btn btn-success', data: { disable_with: "<i class='fa fa-refresh fa-spin'> </i> #{I18n.t('loading')}" } do
+  = I18n.t('views.teacher_profile.rating.load_more_ratings')
+  = fa_icon 'plus'

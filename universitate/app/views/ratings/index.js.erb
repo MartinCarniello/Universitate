@@ -1,0 +1,10 @@
+<% @ratings.each do |rating| %>
+  $(".js-load-more-ratings").before('<div class="js-rating-row" data-id="<%= rating.id %>"><%= j(render partial: "teachers/rating_row", locals: { rating: rating }) %></div>');
+<% end %>
+
+<% unless @ratings.empty? %>
+  $(".js-load-more-ratings").html('<%= j(render partial: "teachers/load_more_ratings", locals: { teacher: @teacher, page: @page.to_i + 1 }) %>');
+  swal('', '<%= flash[:notice] %>', 'success');
+<% else %>
+  swal('', '<%= flash[:danger] %>', 'error');
+<% end %>

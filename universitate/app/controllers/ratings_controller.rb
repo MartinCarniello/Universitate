@@ -1,4 +1,12 @@
 class RatingsController < ApplicationController
+  def index
+    @teacher = User.find(params[:teacher_id])
+    @page = params[:page]
+    @ratings = @teacher.ratings.recents.page(@page)
+    type, message = @ratings.empty? ? [:danger, I18n.t('views.teacher_profile.rating.load_failed')] : [:notice, I18n.t('views.teacher_profile.rating.load_success')]
+    flash.now[type] = message
+  end
+
   def create
     @rating = Rating.create(rating_required_params)
     @user = TeacherProfile.find(@rating.teacher_profile_id).user

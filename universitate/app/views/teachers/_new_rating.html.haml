@@ -36,5 +36,5 @@
         = f.hidden_field :user_id
         = f.hidden_field :teacher_profile_id
       .modal-footer
-        = f.submit I18n.t('views.teacher_profile.rating.create'), class: "btn btn-success"
-        = link_to I18n.t('views.teacher_profile.rating.cancel'), "#", class: "btn", data: {dismiss: "modal"}
+        = f.button :submit, I18n.t('views.teacher_profile.rating.create'), class: "btn btn-success", data: { disable_with: I18n.t('loading') }
+        = link_to I18n.t('views.teacher_profile.rating.cancel'), "#", class: "btn", data: { dismiss: "modal" }
