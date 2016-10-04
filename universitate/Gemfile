@@ -56,6 +56,7 @@ gem 'devise'
 
 # Images
 gem 'carrierwave'
+gem 'cloudinary'
 
 # Roles
 gem 'rolify'
