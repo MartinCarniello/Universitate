@@ -1,0 +1,23 @@
+.row
+  .col-md-10
+    .jumbotron
+      = simple_form_for(@group_lesson, url: group_lessons_path, method: :post) do |lesson_form|
+        .panel-heading
+          = "Clase grupal"
+        .panel-body
+          .form-group
+            %label.control-label.col-md-2
+              = "Dia y Horario"
+            .col-md-8
+              = lesson_form.text_field :day_and_hour, class: 'js-datepicker form-control bounceIn animation-delay2'
+          %br/
+          %br/
+          .form-group
+            %label.control-label.col-md-2
+              = "Materia"
+            .col-md-8
+              = lesson_form.collection_select :subject_id, @subjects, :id, :name, { include_blank: true }, class: 'form-control bounceIn animation-delay2'
+              = lesson_form.hidden_field :teacher_profile_id
+          %br/
+          %br/
+          = lesson_form.submit

@@ -35,6 +35,7 @@
 //= require inputmask.numeric.extensions
 //= require inputmask.date.extensions
 //= require rating.js
+//= require group_lessons.js
 //= require sweetalert2.js
 
 (function() {

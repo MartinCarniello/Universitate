@@ -39,6 +39,8 @@ es:
       conversation: Chat
       institutions: Instituciones
       group_classes: Clases Grupales
+      group_classes_all: Todas
+      group_classes_mine: Mis clases
     conversations:
       index:
         conversation: Chats
@@ -92,6 +94,7 @@ es:
         period_start: Desde
         period_end: Hasta
         rate: Calificar
+        group_lessons: Clases grupales
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción

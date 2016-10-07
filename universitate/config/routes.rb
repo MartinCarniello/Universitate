@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get "teachers/new_rating" => 'teachers#new_rating', :as => :new_rating
+
   resources :teachers do
     post 'upload_avatar', on: :collection
   end
 
   resources :ratings, only: [:index, :create, :update]
+
+  resources :group_lessons
 
   resources :conversations do
     get :load_more_messages
