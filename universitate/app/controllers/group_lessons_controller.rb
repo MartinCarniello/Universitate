@@ -2,6 +2,7 @@ class GroupLessonsController < ApplicationController
 
   def index
     @lessons = GroupLesson.all()
+    @lessons = @lessons.page(params[:page])
   end
 
   def create

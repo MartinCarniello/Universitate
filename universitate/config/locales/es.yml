@@ -41,6 +41,14 @@ es:
       group_classes: Clases Grupales
       group_classes_all: Todas
       group_classes_mine: Mis clases
+    group_lessons:
+      index:
+        subject: Materia
+        day_and_hour: Día y Horario
+        teacher: Profesor
+        lessons: Clases
+        new_lesson: Nueva clase
+        action: Acción
     conversations:
       index:
         conversation: Chats

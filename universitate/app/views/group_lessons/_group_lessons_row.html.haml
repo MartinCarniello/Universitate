@@ -5,3 +5,12 @@
     = lesson.day_and_hour
   %td
     = lesson.teacher_profile.user.decorate.display_name
+
+  %td
+    - if lesson.teacher_profile == current_user.teacher_profile
+      %a.task-del{:href => "#"}
+        %i.fa.fa-trash-o.fa-lg.text-danger
+      %a.btn.dropdown-toggle{:href => "#"}
+        %i.fa.fa-refresh
+    - else
+      %span.btn.btn-success.btn-xs.m-left-xs Unirse

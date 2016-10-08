@@ -18,4 +18,5 @@ class GroupLesson < ApplicationRecord
 
   validates :teacher_profile_id, :day_and_hour, :subject_id, presence: true
 
+  scope :my_lessons, -> (user) { where(teacher_profile: user.teacher_profile) }
 end

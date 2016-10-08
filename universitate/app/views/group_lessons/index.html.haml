@@ -7,21 +7,8 @@
           = I18n.t("views.teacher_profile.show.home")
       %li
         = I18n.t("views.teacher_profile.show.group_lessons")
-  .panel
-    =link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
-      = 'Nueva Clase'
-  .panel
-    .row
-      .col-md-8
-        .panel-heading
-          = 'Clases'
-          .panel-body
-            %table.table.table-hover.table-striped
-              %thead
-                %tr
-                  %th Materia
-                  %th Horario
-                  %th Profesor
-              %tbody
-              - @lessons.each do |lesson|
-                = render 'group_lessons_row', lesson: lesson
+  .panel#headers
+    = link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
+      = I18n.t("views.group_lessons.index.new_lesson")
+  .panel#table
+    = render 'group_lessons', lessons: @lessons
