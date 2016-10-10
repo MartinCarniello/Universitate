@@ -1,16 +1,16 @@
 %tr
   %td
     = lesson.subject.name
-  %td
+  %td.datetimepicker
     = lesson.day_and_hour
   %td
     = lesson.teacher_profile.user.decorate.display_name
-
   %td
     - if lesson.teacher_profile == current_user.teacher_profile
-      %a.task-del{:href => "#"}
+      = link_to group_lesson_path(lesson), method: :delete,  data: { confirm: 'Are you sure?' } do
         %i.fa.fa-trash-o.fa-lg.text-danger
-      %a.btn.dropdown-toggle{:href => "#"}
+      = link_to group_lesson_path(lesson), method: :put,  data: { confirm: 'Are you sure?' } do
         %i.fa.fa-edit
     - else
-      %span.btn.btn-success.btn-xs.m-left-xs Unirse
+      = link_to group_lesson_path(lesson), method: :put,  data: { confirm: 'Desea unirse a esta clase?' } do
+        %span.btn.btn-success.btn-xs.m-left-xs Unirse

@@ -28,10 +28,7 @@
               %label.control-label.col-md-2
                 = I18n.t("views.group_lessons.new.day_and_hour")
               .col-md-8
-                #datetimepicker1.input-group
-                  = lesson_form.text_field :day_and_hour, class: "form-control bounceIn animation-delay2"
-                  %span.input-group-addon
-                    %span.glyphicon.glyphicon-calendar
+                = lesson_form.text_field :day_and_hour, class: "js-datetimepicker form-control bounceIn animation-delay2"
             %br/
             %br/
             = lesson_form.submit I18n.t("views.group_lessons.new.create")  , class:'btn btn-success btn-sm'

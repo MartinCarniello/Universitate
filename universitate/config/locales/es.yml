@@ -49,11 +49,12 @@ es:
         my_lessons: Mis clases
         action: Acción
         add: Unirse
+        destroyed: Clase grupal eliminada
       new:
         create: Crear clase
         subject: Materia
         day_and_hour: Día y Horario
-        group_lesson: Nueva clase grupal  
+        group_lesson: Nueva clase grupal
     conversations:
       index:
         conversation: Chats

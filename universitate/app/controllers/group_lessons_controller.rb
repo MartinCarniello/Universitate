@@ -2,19 +2,23 @@ class GroupLessonsController < ApplicationController
 
   def index
     @lessons = GroupLesson.all()
-    @lessons = @lessons.all_except(current_user) 
+    @lessons = @lessons.all_except(current_user)
     @lessons = @lessons.page(params[:page])
     @my_lessons = GroupLesson.my_lessons(current_user)
   end
 
   def create
     @group_lesson = GroupLesson.create(group_lesson_required_params)
+    @subjects = Subject.all()
     if @group_lesson.save
       redirect_to group_lessons_path
     else
-      render :new
+      render :new , subjects: @subjects
     end
+  end
 
+  def update
+    binding.pry
   end
 
   def new
@@ -22,6 +26,21 @@ class GroupLessonsController < ApplicationController
     @group_lesson = GroupLesson.new
     @group_lesson.teacher_profile = @teacher.teacher_profile
     @subjects = Subject.all()
+  end
+
+  def destroy
+      @lesson = GroupLesson.find(params[:id])
+      @student = @lesson.students.find(current_user)
+
+      if @student
+        @student.group_lessons.delete(@lesson)
+      else
+        @lesson.delete
+      end
+
+      flash[:success] = I18n.t('es.views.group_lessons.index.destroyed')
+
+      redirect_to group_lessons
   end
 
   def group_lesson_required_params

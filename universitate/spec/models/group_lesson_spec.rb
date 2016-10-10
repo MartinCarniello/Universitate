@@ -2,13 +2,12 @@
 #
 # Table name: group_lessons
 #
-#  id                 :integer          not null, primary key
-#  teacher_profile_id :integer
-#  user_id            :integer
-#  day_and_hour       :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  subject_id         :integer
+#  id              :integer          not null, primary key
+#  teacher_profile :integer
+#  day_and_hour    :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  subject_id      :integer
 #
 
 require 'rails_helper'
