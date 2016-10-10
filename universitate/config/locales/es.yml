@@ -46,9 +46,14 @@ es:
         teacher: Profesor
         lessons: Clases
         new_lesson: Nueva clase
+        my_lessons: Mis clases
         action: Acción
-        group_classes_mine: Mis clases
         add: Unirse
+      new:
+        create: Crear clase
+        subject: Materia
+        day_and_hour: Día y Horario
+        group_lesson: Nueva clase grupal  
     conversations:
       index:
         conversation: Chats

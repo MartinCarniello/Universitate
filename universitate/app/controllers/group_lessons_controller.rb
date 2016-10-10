@@ -2,7 +2,9 @@ class GroupLessonsController < ApplicationController
 
   def index
     @lessons = GroupLesson.all()
+    @lessons = @lessons.all_except(current_user) 
     @lessons = @lessons.page(params[:page])
+    @my_lessons = GroupLesson.my_lessons(current_user)
   end
 
   def create

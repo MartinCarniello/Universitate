@@ -7,8 +7,27 @@
           = I18n.t("views.teacher_profile.show.home")
       %li
         = I18n.t("views.teacher_profile.show.group_lessons")
-  .panel#headers
-    = link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
-      = I18n.t("views.group_lessons.index.new_lesson")
-  .panel#table
-    = render 'group_lessons', lessons: @lessons
+    .panel.panel-default
+      .panel-tab.clearfix
+        %ul.tab-bar.grey-tab
+          %li{ class: "#{'active'}" }
+            %a{"data-toggle" => "tab", :href => "#lessons"}
+              %span.block.text-center
+                %i.fa.fa-user.fa-2x
+              = I18n.t("views.group_lessons.index.lessons")
+            %li{ class: "#{'active' if @tab == 'my_lessons'}" }
+              %a{"data-toggle" => "tab", :href => "#my_lessons"}
+                %span.block.text-center
+                  %i.fa.fa-edit.fa-2x
+                = I18n.t("views.group_lessons.index.my_lessons")
+      .panel-body
+        .tab-content
+          #lessons.tab-pane.fade{ class: "#{'active in'}" }
+            = render 'group_lessons', lessons: @lessons
+          #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
+            = render 'group_lessons', lessons: @my_lessons
+
+
+= link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
+  %span.btn.btn-success.btn-xs
+    = I18n.t("views.group_lessons.index.new_lesson")

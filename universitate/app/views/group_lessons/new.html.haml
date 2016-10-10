@@ -1,26 +1,37 @@
-.row
-  .col-md-10
-    .jumbotron
-      = simple_form_for(@group_lesson, url: group_lessons_path, method: :post) do |lesson_form|
-        .panel-heading
-          = "Clase grupal"
-        .panel-body
-          .form-group
-            %label.control-label.col-md-2
-              = "Materia"
-            .col-md-8
-              = lesson_form.collection_select :subject_id, @subjects, :id, :name, { include_blank: true }, class: 'form-control bounceIn animation-delay2'
-              = lesson_form.hidden_field :teacher_profile_id
-          %br/
-          %br/
-          .form-group
-            %label.control-label.col-md-2
-              = "Dia y Horario"
-            .col-md-8
-              #datetimepicker1.input-group
-                = lesson_form.text_field :day_and_hour, class: "form-control bounceIn animation-delay2"
-                %span.input-group-addon
-                  %span.glyphicon.glyphicon-calendar
-          %br/
-          %br/
-          = lesson_form.submit
+.w3-container
+  %div#breadcrumb
+    %ul.breadcrumb.text-right
+      %li
+        = link_to root_path, class: 'btn btn-md' do
+          = fa_icon 'home', class: 'fa-lg'
+          = I18n.t("views.teacher_profile.show.home")
+      %li
+        = I18n.t("views.teacher_profile.show.group_lessons")
+      %li
+        = I18n.t("views.teacher_profile.show.new_lesson")
+  .row
+    .col-md-10
+      .jumbotron
+        = simple_form_for(@group_lesson, url: group_lessons_path, method: :post) do |lesson_form|
+          .h3
+            = I18n.t("views.group_lessons.new.group_lesson")
+          .panel-body
+            .form-group
+              %label.control-label.col-md-2
+                = I18n.t("views.group_lessons.new.subject")
+              .col-md-8
+                = lesson_form.collection_select :subject_id, @subjects, :id, :name, { include_blank: true }, class: 'form-control bounceIn animation-delay2'
+                = lesson_form.hidden_field :teacher_profile_id
+            %br/
+            %br/
+            .form-group
+              %label.control-label.col-md-2
+                = I18n.t("views.group_lessons.new.day_and_hour")
+              .col-md-8
+                #datetimepicker1.input-group
+                  = lesson_form.text_field :day_and_hour, class: "form-control bounceIn animation-delay2"
+                  %span.input-group-addon
+                    %span.glyphicon.glyphicon-calendar
+            %br/
+            %br/
+            = lesson_form.submit I18n.t("views.group_lessons.new.create")  , class:'btn btn-success btn-sm'
