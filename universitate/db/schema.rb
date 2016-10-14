@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004233350) do
+ActiveRecord::Schema.define(version: 20161011171317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,18 @@ ActiveRecord::Schema.define(version: 20161004233350) do
   end
 
   create_table "group_lessons", force: :cascade do |t|
-    t.integer  "teacher_profile"
+    t.integer  "teacher_profile_id"
     t.datetime "day_and_hour"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "subject_id"
+  end
+
+  create_table "group_lessons_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_lesson_id"
+    t.index ["group_lesson_id"], name: "index_group_lessons_users_on_group_lesson_id", using: :btree
+    t.index ["user_id"], name: "index_group_lessons_users_on_user_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|

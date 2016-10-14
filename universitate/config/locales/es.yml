@@ -44,17 +44,22 @@ es:
         subject: Materia
         day_and_hour: Día y Horario
         teacher: Profesor
-        lessons: Clases
+        group_lessons: Clases grupales
         new_lesson: Nueva clase
         my_lessons: Mis clases
         action: Acción
         add: Unirse
+        add_success: Te has unido a esta clase
         destroyed: Clase grupal eliminada
       new:
         create: Crear clase
         subject: Materia
         day_and_hour: Día y Horario
         group_lesson: Nueva clase grupal
+      edit:
+        group_lesson:  Clase grupal
+        update: Actualizar
+        update_success: Clase actualizada correctamente
     conversations:
       index:
         conversation: Chats

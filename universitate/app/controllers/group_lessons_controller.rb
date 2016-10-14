@@ -1,6 +1,7 @@
 class GroupLessonsController < ApplicationController
 
   def index
+    @search = GroupLessonSearch.new(search_params)
     @lessons = GroupLesson.all()
     @lessons = @lessons.all_except(current_user)
     @lessons = @lessons.page(params[:page])
@@ -17,8 +18,26 @@ class GroupLessonsController < ApplicationController
     end
   end
 
+  def search_params
+    @search_params ||= params.delete(:group_lesson_search) || {}
+  end
+
   def update
+    @lesson = GroupLesson.find(params[:id])
     binding.pry
+    if @lesson.teacher_profile == current_user.teacher_profile
+      @lesson.update_attributes(group_lesson_required_params)
+      flash.now[:notice] = I18n.t('views.group_lessons.edit.update_success')
+      redirect_to group_lessons_path
+    else
+      @lesson.students << current_user
+      if @lesson.save
+        flash.now[:notice] = I18n.t('views.group_lessons.index.add_success')
+        redirect_to group_lessons_path
+      else
+        render group_lessons_path
+      end
+    end
   end
 
   def new
@@ -30,17 +49,18 @@ class GroupLessonsController < ApplicationController
 
   def destroy
       @lesson = GroupLesson.find(params[:id])
-      @student = @lesson.students.find(current_user)
 
-      if @student
-        @student.group_lessons.delete(@lesson)
-      else
-        @lesson.delete
-      end
+      @lesson.delete
 
       flash[:success] = I18n.t('es.views.group_lessons.index.destroyed')
 
-      redirect_to group_lessons
+      redirect_to group_lessons_path
+  end
+
+
+  def update_lesson
+    @lesson = GroupLesson.find(params[:id])
+    @subjects = Subject.all()
   end
 
   def group_lesson_required_params

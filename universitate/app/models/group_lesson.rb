@@ -12,7 +12,7 @@
 
 class GroupLesson < ApplicationRecord
   belongs_to :teacher_profile
-  has_and_belongs_to_many :students, class_name: 'User'
+  has_and_belongs_to_many :students ,class_name: 'User', join_table: 'group_lessons_users'
   belongs_to :subject
 
   validates :teacher_profile_id, :day_and_hour, :subject_id, presence: true

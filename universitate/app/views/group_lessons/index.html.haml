@@ -14,7 +14,7 @@
             %a{"data-toggle" => "tab", :href => "#lessons"}
               %span.block.text-center
                 %i.fa.fa-user.fa-2x
-              = I18n.t("views.group_lessons.index.lessons")
+              = I18n.t("views.group_lessons.index.group_lessons")
             %li{ class: "#{'active' if @tab == 'my_lessons'}" }
               %a{"data-toggle" => "tab", :href => "#my_lessons"}
                 %span.block.text-center
@@ -24,10 +24,13 @@
         .tab-content
           #lessons.tab-pane.fade{ class: "#{'active in'}" }
             = render 'group_lessons', lessons: @lessons
+            = render 'group_lesson_filters', search: @search, url: group_lessons_path
           #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
             = render 'group_lessons', lessons: @my_lessons
 
 
+
+#update-modal.modal.fade
 = link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
   %span.btn.btn-success.btn-xs
     = I18n.t("views.group_lessons.index.new_lesson")

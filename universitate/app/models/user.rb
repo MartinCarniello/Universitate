@@ -37,6 +37,7 @@ class User < ApplicationRecord
   has_one :location
   has_many :subjects, through: :teacher_profile
   has_many :ratings, through: :teacher_profile
+  has_and_belongs_to_many :group_lessons, join_table: 'group_lessons_users'
 
 
   validates :first_name, :last_name, presence: true
