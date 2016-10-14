@@ -10,7 +10,7 @@
     .panel.panel-default
       .panel-tab.clearfix
         %ul.tab-bar.grey-tab
-          %li{ class: "#{'active'}" }
+          %li{ class: "#{'active' if @tab == 'lessons'}" }
             %a{"data-toggle" => "tab", :href => "#lessons"}
               %span.block.text-center
                 %i.fa.fa-user.fa-2x
@@ -22,12 +22,11 @@
                 = I18n.t("views.group_lessons.index.my_lessons")
       .panel-body
         .tab-content
-          #lessons.tab-pane.fade{ class: "#{'active in'}" }
+          #lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'lessons'}" }
             = render 'group_lessons', lessons: @lessons
             = render 'group_lesson_filters', search: @search, url: group_lessons_path
           #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
             = render 'group_lessons', lessons: @my_lessons
-
 
 
 #update-modal.modal.fade

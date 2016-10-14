@@ -6,12 +6,14 @@ class GroupLessonsController < ApplicationController
     @lessons = @lessons.all_except(current_user)
     @lessons = @lessons.page(params[:page])
     @my_lessons = GroupLesson.my_lessons(current_user)
+    @tab = 'lessons'
   end
 
   def create
     @group_lesson = GroupLesson.create(group_lesson_required_params)
     @subjects = Subject.all()
-    if @group_lesson.save
+    if @group_lesson.save!
+      flash.now[:notice] = I18n.t('views.group_lessons.new.success')
       redirect_to group_lessons_path
     else
       render :new , subjects: @subjects
@@ -24,14 +26,16 @@ class GroupLessonsController < ApplicationController
 
   def update
     @lesson = GroupLesson.find(params[:id])
-    binding.pry
+
     if @lesson.teacher_profile == current_user.teacher_profile
-      @lesson.update_attributes(group_lesson_required_params)
-      flash.now[:notice] = I18n.t('views.group_lessons.edit.update_success')
-      redirect_to group_lessons_path
+      if @lesson.update_attributes(group_lesson_required_params)
+        flash.now[:notice] = I18n.t('views.group_lessons.edit.update_success')
+        notify_students(@lesson)
+        redirect_to group_lessons_path
+      end
     else
       @lesson.students << current_user
-      if @lesson.save
+      if @lesson.save!
         flash.now[:notice] = I18n.t('views.group_lessons.index.add_success')
         redirect_to group_lessons_path
       else
@@ -49,11 +53,8 @@ class GroupLessonsController < ApplicationController
 
   def destroy
       @lesson = GroupLesson.find(params[:id])
-
       @lesson.delete
-
-      flash[:success] = I18n.t('es.views.group_lessons.index.destroyed')
-
+      flash[:success] = I18n.t('es.views.group_lessons.edit.destroyed')
       redirect_to group_lessons_path
   end
 
@@ -70,6 +71,14 @@ class GroupLessonsController < ApplicationController
     when 'update'
       params.require(:group_lesson).permit(:user_id, :day_and_hour, :subject_id)
     else
+    end
+  end
+
+  private
+
+  def notify_students(lesson)
+    lesson.students.each  do |stu|
+      UserMailer.group_lesson_modified(stu,lesson)
     end
   end
 end

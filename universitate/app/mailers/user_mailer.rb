@@ -8,4 +8,9 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: 'Someone made a comment about you')
   end
+
+  def group_lesson_modified(user,lesson)
+    @user = user
+    mail(to: @user.email, subject: 'Your group lesson of #{lesson.subject.name} was modified')
+  end
 end
