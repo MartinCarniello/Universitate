@@ -1,8 +1,3 @@
-development:
-  cloud_name: fake
-  api_key: 777
-  api_secret: 888
-
 production:
   cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
   api_key: <%= ENV["CLOUDINARY_API_KEY"] %>

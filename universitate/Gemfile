@@ -56,7 +56,6 @@ gem 'devise'
 
 # Images
 gem 'carrierwave'
-gem 'cloudinary'
 
 # Roles
 gem 'rolify'
@@ -108,6 +107,9 @@ end
 group :production do
   # Precompiles
   gem 'rails_12factor'
+
+  # Images
+  gem 'cloudinary'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
