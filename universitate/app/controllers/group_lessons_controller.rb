@@ -4,9 +4,10 @@ class GroupLessonsController < ApplicationController
     @search = GroupLessonSearch.new(search_params)
     @lessons = GroupLesson.all()
     @lessons = @lessons.all_except(current_user)
-    @lessons = @lessons.page(params[:page])
     @my_lessons = GroupLesson.my_lessons(current_user)
     @tab = 'lessons'
+    @added_lessons = GroupLesson.added_lessons(current_user)
+
   end
 
   def create

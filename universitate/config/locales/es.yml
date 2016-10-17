@@ -51,6 +51,7 @@ es:
         add: Unirse
         add_success: Te has unido a esta clase
         destroyed: Clase grupal eliminada
+        added_lessons: Clases a asisitir
       new:
         create: Crear clase
         subject: Materia
