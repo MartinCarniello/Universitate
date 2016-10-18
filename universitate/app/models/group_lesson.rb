@@ -21,7 +21,7 @@ class GroupLesson < ApplicationRecord
   scope :all_except, -> (user) { where.not(teacher_profile: user.teacher_profile)}
   scope :added_lessons, -> (user) { joins( :students).where("user_id = ?", user) }
 
-  scope :with_display_name, -> (display_name) { joins(:teacher_profile).where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
+  scope :with_display_name, -> (display_name) { joins(teacher_profile: :user).where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { where(subject_id: subject) }
 
 end

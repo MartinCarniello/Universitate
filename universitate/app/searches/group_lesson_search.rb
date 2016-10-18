@@ -7,10 +7,6 @@ class GroupLessonSearch < Searchlight::Search
     GroupLesson.all
   end
 
-  def search_complete_name_like
-    query.with_display_name(options[:complete_name_like])
-  end
-
   def search_subject_eq
     query.with_subjects(options[:subject_eq])
   end

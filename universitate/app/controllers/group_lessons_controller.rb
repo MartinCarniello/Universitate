@@ -25,6 +25,7 @@ class GroupLessonsController < ApplicationController
     @search_params ||= params.delete(:group_lesson_search) || {}
   end
 
+
   def update
     @lesson = GroupLesson.find(params[:id])
 
