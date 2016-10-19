@@ -7,6 +7,7 @@ class GroupLessonsController < ApplicationController
     @my_lessons = GroupLesson.my_lessons(current_user)
     @tab = 'lessons'
     @added_lessons = GroupLesson.added_lessons(current_user)
+    binding.pry
 
   end
 

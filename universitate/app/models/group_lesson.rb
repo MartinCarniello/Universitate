@@ -18,10 +18,9 @@ class GroupLesson < ApplicationRecord
   validates :teacher_profile_id, :day_and_hour, :subject_id, presence: true
 
   scope :my_lessons, -> (user) { where(teacher_profile: user.teacher_profile) }
-  scope :all_except, -> (user) { where.not(teacher_profile: user.teacher_profile)}
+  scope :all_except, -> (user) { where.not(teacher_profile: user.teacher_profile) }
   scope :added_lessons, -> (user) { joins( :students).where("user_id = ?", user) }
 
-  scope :with_display_name, -> (display_name) { joins(teacher_profile: :user).where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
-  scope :with_subjects , -> (subject) { where(subject_id: subject) }
+  scope :with_subjects , -> (subject) { where("subjects.id = ?", subject) }
 
 end
