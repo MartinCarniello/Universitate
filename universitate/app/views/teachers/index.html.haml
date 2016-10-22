@@ -8,6 +8,6 @@
     .grey-container.text-right
       = link_to I18n.t("views.users.index.sign_in") , user_session_path, method: :post, class: 'btn btn-sm btn-info'
 
-  = render 'teacher_filters', search: @search, url: teachers_path
+  = render 'teacher_filters', params: @params, search: @search, url: teachers_path
 
   = render 'teachers_table', teachers: @teachers

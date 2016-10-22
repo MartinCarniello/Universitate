@@ -89,3 +89,43 @@ textarea{
 .btn-reply-rating {
   height: 48px;
 }
+
+.form-group input[type="checkbox"] {
+    display: none;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span {
+    width: 20px;
+}
+
+.form-group input[type="checkbox"] + .btn-group > label span:first-child {
+    display: none;
+}
+.form-group input[type="checkbox"] + .btn-group > label span:last-child {
+    display: inline-block;   
+}
+
+.form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+    display: inline-block;
+}
+.form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+    display: none;   
+}
+
+.rating-sort {
+  margin-top: 0.5%;
+  width: 100%;
+
+  .rating-checkbox {
+    width: 10%;
+  }
+
+  .rating-label {
+    background-color: white !important;
+    width: 90%;
+
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+}

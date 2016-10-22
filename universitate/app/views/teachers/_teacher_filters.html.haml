@@ -12,13 +12,37 @@
           .form-group
             = f.label I18n.t("views.users.index.name_and_last_name")
             %br/
-            = f.text_field :complete_name_like, class: 'form-control'
+            = f.text_field :complete_name_like, class: 'form-control input-sm bounceIn animation-delay4'
 
         .col-xs-6
           .form-group
             = f.label I18n.t("views.teacher_profile.edit.subjects")
             %br/
-            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control'
+            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
+      
+      .row
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.users.index.location_sort")
+            %br/
+            / = f.text_field :location_sort_asc, class: 'form-control'
+            = f.hidden_field :lat, class: 'js-lat-attribute'
+            = f.hidden_field :lng, class: 'js-lng-attribute'
+            = f.hidden_field :full_address, class: 'js-full-address-attribute'
+            = text_field_tag "location_name", params.try(:[], :location).try(:[], :name), class: "form-control input-sm bounceIn animation-delay4", id: "js-location-input", name: "location[name]"
+
+        .col-xs-6
+          .form-group
+            %label
+            %br/
+            %input{ type: "checkbox", name: "user_search[rating_sort_desc]", id: "user_search_rating_sort_desc", autocomplete: "off" }
+            .btn-group.rating-sort
+              %label{ for: "user_search_rating_sort_desc", class: "btn btn-info rating-checkbox input-sm bounceIn animation-delay4" }
+                %span.glyphicon.glyphicon-ok
+                %span
+              %label{ for: "user_search_rating_sort_desc", class: "btn btn-default rating-label input-sm bounceIn animation-delay4" }
+                = I18n.t('views.users.index.rating_sort')
+
       %hr/
 
       .pull-right

@@ -6,9 +6,9 @@ var initAutocomplete = function() {
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
       var place = autocomplete.getPlace();
-      $("#user_location_attributes_full_address").val($(input).val());
-      $("#user_location_attributes_lat").val(place.geometry.location.lat());
-      $("#user_location_attributes_lng").val(place.geometry.location.lng());
+      $(".js-full-address-attribute").val($(input).val());
+      $(".js-lat-attribute").val(place.geometry.location.lat());
+      $(".js-lng-attribute").val(place.geometry.location.lng());
     });
   }
 };

@@ -41,9 +41,16 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}
 
+  scope :teachers, -> { joins(:roles).where('roles.name = ?', 'teacher') }
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
   scope :except_user, -> (user) { where.not(id: user.id) }
+  scope :best_rated, -> { select('users.*, (CASE WHEN count(ratings.*) = 0 THEN 0 ELSE avg(ratings.value) END) AS user_rating')
+                          .joins(:teacher_profile)
+                          .joins('LEFT OUTER JOIN ratings ON teacher_profiles.id = ratings.teacher_profile_id')
+                          .group('users.id')
+                          .order('user_rating DESC')
+                        }
   
 
   delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, :rating, :avg_rating, to: :teacher_profile, prefix: true

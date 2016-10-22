@@ -56,6 +56,8 @@ es:
         sign_in: Iniciar Sesión
         wanna_be_teacher: Quiero ser Profesor
         name_and_last_name: Nombre y Apellido
+        location_sort: Más Cercano A
+        rating_sort: Mejor Puntuado
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros

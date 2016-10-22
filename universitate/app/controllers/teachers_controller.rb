@@ -2,8 +2,9 @@ class TeachersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @params = params
     @search = UserSearch.new(search_params)
-    @teachers = @search.results.with_role(:teacher)
+    @teachers = @search.results
     @teachers = @teachers.except_user(current_user) if user_signed_in?
     @teachers = @teachers.page(params[:page])
   end
@@ -37,10 +38,6 @@ class TeachersController < ApplicationController
       @tab = 'edit-profile'
       render :show
     end
-  end
-
-  def search_params
-    @search_params ||= params.delete(:user_search) || {}
   end
 
   def new
@@ -79,5 +76,11 @@ class TeachersController < ApplicationController
   def user_params
     params_ret = params.require(:user).permit(:first_name, :last_name, location_attributes: [:id, :lat, :lng, :full_address], teacher_profile_attributes: [:description, :id, :hour_rate, subject_ids: [], works_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], studies_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
     params[:location][:name].blank? ? params_ret.except(:location_attributes) : params_ret
+  end
+
+  def search_params
+    @search_params ||= params.delete(:user_search) || {}
+    @search_params.merge!(rating_sort_desc: 'off') if @search_params[:rating_sort_desc].blank?
+    @search_params
   end
 end
