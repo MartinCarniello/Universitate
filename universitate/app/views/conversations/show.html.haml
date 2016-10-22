@@ -9,8 +9,9 @@
           = @conversation.decorate.linked_user_display_name
 
       .chat-message
-        .text-center.js-load-more-messages
-          = render 'load_more_messages', conversation: @conversation, page: @page + 1        
+        - if @conversation.persisted?
+          .text-center.js-load-more-messages
+            = render 'load_more_messages', conversation: @conversation, page: @page + 1        
         %ul.chat
           - MessageDecorator.decorate_collection(@messages.sort { |x, y| x.created_at <=> y.created_at }).each do |message|
             = render 'message_row', message: message
