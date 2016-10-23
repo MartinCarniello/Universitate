@@ -19,8 +19,7 @@ class GroupLesson < ApplicationRecord
 
   scope :my_lessons, -> (user) { where(teacher_profile: user.teacher_profile) }
   scope :all_except, -> (user) { where.not(teacher_profile: user.teacher_profile) }
-  scope :added_lessons, -> (user) { joins( :students).where("user_id = ?", user) }
-
+  
   scope :with_subjects , -> (subject) { where("subjects.id = ?", subject) }
 
 end

@@ -6,9 +6,6 @@ class GroupLessonsController < ApplicationController
     @lessons = @lessons.all_except(current_user)
     @my_lessons = GroupLesson.my_lessons(current_user)
     @tab = 'lessons'
-    @added_lessons = GroupLesson.added_lessons(current_user)
-    binding.pry
-
   end
 
   def create
