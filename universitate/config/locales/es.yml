@@ -39,6 +39,30 @@ es:
       conversation: Chat
       institutions: Instituciones
       group_classes: Clases Grupales
+    group_lessons:
+      index:
+        subject: Materia
+        day_and_hour: Día y Horario
+        teacher: Profesor
+        group_lessons: Clases grupales
+        new_lesson: Nueva clase
+        my_lessons: Mis clases
+        action: Acción
+        add: Unirse
+        add_success: Te has unido a esta clase
+        destroyed: Clase grupal eliminada
+        added_lessons: Clases a asisitir
+      new:
+        create: Crear clase
+        subject: Materia
+        day_and_hour: Día y Horario
+        group_lesson: Nueva clase grupal
+        success: Clase creada correctamente
+      edit:
+        group_lesson:  Clase grupal
+        update: Actualizar
+        update_success: Clase actualizada correctamente
+        destroyed: Clase eliminada correctamete
     conversations:
       index:
         conversation: Chats
@@ -92,6 +116,8 @@ es:
         period_start: Desde
         period_end: Hasta
         rate: Calificar
+        group_lessons: Clases grupales
+        new_lesson: Nueva clase grupal
       edit:
         updated_successfuly: Los datos de perfil se han guardado correctamente
         description: Descripción

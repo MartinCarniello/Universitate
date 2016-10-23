@@ -1,0 +1,6 @@
+<% unless @lesson.errors.empty? %>
+  $("#update-modal").html("<%= j(render partial: 'update_lesson', locals: { lesson: @lesson , subjects: @subjects}) %>");
+<% else %>
+  $("#update-modal").modal("toggle");
+  swal('', '<%= flash[:notice] %>', 'success');
+<% end %>

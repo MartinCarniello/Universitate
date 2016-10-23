@@ -1,0 +1,17 @@
+.row
+  .col-md-8
+    .panel-heading
+      .h3
+        = I18n.t("views.group_lessons.index.group_lessons", class:'lessons')
+      .panel-body
+        %table.table.table-hover.table-striped
+          %thead
+            %tr
+              %th= I18n.t("views.group_lessons.index.subject")
+              %th= I18n.t("views.group_lessons.index.day_and_hour")
+              %th= I18n.t("views.group_lessons.index.teacher")
+              %th= I18n.t("views.group_lessons.index.action")
+          %tbody
+          -unless lessons.nil?
+            - lessons.each do |lesson|
+              = render 'group_lessons_row', lesson: lesson

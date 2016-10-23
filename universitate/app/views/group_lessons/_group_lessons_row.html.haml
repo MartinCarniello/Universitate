@@ -1,0 +1,18 @@
+%tr
+  %td
+    = lesson.subject.name
+  %td.datetimepicker
+    = lesson.day_and_hour
+  %td
+    = lesson.teacher_profile.user.decorate.display_name
+  %td
+    - if lesson.teacher_profile == current_user.teacher_profile
+      = link_to group_lesson_path(lesson), method: :delete,  data: { confirm: 'Are you sure?' } do
+        %i.fa.fa-trash-o.fa-lg.text-danger
+
+      = link_to update_lesson_path(lesson), method: :get, remote: true do
+        %i.fa.fa-edit.fa-lg
+    - else
+      -unless lesson.students.include?(current_user)
+        = link_to group_lesson_path(lesson), method: :put,  data: { confirm: 'Desea unirse a esta clase?' } do
+          %span.btn.btn-success.btn-xs.m-left-xs Unirse

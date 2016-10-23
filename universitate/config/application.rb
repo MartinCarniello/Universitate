@@ -16,6 +16,9 @@ module Universitate
       "<div class=\"field_with_errors\">#{html_tag}<span class=\"help-block red\">&nbsp;#{instance.error_message.uniq.join(', ')}</span></div>".html_safe
     }
 
+    config.i18n.default_locale = 'es'
+    config.time_zone = 'Buenos Aires'
+
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

@@ -15,6 +15,8 @@
 //= require bootstrap.min
 //= require bootstrap-datepicker.min
 //= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require pace.min.js
 //= require jquery.cookie.min.js
 //= require jquery.popupoverlay.min.js
@@ -35,6 +37,7 @@
 //= require inputmask.numeric.extensions
 //= require inputmask.date.extensions
 //= require rating.js
+//= require group_lessons.js
 //= require sweetalert2.js
 
 (function() {
@@ -50,3 +53,33 @@
 
   $(document).ready(ready);
 })();
+
+
+//override data-confirm
+$.rails.allowAction = function(link){
+  if (link.data("confirm") == undefined){
+    return true;
+  }
+  $.rails.showConfirmationDialog(link);
+  return false;
+}
+
+//User click confirm button
+$.rails.confirmed = function(link){
+  link.data("confirm", null);
+  link.trigger("click.rails");
+}
+
+//Display the confirmation dialog
+$.rails.showConfirmationDialog = function(link){
+  var message = link.data("confirm");
+  swal({
+    title: message,
+    type: 'warning',
+    confirmButtonText: 'Sure',
+    confirmButtonColor: '#2acbb3',
+    showCancelButton: true
+  }).then(function(e){
+    $.rails.confirmed(link);
+  });
+};

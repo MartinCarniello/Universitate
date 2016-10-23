@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading
+    %h2.text-center
+      %strong.orange
+        = I18n.t("views.users.index.teacher_filters.filters")
+
+  .panel-body
+    = form_for @search, url: url, method: :get, class: 'form-login' do |f|
+
+      .row
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.teacher_profile.edit.subjects")
+            %br/
+            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control'
+      %hr/
+
+      .pull-right
+        = link_to root_path, class: 'btn btn-danger', style: 'margin-right: 10px;' do
+          = fa_icon 'times-circle'
+          = I18n.t("views.users.index.teacher_filters.reset")
+        = f.button type: 'submit', class: 'btn btn-info' do
+          = fa_icon 'search'
+          = I18n.t("views.users.index.teacher_filters.search")

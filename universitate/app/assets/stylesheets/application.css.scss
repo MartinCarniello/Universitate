@@ -19,9 +19,11 @@
  *= require sweetalert2.css
  *= require chosen
  *= require chosen.min
+ *= require bootstrap-datetimepicker
  *= require_self
  *= require_tree .
  */
+
 
 body {
   background-image: url('/chat_background.png');

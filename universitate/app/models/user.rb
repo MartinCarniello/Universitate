@@ -37,6 +37,8 @@ class User < ApplicationRecord
   has_one :location
   has_many :subjects, through: :teacher_profile
   has_many :ratings, through: :teacher_profile
+  has_and_belongs_to_many :group_lessons, join_table: 'group_lessons_users'
+
 
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}
@@ -44,7 +46,7 @@ class User < ApplicationRecord
   scope :with_display_name, -> (display_name) { where("first_name || ' ' || last_name ILIKE ?", "%#{display_name}%") }
   scope :with_subjects , -> (subject) { joins(teacher_profile: :subjects).where("subjects.id = ?", subject) }
   scope :except_user, -> (user) { where.not(id: user.id) }
-  
+
 
   delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, :rating, :avg_rating, to: :teacher_profile, prefix: true
 
