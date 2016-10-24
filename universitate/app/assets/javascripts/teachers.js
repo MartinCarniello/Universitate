@@ -36,6 +36,26 @@ var initReplyComment = function(selectors) {
   });
 }
 
+var initSortRadios = function() {
+  $('#js-distance-radio').click(function(){
+    if ($(this).is(':checked')) {
+      $('#js-location-input').prop('disabled', false);
+    }
+  });
+
+  $('#js-rating-radio').click(function(){
+    if ($(this).is(':checked')) {
+      $('#js-location-input').prop('disabled', true);
+    }
+  });
+
+  $('#js-no-sort-radio').click(function(){
+    if ($(this).is(':checked')) {
+      $('#js-location-input').prop('disabled', true);
+    }
+  });
+};
+
 $(document).ready(function() {
   $(".js-teacher-form").on("cocoon:after-insert", function() {
     dateInputs();
@@ -44,4 +64,5 @@ $(document).ready(function() {
   initAvatarUploader();
   initAutocomplete();
   initReplyComment($(".js-reply-comment"));
+  initSortRadios();
 })

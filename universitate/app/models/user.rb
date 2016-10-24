@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :subjects, through: :teacher_profile
   has_many :ratings, through: :teacher_profile
 
+  acts_as_mappable :through => :location
+
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: {in: ['F','M']}
 
@@ -51,6 +53,7 @@ class User < ApplicationRecord
                           .group('users.id')
                           .order('user_rating DESC')
                         }
+  scope :order_by_distance, -> (lat, lng) { joins(:location).by_distance(origin: [lat, lng]) }
   
 
   delegate :description, :hour_rate, :user_id, :works, :studies, :subjects, :rating, :avg_rating, to: :teacher_profile, prefix: true

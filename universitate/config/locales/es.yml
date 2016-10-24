@@ -62,6 +62,10 @@ es:
           search: Buscar
           reset: Borrar Filtros
           filters: FILTROS
+          sorts: ORDENAMIENTOS
+          distance: Distancia
+          rating: Puntaje
+          no_sort: Desactivado
         teachers_table:
           teachers_title: PROFESORES
           teachers_empty_title: No se encontraron profesores

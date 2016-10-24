@@ -36,6 +36,7 @@ class TeachersController < ApplicationController
       @works = @user.teacher_profile_works
       @user.build_location if @user.location.blank?
       @tab = 'edit-profile'
+      @page = 1
       render :show
     end
   end
@@ -80,7 +81,8 @@ class TeachersController < ApplicationController
 
   def search_params
     @search_params ||= params.delete(:user_search) || {}
-    @search_params.merge!(rating_sort_desc: 'off') if @search_params[:rating_sort_desc].blank?
+    @search_params.merge!(rating_sort_desc: 'on') if @search_params[:sort_method] == 'rating_sort_desc'
+    @search_params.merge!(location_sort_asc: {}) unless @search_params[:sort_method] == 'location_sort_asc'
     @search_params
   end
 end

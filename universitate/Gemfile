@@ -66,6 +66,9 @@ gem 'searchlight'
 # Pagination
 gem 'kaminari'
 
+# Geocode
+gem 'geokit-rails'
+
 # Icons
 gem "font-awesome-rails"
 

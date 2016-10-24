@@ -17,12 +17,12 @@ class UserSearch < Searchlight::Search
     query.with_subjects(options[:subject_eq])
   end
 
-  def location_sort_asc
-
+  def search_location_sort_asc
+    options[:sort_method] == 'location_sort_asc' ? query.order_by_distance(options[:location_sort_asc][:lat], options[:location_sort_asc][:lng]) : query
   end
 
   def search_rating_sort_desc
-    options[:rating_sort_desc] == 'on' ? query.best_rated : query
+    options[:sort_method] == 'rating_sort_desc' ? query.best_rated : query
   end
 
 end
