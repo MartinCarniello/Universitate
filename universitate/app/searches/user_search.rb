@@ -3,8 +3,10 @@ require "searchlight/adapters/action_view"
 class UserSearch < Searchlight::Search
   include Searchlight::Adapters::ActionView
 
+  attr_accessor :lat, :lng, :full_address
+
   def base_query
-    User.all
+    User.teachers
   end
 
   def search_complete_name_like
@@ -13,6 +15,14 @@ class UserSearch < Searchlight::Search
 
   def search_subject_eq
     query.with_subjects(options[:subject_eq])
+  end
+
+  def search_location_sort_asc
+    options[:sort_method] == 'location_sort_asc' ? query.order_by_distance(options[:location_sort_asc][:lat], options[:location_sort_asc][:lng]) : query
+  end
+
+  def search_rating_sort_desc
+    options[:sort_method] == 'rating_sort_desc' ? query.best_rated : query
   end
 
 end
