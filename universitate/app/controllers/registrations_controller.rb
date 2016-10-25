@@ -9,8 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     if @user.save
       sign_in(:user, @user)
       redirect_to root_path
-      # FIXME: Remove comments when setup mailer in production
-      # UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
     else
       render :new
     end
