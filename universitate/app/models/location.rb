@@ -12,6 +12,8 @@
 #
 
 class Location < ApplicationRecord
+  acts_as_mappable
+
   belongs_to :user
 
   validates :user_id, :full_address, :lat, :lng, presence: true

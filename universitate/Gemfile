@@ -70,6 +70,9 @@ gem 'kaminari'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 
+# Geocode
+gem 'geokit-rails'
+
 # Icons
 gem "font-awesome-rails"
 
