@@ -1,6 +1,6 @@
 .modal-dialog
   .modal-content
-    = simple_form_for(lesson, url: group_lesson_path, method: :put) do |lesson_form|
+    = simple_form_for(lesson, url: group_lesson_path, method: :put, remote: true) do |lesson_form|
       .modal-header
         %button{ type:"button", class: "close", :'aria-label' => "Close", data: { dismiss: "modal" } }
           %span{ :'aria-hidden' => "true" }

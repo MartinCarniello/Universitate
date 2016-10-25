@@ -50,6 +50,7 @@ es:
         action: Acción
         add: Unirse
         add_success: Te has unido a esta clase
+        add_failed: No te has podido unir a esta clase
         destroyed: Clase grupal eliminada
         added_lessons: Clases a asisitir
       new:
@@ -62,6 +63,7 @@ es:
         group_lesson:  Clase grupal
         update: Actualizar
         update_success: Clase actualizada correctamente
+        update_failed: La clase no ha podido ser actualizada correctamente
         destroyed: Clase eliminada correctamete
     conversations:
       index:

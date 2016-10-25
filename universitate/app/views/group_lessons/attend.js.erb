@@ -1,0 +1,6 @@
+<% if @lesson.valid? %>
+  $("#lessons .js-group-lessons-table tr[data-id=" + "<%= @lesson.id %>" + "]").find(".js-group-lesson-action-button").remove();
+  swal('', '<%= flash[:notice] %>', 'success');
+<% else %>
+  swal('', '<%= flash[:danger] %>', 'error');
+<% end %>

@@ -2,5 +2,8 @@
   $("#update-modal").html("<%= j(render partial: 'update_lesson', locals: { lesson: @lesson , subjects: @subjects}) %>");
 <% else %>
   $("#update-modal").modal("toggle");
+  var group_lesson_row = $("#my_lessons .js-group-lessons-table tr[data-id=" + "<%= @lesson.id %>" + "]");
+  group_lesson_row.after("<%= j(render partial: 'group_lessons_row', locals: { lesson: @lesson.decorate }) %>");
+  group_lesson_row.remove();
   swal('', '<%= flash[:notice] %>', 'success');
 <% end %>
