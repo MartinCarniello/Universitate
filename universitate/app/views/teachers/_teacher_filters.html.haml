@@ -21,6 +21,15 @@
             = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
       
       .row
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.users.index.teacher_filters.rate_less_than")
+            .input-group
+              %span.input-group-addon
+                $
+              = f.text_field :rate_less_than, class: 'form-control input-sm bounceIn animation-delay4 js-decimal-mask'
+
+      .row
         %hr/
         
         %h2.text-center

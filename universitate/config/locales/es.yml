@@ -86,6 +86,7 @@ es:
           search: Buscar
           reset: Borrar Filtros
           filters: FILTROS
+          rate_less_than: Tarifa Por Hora Menor A
           sorts: ORDENAMIENTOS
           distance: Distancia
           rating: Puntaje

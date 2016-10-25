@@ -25,4 +25,8 @@ class UserSearch < Searchlight::Search
     options[:sort_method] == 'rating_sort_desc' ? query.best_rated : query
   end
 
+  def search_rate_less_than
+    query.joins(:teacher_profile).where('hour_rate <= ?', options[:rate_less_than].to_f)
+  end
+
 end
