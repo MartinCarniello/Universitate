@@ -40,3 +40,4 @@
           = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay5 pull-right' do
             = fa_icon 'sign-in'
             = I18n.t('views.sign_in.log_in')
+    = link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path
