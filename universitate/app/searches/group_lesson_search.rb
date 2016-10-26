@@ -11,4 +11,8 @@ class GroupLessonSearch < Searchlight::Search
     query.with_subjects(options[:subject_eq])
   end
 
+  def search_attending_group_lessons
+    query.joins(:students).where('users.id = ?', options[:current_user_id])
+  end
+
 end

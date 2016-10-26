@@ -97,6 +97,8 @@ class GroupLessonsController < ApplicationController
 
   def search_params
     @search_params ||= params.delete(:group_lesson_search) || {}
+    @search_params.merge!(current_user_id: current_user.id)
+    @search_params
   end
 
   def notify_students(lesson)
