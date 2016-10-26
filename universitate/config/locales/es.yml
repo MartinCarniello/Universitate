@@ -61,6 +61,7 @@ es:
         success: Clase creada correctamente
       edit:
         group_lesson:  Clase grupal
+        create: Crear
         update: Actualizar
         update_success: Clase actualizada correctamente
         update_failed: La clase no ha podido ser actualizada correctamente

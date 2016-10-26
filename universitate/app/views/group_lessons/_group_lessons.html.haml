@@ -11,10 +11,10 @@
               %th= I18n.t("views.group_lessons.index.day_and_hour")
               %th= I18n.t("views.group_lessons.index.teacher")
               %th= I18n.t("views.group_lessons.index.action")
-          %tbody
           - unless lessons.nil?
-            - lessons.each do |lesson|
-              = render 'group_lessons_row', lesson: lesson.decorate
+            %tbody
+              - lessons.each do |lesson|
+                = render 'group_lessons_row', lesson: lesson.decorate
         - if current_user.has_role?(:teacher)
           .pull-right
-            = link_to I18n.t("views.group_lessons.index.new_lesson"), new_group_lesson_path, class: 'btn btn-success'
+            = link_to I18n.t("views.group_lessons.index.new_lesson"), new_group_lesson_path, class: 'btn btn-success', remote: true
