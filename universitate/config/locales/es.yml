@@ -205,6 +205,12 @@ es:
               blank: El comentario no puede estar vacío
             value:
               blank: Debe elegir una puntuación
+        group_lesson:
+          attributes:
+            subject_id:
+              blank: Debe elegir una materia
+            day_and_hour:
+              blank: Debe elegir una fecha y un horario
   devise:
     sessions:
       user:
