@@ -13,7 +13,7 @@
       = link_to update_lesson_path(lesson), method: :get, remote: true do
         %i.fa.fa-edit.fa-lg
 
-      = link_to group_lesson_path(lesson), method: :delete,  data: { confirm: 'Are you sure?' } do
+      = link_to group_lesson_path(lesson), method: :delete, remote: true,  data: { confirm: 'Are you sure?' } do
         %i.fa.fa-trash-o.fa-lg.text-danger
     - else
       - unless lesson.students.include?(current_user)

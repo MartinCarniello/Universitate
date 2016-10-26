@@ -65,7 +65,7 @@ es:
         update: Actualizar
         update_success: Clase actualizada correctamente
         update_failed: La clase no ha podido ser actualizada correctamente
-        destroyed: Clase eliminada correctamete
+        destroyed: Clase eliminada correctamente
     conversations:
       index:
         conversation: Chats

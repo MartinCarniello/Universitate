@@ -54,14 +54,13 @@ class GroupLessonsController < ApplicationController
   end
 
   def destroy
-    @lesson = GroupLesson.find(params[:id])
-    @lesson.delete
-    flash[:success] = I18n.t('es.views.group_lessons.edit.destroyed')
-    @tab = 'my_lessons'
-    @search = GroupLessonSearch.new(search_params)
-    @lessons = GroupLesson.all_except(current_user)
-    @my_lessons = GroupLesson.my_lessons(current_user)
-    render :index
+    @group_lesson = GroupLesson.find(params[:id])
+    @group_lesson.delete
+    flash.now[:notice] = I18n.t('views.group_lessons.edit.destroyed')
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update_lesson
