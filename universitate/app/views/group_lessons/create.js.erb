@@ -1,9 +1,9 @@
 <% if @group_lesson.errors.empty? %>
-  $("#update-modal").modal("toggle");
+  $("#js-update-modal").modal("toggle");
   var group_lesson_row = $("#my_lessons .js-group-lessons-table tbody");
   group_lesson_row.append("<%= j(render partial: 'group_lessons_row', locals: { lesson: @group_lesson.decorate }) %>");
   swal('', '<%= flash[:notice] %>', 'success');
 <% else %>
-  $("#update-modal").html("<%= j(render partial: 'lesson_form', locals: { group_lesson: @group_lesson , subjects: @subjects}) %>");
+  $("#js-update-modal").html("<%= j(render partial: 'lesson_form', locals: { group_lesson: @group_lesson , subjects: @subjects}) %>");
   initialize_datetimepicker();
 <% end %>

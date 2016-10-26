@@ -8,6 +8,14 @@ class GroupLessonsController < ApplicationController
     @tab = params[:tab] || 'lessons'
   end
 
+  def show
+    @group_lesson = GroupLesson.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @teacher = current_user
     @group_lesson = GroupLesson.new
