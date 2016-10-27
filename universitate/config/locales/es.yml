@@ -165,6 +165,11 @@ es:
       send_instructions: Enviar Instrucciones
       change_password_title: Cambiá tu Contraseña
       change_password: Cambiar Contraseña
+  user_mailer:
+    subject:
+      welcome_message: Bienvenido a Universitate
+      rating_message: Alguien hizo un comentario acerca tuyo
+      group_lesson_modified_message: 'La clase grupal de %{subject_name} en la que estás inscripto ha sido modificada'
   activerecord:
     models:
       user: Usuario
