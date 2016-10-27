@@ -8,38 +8,44 @@ class GroupLessonsController < ApplicationController
     @tab = params[:tab] || 'lessons'
   end
 
+  def show
+    @group_lesson = GroupLesson.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @teacher = current_user
     @group_lesson = GroupLesson.new
     @group_lesson.teacher_profile = @teacher.teacher_profile
     @subjects = Subject.all
+
+    respond_to do |format|
+      format.js { render :lesson_form }
+    end
   end
 
   def create
-    @group_lesson = GroupLesson.create(group_lesson_required_params)
+    @group_lesson = GroupLesson.create(group_lesson_required_params.merge(teacher_profile_id: current_user.teacher_profile.id))
 
-    if @group_lesson.save!
-      flash.now[:notice] = I18n.t('views.group_lessons.new.success')
-      @tab = 'my_lessons'
-      @search = GroupLessonSearch.new(search_params)
-      @lessons = GroupLesson.all_except(current_user)
-      @my_lessons = GroupLesson.my_lessons(current_user)
-      render :index
-    else
-      @subjects = Subject.all
-      render :new, subjects: @subjects
+    @group_lesson.save ? flash.now[:notice] = I18n.t('views.group_lessons.new.success') : @subjects = Subject.all
+
+    respond_to do |format|
+      format.js
     end
   end
 
   def update
-    @lesson = GroupLesson.find(params[:id])
+    @group_lesson = GroupLesson.find(params[:id])
 
-    if @lesson.update_attributes(group_lesson_required_params)
+    if @group_lesson.update_attributes(group_lesson_required_params)
       flash.now[:notice] = I18n.t('views.group_lessons.edit.update_success')
       # FIXME: Descomentar cuando se arregle el mailer
-      # notify_students(@lesson)
+      # notify_students(@group_lesson)
     else
-      flash.now[:error] = I18n.t('views.group_lessons.edit.update_failed')
+      @subjects = Subject.all
     end
 
     respond_to do |format|
@@ -48,19 +54,22 @@ class GroupLessonsController < ApplicationController
   end
 
   def destroy
-    @lesson = GroupLesson.find(params[:id])
-    @lesson.delete
-    flash[:success] = I18n.t('es.views.group_lessons.edit.destroyed')
-    @tab = 'my_lessons'
-    @search = GroupLessonSearch.new(search_params)
-    @lessons = GroupLesson.all_except(current_user)
-    @my_lessons = GroupLesson.my_lessons(current_user)
-    render :index
+    @group_lesson = GroupLesson.find(params[:id])
+    @group_lesson.delete
+    flash.now[:notice] = I18n.t('views.group_lessons.edit.destroyed')
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update_lesson
-    @lesson = GroupLesson.find(params[:id])
+    @group_lesson = GroupLesson.find(params[:id])
     @subjects = Subject.all
+
+    respond_to do |format|
+      format.js { render :lesson_form }
+    end
   end
 
   def attend
@@ -88,6 +97,8 @@ class GroupLessonsController < ApplicationController
 
   def search_params
     @search_params ||= params.delete(:group_lesson_search) || {}
+    @search_params.merge!(current_user_id: current_user.id)
+    @search_params
   end
 
   def notify_students(lesson)

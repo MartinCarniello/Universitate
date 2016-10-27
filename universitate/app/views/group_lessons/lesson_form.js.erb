@@ -1,0 +1,3 @@
+$("#js-update-modal").html("<%= j(render partial: 'lesson_form', locals: { group_lesson: @group_lesson.decorate, subjects: @subjects}) %>");
+$("#js-update-modal").modal("show");
+initialize_datetimepicker();

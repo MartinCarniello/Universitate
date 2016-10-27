@@ -39,6 +39,7 @@
 //= require rating.js
 //= require group_lessons.js
 //= require sweetalert2.js
+//= require bootstrap-toggle.js
 
 (function() {
   function ready() {

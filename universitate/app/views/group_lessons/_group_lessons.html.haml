@@ -1,8 +1,11 @@
 .row
-  .col-md-6
+  .col-md-12
     .panel-heading
-      .h3
-        = I18n.t("views.group_lessons.index.group_lessons", class:'lessons')
+      %h2.text-center.text-success
+        %strong
+          = I18n.t("views.group_lessons.index.group_lessons")
+      %hr/
+      %br/
       .panel-body
         %table.table.table-hover.table-striped.js-group-lessons-table
           %thead
@@ -11,10 +14,10 @@
               %th= I18n.t("views.group_lessons.index.day_and_hour")
               %th= I18n.t("views.group_lessons.index.teacher")
               %th= I18n.t("views.group_lessons.index.action")
-          %tbody
           - unless lessons.nil?
-            - lessons.each do |lesson|
-              = render 'group_lessons_row', lesson: lesson.decorate
-        - if current_user.has_role?(:teacher)
+            %tbody
+              - lessons.each do |lesson|
+                = render 'group_lessons_row', lesson: lesson.decorate
+        - if partial == 'my_lessons'
           .pull-right
-            = link_to I18n.t("views.group_lessons.index.new_lesson"), new_group_lesson_path, class: 'btn btn-success'
+            = link_to I18n.t("views.group_lessons.index.new_lesson"), new_group_lesson_path, class: 'btn btn-success', remote: true

@@ -20,6 +20,7 @@
  *= require chosen
  *= require chosen.min
  *= require bootstrap-datetimepicker
+ *= require bootstrap-toggle
  *= require_self
  *= require_tree .
  */
@@ -108,6 +109,18 @@ textarea{
       border-color: #ccc;
     }
   }
+}
+
+// Toggle Button
+
+.toggle.btn.btn-default {
+    height: 30px !important;
+    min-height: 30px;
+}
+
+.toggle.btn.btn-primary {
+    height: 30px !important;
+    min-height: 30px;
 }
 
 // Radio Buttons
