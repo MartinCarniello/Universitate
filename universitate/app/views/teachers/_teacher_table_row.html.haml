@@ -1,8 +1,17 @@
+- rating = teacher.teacher_profile_avg_rating
+
 %li.w3-padding-16.js-row-clickable{ data: { href: teacher_path(teacher) } }
   = image_tag teacher.avatar_url, class: 'w3-left w3-circle w3-margin-right', style: "width: 100px; height: 100px;"
   %br/
   %span.w3-xlarge
     = teacher.display_name
+  .pull-right
+    - if rating.present?
+      - rating.round.times do
+        .stars.inline
+          %span.star.fullStar
+    - else
+      %span.star.tmp_fs
   %br/
   %h4.grey
     = teacher.subjects.map(&:name).join(", ")

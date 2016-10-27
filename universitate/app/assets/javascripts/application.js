@@ -39,6 +39,7 @@
 //= require rating.js
 //= require group_lessons.js
 //= require sweetalert2.js
+//= require bootstrap-toggle.js
 
 (function() {
   function ready() {
@@ -76,9 +77,10 @@ $.rails.showConfirmationDialog = function(link){
   swal({
     title: message,
     type: 'warning',
-    confirmButtonText: 'Sure',
+    confirmButtonText: 'Aceptar',
     confirmButtonColor: '#2acbb3',
-    showCancelButton: true
+    showCancelButton: true,
+    cancelButtonText: 'Cancelar'
   }).then(function(e){
     $.rails.confirmed(link);
   });

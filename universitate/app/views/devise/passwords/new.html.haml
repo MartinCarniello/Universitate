@@ -1,10 +1,29 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+.login-wrapper
+  .text-center
+    %h2.fadeInUp.animation-delay5{ style: 'font-weight:bold' }
+      %span.text-success
+        = I18n.t('brand.pre')
+      %span.orange{ style: 'text-shadow:0 1px #fff; margin-left: -5px;' }
+        = I18n.t('brand.post')
+  .login-widget.animation-delay1
+    .panel.panel-default
+      .panel-heading.clearfix
+        .pull-left
+          = I18n.t('views.forgot_password.title')
+        .pull-right
+          %span{ style:'font-size:11px;' }
+            = I18n.t('views.forgot_password.have_account')
+          = link_to new_user_session_path, class: 'btn btn-default btn-xs login-link', style: 'margin-top:-2px;' do
+            = fa_icon 'sign-in'
+            = I18n.t('views.forgot_password.log_in')
+      .panel-body
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          .form-group
+            %label
+              = I18n.t('activerecord.attributes.user.email')
+            %br/
+            = f.email_field :email, autofocus: true, class: 'form-control input-sm bounceIn animation-delay2'
+          %hr/
+          = f.button :submit, class: 'btn btn-success btn-sm bounceIn animation-delay5 pull-right' do
+            = fa_icon 'envelope-o'
+            = I18n.t('views.forgot_password.send_instructions')

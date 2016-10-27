@@ -1,18 +1,21 @@
-%tr
+%tr{ data: { id: lesson.id } }
   %td
-    = lesson.subject.name
-  %td.datetimepicker
+    = lesson.subject_name
+  %td
     = lesson.day_and_hour
   %td
-    = lesson.teacher_profile.user.decorate.display_name
-  %td
+    = lesson.teacher_profile_user.decorate.display_name
+  %td.js-group-lesson-action-button
     - if lesson.teacher_profile == current_user.teacher_profile
-      = link_to group_lesson_path(lesson), method: :delete,  data: { confirm: 'Are you sure?' } do
-        %i.fa.fa-trash-o.fa-lg.text-danger
+      = link_to group_lesson_path(lesson), remote: true do
+        %i.fa.fa-eye.fa-lg.text-success
 
       = link_to update_lesson_path(lesson), method: :get, remote: true do
         %i.fa.fa-edit.fa-lg
+
+      = link_to group_lesson_path(lesson), method: :delete, remote: true,  data: { confirm: 'Are you sure?' } do
+        %i.fa.fa-trash-o.fa-lg.text-danger
     - else
-      -unless lesson.students.include?(current_user)
-        = link_to group_lesson_path(lesson), method: :put,  data: { confirm: 'Desea unirse a esta clase?' } do
+      - unless lesson.students.include?(current_user)
+        = link_to group_lesson_attend_path(group_lesson_id: lesson.id), method: :put,  data: { confirm: 'Desea unirse a esta clase?' }, remote: true do
           %span.btn.btn-success.btn-xs.m-left-xs Unirse

@@ -5,20 +5,65 @@
         = I18n.t("views.users.index.teacher_filters.filters")
 
   .panel-body
-    = form_for @search, url: url, method: :get, class: 'form-login' do |f|
+    = form_for search, url: url, method: :get, class: 'form-login' do |f|
 
       .row
         .col-xs-6
           .form-group
             = f.label I18n.t("views.users.index.name_and_last_name")
             %br/
-            = f.text_field :complete_name_like, class: 'form-control'
+            = f.text_field :complete_name_like, class: 'form-control input-sm bounceIn animation-delay4'
 
         .col-xs-6
           .form-group
             = f.label I18n.t("views.teacher_profile.edit.subjects")
             %br/
-            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control'
+            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
+      
+      .row
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.users.index.teacher_filters.rate_less_than")
+            .input-group
+              %span.input-group-addon
+                $
+              = f.text_field :rate_less_than, class: 'form-control input-sm bounceIn animation-delay4 js-decimal-mask'
+
+      .row
+        %hr/
+        
+        %h2.text-center
+          %strong.orange
+            = I18n.t("views.users.index.teacher_filters.sorts")
+
+        %hr/
+
+        .funkyradio
+          .col-xs-12
+            .funkyradio-primary
+              %input{ type: "radio", name: "user_search[sort_method]", id: "js-no-sort-radio", value: 'no_sort', checked: search.options.try(:[], :sort_method).blank? || search.options.try(:[], :sort_method) == 'no_sort' }
+              %label{ for: "js-no-sort-radio", class: 'input-sm bounceIn animation-delay4' }
+                = I18n.t("views.users.index.teacher_filters.no_sort")
+          .col-xs-12
+            .funkyradio-primary
+              %input{ type: "radio", name: "user_search[sort_method]", id: "js-rating-radio", value: 'rating_sort_desc', checked: search.options.try(:[], :sort_method) == 'rating_sort_desc' }
+              %label{ for: "js-rating-radio", class: 'input-sm bounceIn animation-delay4' }
+                = I18n.t("views.users.index.teacher_filters.rating")
+          .col-xs-6
+            .funkyradio-primary
+              %input{ type: "radio", name: "user_search[sort_method]", id: "js-distance-radio", value: 'location_sort_asc', checked: search.options.try(:[], :sort_method) == 'location_sort_asc' }
+              %label{ for: "js-distance-radio", class: 'input-sm bounceIn animation-delay4' }
+                = I18n.t("views.users.index.teacher_filters.distance")
+
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.users.index.location_sort")
+            %br/
+            = hidden_field_tag 'user_search[location_sort_asc][lat]', search.try(:options).try(:[], :location_sort_asc).try(:[], :lat), class: 'js-lat-attribute'
+            = hidden_field_tag 'user_search[location_sort_asc][lng]', search.try(:options).try(:[], :location_sort_asc).try(:[], :lng), class: 'js-lng-attribute'
+            = hidden_field_tag 'user_search[location_sort_asc][full_address]', search.try(:options).try(:[], :location_sort_asc).try(:[], :full_address), class: 'js-full-address-attribute'
+            = text_field_tag "location_name", search.try(:options).try(:[], :location_sort_asc).try(:[], :full_address), class: "form-control input-sm bounceIn animation-delay4", id: "js-location-input", name: "location[name]", disabled: search.options.try(:[], :sort_method) != 'location_sort_asc'
+
       %hr/
 
       .pull-right

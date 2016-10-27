@@ -5,18 +5,24 @@
         = I18n.t("views.users.index.teacher_filters.filters")
 
   .panel-body
-    = form_for @search, url: url, method: :get, class: 'form-login' do |f|
+    = form_for search, url: url, method: :get, class: 'form-login' do |f|
 
       .row
         .col-xs-6
           .form-group
             = f.label I18n.t("views.teacher_profile.edit.subjects")
             %br/
-            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control'
+            = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
+        .col-xs-6
+          .form-group
+            = f.label I18n.t("views.group_lessons.index.added_lessons")
+            %br/
+            .bounceIn.animation-delay4
+              %input{ name: "group_lesson_search[attending_group_lessons]", type: "checkbox", checked: search.options.try(:[], :attending_group_lessons), data: { toggle: "toggle" } }
       %hr/
 
       .pull-right
-        = link_to root_path, class: 'btn btn-danger', style: 'margin-right: 10px;' do
+        = link_to group_lessons_path, class: 'btn btn-danger', style: 'margin-right: 10px;' do
           = fa_icon 'times-circle'
           = I18n.t("views.users.index.teacher_filters.reset")
         = f.button type: 'submit', class: 'btn btn-info' do

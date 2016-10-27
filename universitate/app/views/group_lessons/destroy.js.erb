@@ -1,0 +1,2 @@
+$("#my_lessons .js-group-lessons-table tr[data-id=" + "<%= @group_lesson.id %>" + "]").remove();
+swal('', '<%= flash[:notice] %>', 'success');

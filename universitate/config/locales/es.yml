@@ -50,6 +50,7 @@ es:
         action: Acción
         add: Unirse
         add_success: Te has unido a esta clase
+        add_failed: No te has podido unir a esta clase
         destroyed: Clase grupal eliminada
         added_lessons: Clases a asisitir
       new:
@@ -60,9 +61,11 @@ es:
         success: Clase creada correctamente
       edit:
         group_lesson:  Clase grupal
+        create: Crear
         update: Actualizar
         update_success: Clase actualizada correctamente
-        destroyed: Clase eliminada correctamete
+        update_failed: La clase no ha podido ser actualizada correctamente
+        destroyed: Clase eliminada correctamente
     conversations:
       index:
         conversation: Chats
@@ -80,10 +83,17 @@ es:
         sign_in: Iniciar Sesión
         wanna_be_teacher: Quiero ser Profesor
         name_and_last_name: Nombre y Apellido
+        location_sort: Más Cercano A
+        rating_sort: Mejor Puntuado
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
           filters: FILTROS
+          rate_less_than: Tarifa Por Hora Menor A
+          sorts: ORDENAMIENTOS
+          distance: Distancia
+          rating: Puntaje
+          no_sort: Desactivado
         teachers_table:
           teachers_title: PROFESORES
           teachers_empty_title: No se encontraron profesores
@@ -146,8 +156,15 @@ es:
       sign_up_title: Registrarse
       sign_up: Registrarse
       have_account: Ya tenés una cuenta?
-      sign_in: iniciá sesión
+      sign_in: Iniciá Sesión
       password_length: caracteres mínimos
+    forgot_password:
+      title: Recupera tu contraseña
+      log_in: Iniciá Sesión
+      have_account: Tenés una cuenta?
+      send_instructions: Enviar Instrucciones
+      change_password_title: Cambiá tu Contraseña
+      change_password: Cambiar Contraseña
   activerecord:
     models:
       user: Usuario
@@ -181,6 +198,7 @@ es:
               blank: El email no puede estar vacío
             password:
               blank: La contraseña no puede estar vacía
+              too_short: Debe ser más larga
             password_confirmation:
               confirmation: La confirmación de contraseña no puede estar vacía
             gender:
@@ -195,6 +213,12 @@ es:
               blank: El comentario no puede estar vacío
             value:
               blank: Debe elegir una puntuación
+        group_lesson:
+          attributes:
+            subject_id:
+              blank: Debe elegir una materia
+            day_and_hour:
+              blank: Debe elegir una fecha y un horario
   devise:
     sessions:
       user:

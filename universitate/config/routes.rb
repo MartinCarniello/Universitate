@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :ratings, only: [:index, :create, :update]
 
-  resources :group_lessons
+  resources :group_lessons do
+    put :attend
+  end
 
   resources :conversations do
     get :load_more_messages

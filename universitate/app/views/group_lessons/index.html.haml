@@ -7,30 +7,30 @@
           = I18n.t("views.teacher_profile.show.home")
       %li
         = I18n.t("views.teacher_profile.show.group_lessons")
-    .panel.panel-default
-      .panel-tab.clearfix
-        %ul.tab-bar.grey-tab
-          %li{ class: "#{'active' if @tab == 'lessons'}" }
-            %a{"data-toggle" => "tab", :href => "#lessons"}
+  .panel.panel-default
+    .panel-tab.clearfix
+      %ul.tab-bar.grey-tab
+        %li{ class: "#{'active' if @tab == 'lessons'}" }
+          %a{"data-toggle" => "tab", :href => "#lessons"}
+            %span.block.text-center
+              %i.fa.fa-user.fa-2x
+            = I18n.t("views.group_lessons.index.group_lessons")
+        - if current_user.has_role?(:teacher)
+          %li{ class: "#{'active' if @tab == 'my_lessons'}" }
+            %a{"data-toggle" => "tab", :href => "#my_lessons"}
               %span.block.text-center
-                %i.fa.fa-user.fa-2x
-              = I18n.t("views.group_lessons.index.group_lessons")
-            %li{ class: "#{'active' if @tab == 'my_lessons'}" }
-              %a{"data-toggle" => "tab", :href => "#my_lessons"}
-                %span.block.text-center
-                  %i.fa.fa-edit.fa-2x
-                = I18n.t("views.group_lessons.index.my_lessons")
-            
-      .panel-body
-        .tab-content
-          #lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'lessons'}" }
-            = render 'group_lessons', lessons: @lessons
-          #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
-            = render 'group_lessons', lessons: @my_lessons
-      = render 'group_lesson_filters', search: @search, url: group_lessons_path
+                %i.fa.fa-edit.fa-2x
+              = I18n.t("views.group_lessons.index.my_lessons")
+          
+    .panel-body
+      .tab-content
+        #lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'lessons'}" }
+          .w3-container
+            = render 'group_lesson_filters', search: @search, url: group_lessons_path
+            = render 'group_lessons', lessons: @lessons, partial: 'lessons'
+        #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
+          .w3-container
+            = render 'group_lessons', lessons: @my_lessons, partial: 'my_lessons'
 
-
-#update-modal.modal.fade
-= link_to new_group_lesson_path(teacher_id: current_user.id) ,class: 'btn btn-md' do
-  %span.btn.btn-success.btn-xs
-    = I18n.t("views.group_lessons.index.new_lesson")
+#js-show-modal.modal.fade
+#js-update-modal.modal.fade

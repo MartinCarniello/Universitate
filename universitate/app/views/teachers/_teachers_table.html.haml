@@ -5,7 +5,7 @@
         = I18n.t('views.users.index.teachers_table.teachers_title')
     %hr/
     %br/
-    - if teachers.empty?
+    - if teachers.to_a.empty?
       .text-center
         %h3.grey
           %strong
