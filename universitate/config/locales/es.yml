@@ -170,6 +170,7 @@ es:
       welcome_message: Bienvenido a Universitate
       rating_message: Alguien hizo un comentario acerca tuyo
       group_lesson_modified_message: 'La clase grupal de %{subject_name} en la que estás inscripto ha sido modificada'
+      reset_password_instructions_message: Recuperar Contraseña
   activerecord:
     models:
       user: Usuario
