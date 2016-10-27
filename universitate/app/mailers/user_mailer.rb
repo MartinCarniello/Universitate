@@ -14,4 +14,10 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: I18n.t('user_mailer.subject.group_lesson_modified_message', subject_name: lesson.subject.name))
   end
+
+  def reset_password_instructions(record, token, opts={})
+    @user = record
+    @token = token
+    mail(to: @user.email, subject: I18n.t('user_mailer.subject.reset_password_instructions_message'))
+  end
 end
