@@ -11,6 +11,12 @@
         .pull-left
           = fa_icon 'plus-circle', class: 'fa-lg'
           = I18n.t('views.sign_up.sign_up_title')
+        .pull-right
+          %span{ style:'font-size:11px;' }
+            = I18n.t('views.sign_up.have_account')
+          = link_to new_user_session_path, class: 'btn btn-default btn-xs login-link', style: 'margin-top:-2px;' do
+            = fa_icon 'sign-in'
+            = I18n.t('views.sign_up.sign_in')
       .panel-body
         = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-login') do |f|
           .form-group
@@ -53,9 +59,6 @@
               = I18n.t('activerecord.attributes.user.password_confirmation')
             %br/
             = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control input-sm bounceIn animation-delay2'
-          .controls
-            = I18n.t('views.sign_up.have_account')
-            = link_to I18n.t('views.sign_up.sign_in'), new_user_session_path, class: 'primary-font'
             %hr/
           .form-group
             .controls.text-right

@@ -156,8 +156,15 @@ es:
       sign_up_title: Registrarse
       sign_up: Registrarse
       have_account: Ya tenés una cuenta?
-      sign_in: iniciá sesión
+      sign_in: Iniciá Sesión
       password_length: caracteres mínimos
+    forgot_password:
+      title: Recupera tu contraseña
+      log_in: Iniciá Sesión
+      have_account: Tenés una cuenta?
+      send_instructions: Enviar Instrucciones
+      change_password_title: Cambiá tu Contraseña
+      change_password: Cambiar Contraseña
   activerecord:
     models:
       user: Usuario
@@ -191,6 +198,7 @@ es:
               blank: El email no puede estar vacío
             password:
               blank: La contraseña no puede estar vacía
+              too_short: Debe ser más larga
             password_confirmation:
               confirmation: La confirmación de contraseña no puede estar vacía
             gender:
