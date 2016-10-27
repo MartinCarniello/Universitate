@@ -64,34 +64,20 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :teacher_profile
   accepts_nested_attributes_for :location
 
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-    end
-  end
+  def self.find_for_oauth(auth, signed_in_resource = nil)
+    identity = Identity.find_for_oauth(auth)
 
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-    data = access_token.info
-    user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => access_token.info.email).first
-      if registered_user
-        return registered_user
-      else
-        user = User.create(first_name: data["name"],
-          provider:access_token.provider,
-          email: data["email"],
-          uid: access_token.uid ,
-          password: Devise.friendly_token[0,20],
-        )
+    user = signed_in_resource ? signed_in_resource : identity.user
+
+    if user.nil?
+      if identity.user != user
+        identity.user = user
+        identity.save!
       end
-   end
- end
+    user
+    end
+
+  end
 
 
   def conversations
@@ -105,4 +91,34 @@ class User < ApplicationRecord
   def has_already_been_rate_by?(user)
     ratings.by_user(user).first
   end
+
+
+  #  def self.from_omniauth(auth)
+  #    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #      user.provider = auth.provider
+  #      user.uid = auth.uid
+  #      user.email = auth.info.email
+  #      user.password = Devise.friendly_token[0,20]
+  #    end
+  #  end
+  #
+  #  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+  #    data = access_token.info
+  #    user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
+  #    if user
+  #      return user
+  #    else
+  #      registered_user = User.where(:email => access_token.info.email).first
+  #      if registered_user
+  #        return registered_user
+  #      else
+  #        user = User.create(first_name: data["name"],
+  #          provider:access_token.provider,
+  #          email: data["email"],
+  #          uid: access_token.uid ,
+  #          password: Devise.friendly_token[0,20],
+  #        )
+  #      end
+  #   end
+  # end
 end

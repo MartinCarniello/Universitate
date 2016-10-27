@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011171317) do
+ActiveRecord::Schema.define(version: 20161026231635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "comments", force: :cascade do |t|
-    t.string  "comment"
-    t.integer "comment_replied_id"
-  end
 
   create_table "conversations", force: :cascade do |t|
     t.integer  "first_user_id"
@@ -42,6 +37,15 @@ ActiveRecord::Schema.define(version: 20161011171317) do
     t.integer "group_lesson_id"
     t.index ["group_lesson_id"], name: "index_group_lessons_users_on_group_lesson_id", using: :btree
     t.index ["user_id"], name: "index_group_lessons_users_on_user_id", using: :btree
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
@@ -138,4 +142,5 @@ ActiveRecord::Schema.define(version: 20161011171317) do
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
+  add_foreign_key "identities", "users"
 end
