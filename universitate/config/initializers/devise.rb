@@ -253,14 +253,16 @@ Devise.setup do |config|
   require 'omniauth-google-oauth2'
   config.omniauth :google_oauth2, '356489399021-cvq2at5v7dmjq9vd0e7v36ddsso0tdpb.apps.googleusercontent.com', 'fJmc89RPRAzZp8tU6H3p25s2', callback_url: 'http://localhost:3000/users/auth/google_oauth2/callback',
     :strategy_class => OmniAuth::Strategies::GoogleOauth2,
-     :scope => 'email,profile,contacts',
+     :scope => 'email,profile',
+     :select_account => true,
      :access_type => 'offline',
+     :prompt => "consent",
      :image_aspect_ratio => 'square'
 
   #LINKEDIN
   require 'omniauth-linkedin'
   config.omniauth :linkedin, '7824xucls4eg0g' ,'pfRaluCsPrTjUlbm',callback_url: 'http://localhost:3000/users/auth/linkedin/callback',
-   :scope => 'r_emailaddress,r_fullprofile'
+   :scope => 'r_emailaddress'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

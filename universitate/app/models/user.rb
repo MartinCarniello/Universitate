@@ -92,33 +92,37 @@ class User < ApplicationRecord
     ratings.by_user(user).first
   end
 
+  def logged?(provider)
+    Identity.where(provider: provider, user_id: self.id).present?
+  end
 
-  #  def self.from_omniauth(auth)
-  #    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-  #      user.provider = auth.provider
-  #      user.uid = auth.uid
-  #      user.email = auth.info.email
-  #      user.password = Devise.friendly_token[0,20]
-  #    end
-  #  end
-  #
-  #  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-  #    data = access_token.info
-  #    user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
-  #    if user
-  #      return user
-  #    else
-  #      registered_user = User.where(:email => access_token.info.email).first
-  #      if registered_user
-  #        return registered_user
-  #      else
-  #        user = User.create(first_name: data["name"],
-  #          provider:access_token.provider,
-  #          email: data["email"],
-  #          uid: access_token.uid ,
-  #          password: Devise.friendly_token[0,20],
-  #        )
-  #      end
-  #   end
-  # end
+
+  def self.find_for_google_oauth2(auth)
+
+    identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
+      identity.provider = auth.provider
+      identity.uid = auth.uid
+      identity.user = User.find_by email:(auth.info.email)
+    end
+
+    # user.token = auth.credentials.token
+    # user.refresh_token = auth.credentials.refresh_token
+    # user.save
+    return User.find_by email:(auth.info.email)
+  end
+
+  def self.find_for_linkedin(auth)
+
+    identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
+      identity.provider = auth.provider
+      identity.uid = auth.uid
+      identity.user = User.find_by email:(auth.info.email)
+    end
+
+    # user.token = auth.credentials.token
+    # user.refresh_token = auth.credentials.refresh_token
+    # user.save
+    return User.find_by email:(auth.info.email)
+  end
+
 end
