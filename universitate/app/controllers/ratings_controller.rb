@@ -10,7 +10,7 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.create(rating_required_params)
     @user = TeacherProfile.find(@rating.teacher_profile_id).user
-    UserMailer.rating_email(@user).deliver
+    UserMailer.rating_email(@user).deliver if @rating.valid?
     flash.now[:notice] = I18n.t('views.teacher_profile.rating.create_success')
   end
 
