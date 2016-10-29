@@ -264,7 +264,7 @@ Devise.setup do |config|
   require 'omniauth-linkedin'
   config.omniauth :linkedin, '7824xucls4eg0g' ,'pfRaluCsPrTjUlbm',
   #callback_url: 'http://localhost:3000/users/auth/linkedin/callback',
-   :scope => 'r_emailaddress'
+   :scope => 'r_emailaddress r_basicprofile'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
