@@ -39,6 +39,7 @@
               -else
                 = image_tag('GooglePlus_grey.png')
           .seperator
+          - if current_user.id == teacher.id
             = link_to user_linkedin_omniauth_authorize_path, class: "no-padding-left btn" do
               - if current_user.logged?('linkedin')
                 = image_tag('LINKEDIN_color.png')
