@@ -249,7 +249,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  #GOOGLE
+  #GOOGLE//urlback prod
   require 'omniauth-google-oauth2'
   config.omniauth :google_oauth2, '356489399021-cvq2at5v7dmjq9vd0e7v36ddsso0tdpb.apps.googleusercontent.com', 'fJmc89RPRAzZp8tU6H3p25s2', callback_url: 'http://localhost:3000/users/auth/google_oauth2/callback',
     :strategy_class => OmniAuth::Strategies::GoogleOauth2,
