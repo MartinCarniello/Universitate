@@ -13,7 +13,11 @@ module Universitate
     # -- all .rb files in that directory are automatically loaded.
 
     ActionView::Base.field_error_proc = Proc.new { |html_tag, instance|
-      "<div class=\"field_with_errors\">#{html_tag}<span class=\"help-block red\">&nbsp;#{instance.error_message.uniq.join(', ')}</span></div>".html_safe
+      if !(html_tag =~ /type="hidden"/)
+        "<div class=\"field_with_errors\">#{html_tag}<span class=\"help-block red\">&nbsp;#{instance.error_message.uniq.join(', ')}</span></div>".html_safe
+      else
+        html_tag
+      end
     }
 
     config.i18n.default_locale = 'es'

@@ -5,20 +5,26 @@
   .panel-body
     .w3-container
       = form_for(@teacher_profile, :url => url_for(:controller => 'teachers' ,:action => 'create' )) do |f|
-        .form-group
-          %label
-            = I18n.t('views.teacher_profile.edit.description')
-          %br/
-          = f.text_area :description, class: 'form-control input-l bounceIn animation-delay2'
-        .form-group
-          %label
-            = I18n.t('views.teacher_profile.edit.hour_rate')
-          %br/
-          = f.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay3'
-        .form-group
-          %label
-            = I18n.t('views.teacher_profile.edit.subjects')
-          = f.select(:subject_ids, options_from_collection_for_select(@subjects, :id, :name, f.object.subject_ids), {:include_blank => "Select"}, {multiple: true, class: "form-control chzn-select"} )
+        .row
+          .col-xs-9.col-xs-offset-1
+            .form-group
+              %label
+                = I18n.t('views.teacher_profile.edit.description')
+              %br/
+              = f.text_area :description, class: 'form-control input-l bounceIn animation-delay2'
+        .row
+          .col-xs-9.col-xs-offset-1
+            .form-group
+              %label
+                = I18n.t('views.teacher_profile.edit.hour_rate')
+              %br/
+              = f.text_field :hour_rate, class: 'form-control input-sm bounceIn animation-delay3 js-decimal-mask'
+        .row
+          .col-xs-9.col-xs-offset-1
+            .form-group
+              %label
+                = I18n.t('views.teacher_profile.edit.subjects')
+              = f.select(:subject_ids, options_from_collection_for_select(@subjects, :id, :name, f.object.subject_ids), {}, {multiple: true, class: "form-control chzn-select"} )
         .form-group
           .controls.text-right
             = link_to 'Cancelar', root_path, class: 'btn btn-danger btn-sm'
