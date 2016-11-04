@@ -39,6 +39,7 @@ es:
       conversation: Chat
       institutions: Instituciones
       group_classes: Clases Grupales
+      delete_account: Eliminar cuenta
     group_lessons:
       index:
         subject: Materia
