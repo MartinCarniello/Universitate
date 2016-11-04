@@ -214,6 +214,10 @@ es:
           attributes:
             description:
               blank: La descripción no puede estar vacía
+            subject_ids:
+              blank: Debe seleccionar al menos una materia
+            hour_rate:
+              blank: El precio por hora no puede estar vacío
         rating:
           attributes:
             comment:

@@ -13,7 +13,7 @@ class TeachersController < ApplicationController
     @tab = params[:tab] || 'profile'
     @page = params[:page] || 1
     @user = User.find(params[:id])
-    @subjects = Subject.all()
+    @subjects = Subject.all
     @studies = @user.teacher_profile_studies
     @works = @user.teacher_profile_works
 
@@ -21,12 +21,31 @@ class TeachersController < ApplicationController
     @rating = Rating.new(teacher_profile: @user.teacher_profile)
   end
 
+  def new
+    @user = current_user
+    @teacher_profile = @user.build_teacher_profile
+    @user.build_location if @user.location.blank?
+    @subjects = Subject.all
+  end
+
+  def create
+    if current_user.create_teacher_profile(new_teacher_params).valid?
+      current_user.add_role(:teacher)
+      flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
+      redirect_to root_path
+    else
+      @subjects = Subject.all
+      @teacher_profile = current_user.teacher_profile
+      render :new
+    end
+  end
+
   def update
     @user = User.find(params[:id])
 
     @user.location.try(:destroy) unless params[:location][:name].present?
 
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(teacher_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       @tab = 'profile'
       redirect_to teacher_path(@user)
@@ -38,22 +57,6 @@ class TeachersController < ApplicationController
       @tab = 'edit-profile'
       @page = 1
       render :show
-    end
-  end
-
-  def new
-    @teacher_profile = current_user.build_teacher_profile
-    @subjects = Subject.all()
-  end
-
-  def create
-    if current_user.create_teacher_profile(params.require(:teacher_profile).permit(:description, :hour_rate, :subject_ids => [])).valid?
-      current_user.add_role(:teacher)
-      flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
-      redirect_to root_path
-    else
-      @teacher_profile = current_user.teacher_profile
-      render :new
     end
   end
 
@@ -74,7 +77,11 @@ class TeachersController < ApplicationController
 
   private
 
-  def user_params
+  def new_teacher_params
+    params.require(:teacher_profile).permit(:description, :hour_rate, :subject_ids => [])
+  end
+
+  def teacher_params
     params_ret = params.require(:user).permit(:first_name, :last_name, location_attributes: [:id, :lat, :lng, :full_address], teacher_profile_attributes: [:description, :id, :hour_rate, subject_ids: [], works_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], studies_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
     params[:location][:name].blank? ? params_ret.except(:location_attributes) : params_ret
   end
