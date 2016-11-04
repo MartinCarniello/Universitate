@@ -56,7 +56,9 @@
               %span.text
                 = I18n.t('views.aside.group_classes')
               %span.menu-hover
-
+          .seperator
+            = link_to  user_registration_path(current_user), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: "No te vayas! Te vamos a extrañar #{current_user.decorate.display_name}" } do
+              = I18n.t('views.aside.delete_account')
 
 
 

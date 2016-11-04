@@ -18,4 +18,13 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     super
   end
+
+  def destroy
+    @user = User.find(params[:format])
+    Identity.delete(@user)
+
+    if @user.destroy
+      redirect_to root_url, notice: "User deleted."
+    end
+  end
 end
