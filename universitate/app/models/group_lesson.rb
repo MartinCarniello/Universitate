@@ -20,6 +20,7 @@ class GroupLesson < ApplicationRecord
   scope :my_lessons, -> (user) { where(teacher_profile: user.teacher_profile) }
   scope :all_except, -> (user) { where.not(teacher_profile: user.teacher_profile) }
   scope :with_subjects , -> (subject) { where(subject: subject) }
+  scope :non_expired, -> {where('day_and_hour >= ?', DateTime.now)}
 
   delegate :name, to: :subject, prefix: true
   delegate :user, to: :teacher_profile, prefix: true

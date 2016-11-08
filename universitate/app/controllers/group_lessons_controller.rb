@@ -4,7 +4,9 @@ class GroupLessonsController < ApplicationController
     @search = GroupLessonSearch.new(search_params)
     @lessons = @search.results
     @lessons = @lessons.all_except(current_user)
+    @lessons = @lessons.non_expired
     @my_lessons = GroupLesson.my_lessons(current_user)
+    @my_lessons = @my_lessons.non_expired
     @tab = params[:tab] || 'lessons'
   end
 
