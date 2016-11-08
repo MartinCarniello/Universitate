@@ -42,13 +42,13 @@
                 %span.badge.badge-success.bounceIn.animation-delay5
                   = user_unreaded_messages
               %span.menu-hover
-          %li{class: "#{'active' if controller_name == 'institution'}"}
-            = link_to '#' do
-              %span.menu-icon
-                = fa_icon 'institution', class: 'fa-lg'
-              %span.text
-                = I18n.t('views.aside.institutions')
-              %span.menu-hover
+          -# %li{class: "#{'active' if controller_name == 'institution'}"}
+          -#   = link_to '#' do
+          -#     %span.menu-icon
+          -#       = fa_icon 'institution', class: 'fa-lg'
+          -#     %span.text
+          -#       = I18n.t('views.aside.institutions')
+          -#     %span.menu-hover
           %li{class: "#{'active' if controller_name == 'group_lessons'}"}
             = link_to group_lessons_path do
               %span.menu-icon

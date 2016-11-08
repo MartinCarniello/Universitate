@@ -28,6 +28,16 @@ es:
     genders:
       f: Mujer
       m: Hombre
+  teacher_profile:
+    type_of_service:
+      both: Ambos
+      home: En domicilio
+      at_home: A domicilio
+    level:
+      all: Todos
+      primary: Escuela Primaria
+      high_school: Secundaria
+      academic: Universitario
   rolify:
     roles:
       student: Alumno
@@ -141,6 +151,8 @@ es:
         add_work: Agregar Trabajo
         add_study: Agregar Estudio
         update_picture: Cambiar
+        type_of_service: Tipo de servicio
+        level: Niveles de enseñanza
       new:
         title: Carga tu perfil
     sign_in:

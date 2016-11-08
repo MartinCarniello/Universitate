@@ -39,6 +39,9 @@ gem "mini_magick"
 #Manage nested forms
 gem "simple_form"
 gem 'cocoon'
+
+gem 'simple_enum', '~> 2.0.0' , require: 'simple_enum/mongoid'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

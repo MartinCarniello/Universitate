@@ -17,6 +17,7 @@
         = teacher_form.input :last_name, label: false, input_html: { class: 'form-control input-sm bounceIn animation-delay3' }
     %br/
     %br/
+
     = teacher_form.simple_fields_for :location do |teacher_location_form|
       .form-group
         %label.control-label.col-md-2
@@ -47,12 +48,31 @@
       %br/
       .form-group
         %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.type_of_service')
+        .col-md-8
+          - TeacherProfile.type_of_services.keys.each do |type|
+            = teacher_profile_form.radio_button :type_of_service_cd, TeacherProfile.type_of_services[type], checked: (@user.teacher_profile.type_of_service_cd || TeacherProfile.type_of_services[:both]) == TeacherProfile.type_of_services[type]
+            %span.custom-radio
+            = I18n.t("teacher_profile.type_of_service.#{type}")
+      %br/
+      %br/
+      .form-group
+        %label.control-label.col-md-2
+          = I18n.t('views.teacher_profile.edit.level')
+        .col-md-8
+          - TeacherProfile.levels.keys.each do |level|
+            = teacher_profile_form.radio_button :level_cd, TeacherProfile.levels[level], checked: (@user.teacher_profile.level_cd || TeacherProfile.levels[:all]) == TeacherProfile.levels[level]
+            %span.custom-radio
+            = I18n.t("teacher_profile.level.#{level}")
+      %br/
+      %br/
+      .form-group
+        %label.control-label.col-md-2
           = I18n.t('views.teacher_profile.edit.subjects')
         .col-md-8
           = teacher_profile_form.select(:subject_ids, options_from_collection_for_select(subjects, :id, :name, teacher_profile_form.object.subject_ids), {:include_blank => "Select"} , {multiple: true, class: "form-control chzn-select"} )
       %br/
       %br/
-
       .panel-heading
         = I18n.t('views.teacher_profile.show.work_experience')
       .panel-body
