@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+  end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get "teachers/new_rating" => 'teachers#new_rating', :as => :new_rating
