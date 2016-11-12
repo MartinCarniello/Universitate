@@ -44,7 +44,7 @@ class TeachersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.location.try(:destroy) unless params[:location][:name].present?
-    
+
     if @user.update_attributes(teacher_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       @tab = 'profile'
