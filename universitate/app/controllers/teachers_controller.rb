@@ -41,7 +41,7 @@ class TeachersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     @user.location.try(:destroy) unless params[:location][:name].present?
 
@@ -50,7 +50,7 @@ class TeachersController < ApplicationController
       @tab = 'profile'
       redirect_to teacher_path(@user)
     else
-      @subjects = Subject.all()
+      @subjects = Subject.all
       @studies = @user.teacher_profile_studies
       @works = @user.teacher_profile_works
       @user.build_location if @user.location.blank?
