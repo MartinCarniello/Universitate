@@ -20,6 +20,36 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  datetime:
+    distance_in_words:
+      about_x_hours: Horas
+      x_days: Dias
+      x_minutes: Minutos
+  admin:
+    form:
+      optional: Opcional
+    misc:
+      filter: Buscar
+      ago: atrás
+    actions:
+      dashboard:
+        title: Menú Admin
+        breadcrumb: Menú general
+        menu: Modelos
+      index:
+        title: Menú Modelos
+        breadcrumb: Modelos
+        menu: Menú
+      new:
+        menu: Nuevo
+        breadcrumb: Nuevo Modelo
+      export:
+        menu: Exportar
+        link: Link
+      delete:
+        menu: Borrar
+      edit:
+        menu: Editar
   loading: Cargando...
   brand:
     pre: UNIVERSITA
