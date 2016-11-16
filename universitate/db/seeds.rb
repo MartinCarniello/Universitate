@@ -9,6 +9,11 @@
 Role.find_or_create_by(name: :student)
 Role.find_or_create_by(name: :teacher)
 
+Level.find_or_create_by(name: :Todos)
+Level.find_or_create_by(name: :Primaria)
+Level.find_or_create_by(name: :Secundaria)
+Level.find_or_create_by(name: :Universitario)
+
 [
   {name: 'Matemática'},
   {name: 'Lengua'},
