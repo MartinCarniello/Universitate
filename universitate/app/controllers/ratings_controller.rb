@@ -15,7 +15,7 @@ class RatingsController < ApplicationController
   end
 
   def update
-    @rating = Rating.find(params[:rating][:id])
+    @rating = current_user.ratings.find(params[:rating][:id])
     @rating.update_attributes(rating_required_params)
     flash.now[:notice] = I18n.t('views.teacher_profile.rating.update_success')
   end

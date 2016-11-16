@@ -107,6 +107,8 @@ es:
         update_success: Clase actualizada correctamente
         update_failed: La clase no ha podido ser actualizada correctamente
         destroyed: Clase eliminada correctamente
+      show:
+        group_lesson_empty: No hay alumnos inscriptos
     conversations:
       index:
         conversation: Chats

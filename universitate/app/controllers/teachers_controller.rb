@@ -41,16 +41,16 @@ class TeachersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     @user.location.try(:destroy) unless params[:location][:name].present?
-    
+
     if @user.update_attributes(teacher_params)
       flash[:notice] = I18n.t('views.teacher_profile.edit.updated_successfuly')
       @tab = 'profile'
       redirect_to teacher_path(@user)
     else
-      @subjects = Subject.all()
+      @subjects = Subject.all
       @studies = @user.teacher_profile_studies
       @works = @user.teacher_profile_works
       @user.build_location if @user.location.blank?

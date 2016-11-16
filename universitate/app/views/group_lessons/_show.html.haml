@@ -7,13 +7,18 @@
       %h3.modal-title
         = I18n.t("views.group_lessons.edit.group_lesson")
     .modal-body
-      .row
-        - group_lesson.students.each do |student|
-          .col-xs-4
-            .thumbnail
-              = image_tag student.avatar_url, style: "width: 100px; height: 100px;"
-              .caption
-                %h4.text-center
-                  = student.decorate.display_name
+      - if group_lesson.students.empty?
+        .well
+          %h4.text-center
+            = I18n.t("views.group_lessons.show.group_lesson_empty")
+      - else
+        .row
+          - group_lesson.students.each do |student|
+            .col-xs-4
+              .thumbnail
+                = image_tag student.avatar_url, style: "width: 100px; height: 100px;"
+                .caption
+                  %h4.text-center
+                    = student.decorate.display_name
     .modal-footer
       = link_to I18n.t('views.teacher_profile.rating.cancel'), "#", class: "btn btn-sm btn-danger", data: { dismiss: "modal" }

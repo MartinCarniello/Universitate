@@ -11,7 +11,7 @@ class GroupLessonsController < ApplicationController
   end
 
   def show
-    @group_lesson = GroupLesson.find(params[:id])
+    @group_lesson = current_user.teacher_profile.group_lessons.non_expired.find(params[:id])
 
     respond_to do |format|
       format.js
@@ -40,12 +40,11 @@ class GroupLessonsController < ApplicationController
   end
 
   def update
-    @group_lesson = GroupLesson.find(params[:id])
+    @group_lesson = current_user.teacher_profile.group_lessons.find(params[:id])
 
     if @group_lesson.update_attributes(group_lesson_required_params)
       flash.now[:notice] = I18n.t('views.group_lessons.edit.update_success')
-      # FIXME: Descomentar cuando se arregle el mailer
-      # notify_students(@group_lesson)
+      notify_students(@group_lesson)
     else
       @subjects = Subject.all
     end
@@ -56,7 +55,7 @@ class GroupLessonsController < ApplicationController
   end
 
   def destroy
-    @group_lesson = GroupLesson.find(params[:id])
+    @group_lesson = current_user.teacher_profile.group_lessons.find(params[:id])
     @group_lesson.delete
     flash.now[:notice] = I18n.t('views.group_lessons.edit.destroyed')
 
@@ -85,6 +84,8 @@ class GroupLessonsController < ApplicationController
     end
   end
 
+  private
+
   def group_lesson_required_params
     case params[:action]
     when 'create'
@@ -95,8 +96,6 @@ class GroupLessonsController < ApplicationController
     end
   end
 
-  private
-
   def search_params
     @search_params ||= params.delete(:group_lesson_search) || {}
     @search_params.merge!(current_user_id: current_user.id)
@@ -104,8 +103,8 @@ class GroupLessonsController < ApplicationController
   end
 
   def notify_students(lesson)
-    lesson.students.each  do |stu|
-      UserMailer.group_lesson_modified(stu,lesson)
+    lesson.students.each do |stu|
+      UserMailer.group_lesson_modified(stu, lesson)
     end
   end
 end

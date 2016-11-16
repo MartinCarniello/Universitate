@@ -18,7 +18,7 @@ class MessageDecorator < Draper::Decorator
   end
 
   def datetime_creation
-    created_at.strftime("%d/%m/%y %I:%M")
+    created_at.strftime("%d/%m/%y %H:%M")
   end
 
   def current_user_sender?
