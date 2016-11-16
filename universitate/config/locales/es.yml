@@ -131,9 +131,9 @@ es:
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
-          filters: FILTROS
+          filters: FILTRAR POR
           rate_less_than: Tarifa Por Hora Menor A
-          sorts: ORDENAMIENTOS
+          sorts: ORDENAR POR
           distance: Distancia
           rating: Puntaje
           no_sort: Desactivado
