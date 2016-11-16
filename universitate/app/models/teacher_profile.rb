@@ -7,7 +7,6 @@
 #  user_id            :integer
 #  hour_rate          :decimal(, )
 #  type_of_service_cd :integer
-#  level_cd           :integer
 #
 
 class TeacherProfile < ApplicationRecord
@@ -23,6 +22,7 @@ class TeacherProfile < ApplicationRecord
   has_many :studies, -> { where(experience_type: 'STUDY').order('period_start DESC')}, class_name: "TeacherExperience", :dependent => :destroy
   has_many :ratings
   has_many :group_lessons
+  has_and_belongs_to_many :levels
 
 
   validates :description, :hour_rate, :subject_ids, presence: true

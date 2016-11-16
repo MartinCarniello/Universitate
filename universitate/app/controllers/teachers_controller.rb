@@ -16,6 +16,7 @@ class TeachersController < ApplicationController
     @subjects = Subject.all
     @studies = @user.teacher_profile_studies
     @works = @user.teacher_profile_works
+    @levels = Level.all
 
     @user.build_location if @user.location.blank?
     @rating = Rating.new(teacher_profile: @user.teacher_profile)
