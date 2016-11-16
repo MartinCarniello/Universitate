@@ -261,7 +261,7 @@ es:
             subject_ids:
               blank: Debe seleccionar al menos una materia
             level_ids:
-              blank: Debe seleccionar al menos un nivel de enseñanza  
+              blank: Debe seleccionar al menos un nivel de enseñanza
             hour_rate:
               blank: El precio por hora no puede estar vacío
         rating:
