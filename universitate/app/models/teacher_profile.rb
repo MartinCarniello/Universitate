@@ -13,7 +13,6 @@ class TeacherProfile < ApplicationRecord
   extend SimpleEnum::Attribute
 
   as_enum :type_of_service, both: 0, home: 1, at_home: 2
-  as_enum :level, all: 0, primary: 1, high_school: 2, academic: 3
 
   belongs_to :user
   has_one :location, through: :user
