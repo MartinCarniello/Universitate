@@ -110,6 +110,8 @@ group :development, :test do
   gem 'letter_opener'
 
   gem 'rspec-rails'
+
+  gem 'rails-erd'
 end
 
 group :development do
