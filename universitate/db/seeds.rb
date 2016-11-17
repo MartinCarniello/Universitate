@@ -27,7 +27,7 @@ Role.find_or_create_by(name: :teacher)
   if !User.find_by(email: user[:email])
     user = User.create!(user)
     user.add_role :teacher
-    user.create_teacher_profile(description: "Testing #{user.first_name}")
+    user.create_teacher_profile(description: "Testing #{user.first_name}", hour_rate: 100, subject_ids: [1])
   end
 end
 
@@ -48,17 +48,16 @@ informatica = Subject.find_by_name("Informática")
 biologia = Subject.find_by_name("Biología")
 
 user = User.find_by_email("jorgelopez@gmail.com")
-user.teacher_profile.subjects.push(matematica) unless user.teacher_profile.subjects.detect { |subject| subject.name == matematica.name }
 user.teacher_profile.subjects.push(lengua) unless user.teacher_profile.subjects.detect { |subject| subject.name == lengua.name }
 
 user = User.find_by_email("hada@gmail.com")
 user.teacher_profile.subjects.push(ingles) unless user.teacher_profile.subjects.detect { |subject| subject.name == ingles.name }
 
 user = User.find_by_email("mate@gmail.com")
-user.teacher_profile.subjects.push(matematica) unless user.teacher_profile.subjects.detect { |subject| subject.name == matematica.name }
 user.teacher_profile.subjects.push(informatica) unless user.teacher_profile.subjects.detect { |subject| subject.name == informatica.name }
 
 user = User.find_by_email("patingordo@gmail.com")
-user.teacher_profile.subjects.push(matematica) unless user.teacher_profile.subjects.detect { |subject| subject.name == matematica.name }
 user.teacher_profile.subjects.push(ingles) unless user.teacher_profile.subjects.detect { |subject| subject.name == ingles.name }
 user.teacher_profile.subjects.push(biologia) unless user.teacher_profile.subjects.detect { |subject| subject.name == biologia.name }
+
+['Primaria', 'Secundaria', 'Universitario'].each { |level_name| Level.create(name: level_name) unless Level.exists?(name: level_name) }

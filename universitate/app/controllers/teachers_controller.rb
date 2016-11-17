@@ -43,7 +43,6 @@ class TeachersController < ApplicationController
 
   def update
     @user = current_user
-
     @user.location.try(:destroy) unless params[:location][:name].present?
 
     if @user.update_attributes(teacher_params)
@@ -52,6 +51,7 @@ class TeachersController < ApplicationController
       redirect_to teacher_path(@user)
     else
       @subjects = Subject.all
+      @levels = Level.all
       @studies = @user.teacher_profile_studies
       @works = @user.teacher_profile_works
       @user.build_location if @user.location.blank?
@@ -83,7 +83,7 @@ class TeachersController < ApplicationController
   end
 
   def teacher_params
-    params_ret = params.require(:user).permit(:first_name, :last_name, location_attributes: [:id, :lat, :lng, :full_address], teacher_profile_attributes: [:description, :id, :hour_rate, :type_of_service_cd, :level_cd, subject_ids: [], works_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], studies_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
+    params_ret = params.require(:user).permit(:first_name, :last_name, location_attributes: [:id, :lat, :lng, :full_address], teacher_profile_attributes: [:description, :id, :hour_rate, :type_of_service_cd, :level_cd, subject_ids: [], level_ids: [], works_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy], studies_attributes: [:name_of_the_place, :period_start, :period_end, :description, :id, :_destroy]])
     params[:location][:name].blank? ? params_ret.except(:location_attributes) : params_ret
   end
 

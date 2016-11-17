@@ -29,4 +29,12 @@ class UserSearch < Searchlight::Search
     query.joins(:teacher_profile).where('hour_rate <= ?', options[:rate_less_than].to_f)
   end
 
+  def search_type_of_service_eq
+    query.joins(:teacher_profile).where('teacher_profiles.type_of_service_cd = ? OR teacher_profiles.type_of_service_cd = ?', options[:type_of_service_eq], TeacherProfile.type_of_services[:both])
+  end
+
+  def search_level_ids_in
+    query.joins(teacher_profile: :levels).where(levels: { id: options[:level_ids_in] }).select('DISTINCT users.*')
+  end
+
 end
