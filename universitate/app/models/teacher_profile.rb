@@ -32,4 +32,8 @@ class TeacherProfile < ApplicationRecord
   def avg_rating
     ratings.average(:value)
   end
+
+  def linkedin_profile_url
+    return teacher.user.linkedin_profile_url
+  end
 end

@@ -2,12 +2,13 @@
 #
 # Table name: identities
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  provider   :string
-#  uid        :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  provider    :string
+#  uid         :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  profile_url :string
 #
 
 class Identity < ApplicationRecord
