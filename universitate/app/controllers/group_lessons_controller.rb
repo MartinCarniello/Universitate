@@ -1,12 +1,12 @@
 class GroupLessonsController < ApplicationController
 
   def index
+    @page_lessons = params[:page_lessons] || 1
+    @page_my_lessons = params[:page_my_lessons] || 1
     @search = GroupLessonSearch.new(search_params)
-    @lessons = @search.results
-    @lessons = @lessons.all_except(current_user)
-    @lessons = @lessons.non_expired
-    @my_lessons = GroupLesson.my_lessons(current_user)
-    @my_lessons = @my_lessons.non_expired
+    @lessons = @search.results.all_except(current_user).non_expired.page(@page_lessons)
+    binding.pry
+    @my_lessons = GroupLesson.my_lessons(current_user).non_expired.page(@page_my_lessons)
     @tab = params[:tab] || 'lessons'
   end
 

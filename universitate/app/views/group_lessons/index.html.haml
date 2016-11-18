@@ -27,10 +27,12 @@
         #lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'lessons'}" }
           .w3-container
             = render 'group_lesson_filters', search: @search, url: group_lessons_path
-            = render 'group_lessons', lessons: @lessons, partial: 'lessons'
+            .js-lessons-content
+              = render 'group_lessons', lessons: @lessons, partial: 'lessons'
         #my_lessons.tab-pane.fade{ class: "#{'active in' if @tab == 'my_lessons'}" }
           .w3-container
-            = render 'group_lessons', lessons: @my_lessons, partial: 'my_lessons'
+            .js-lessons-content
+              = render 'group_lessons', lessons: @my_lessons, partial: 'my_lessons'
 
 #js-show-modal.modal.fade
 #js-update-modal.modal.fade

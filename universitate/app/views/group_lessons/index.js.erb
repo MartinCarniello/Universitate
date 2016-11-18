@@ -1,0 +1,5 @@
+<% if @tab == 'lessons' %>
+  $("#lessons .js-lessons-content").html('<%= j(render partial: "group_lessons", locals: { lessons: @lessons, partial: "lessons" }) %>');
+<% else %>
+  $("#my_lessons .js-lessons-content").html('<%= j(render partial: "group_lessons", locals: { lessons: @my_lessons, partial: "my_lessons" }) %>');
+<% end %>

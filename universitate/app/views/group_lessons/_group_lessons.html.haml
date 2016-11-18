@@ -21,3 +21,4 @@
         - if partial == 'my_lessons'
           .pull-right
             = link_to I18n.t("views.group_lessons.index.new_lesson"), new_group_lesson_path, class: 'btn btn-success', remote: true
+        = paginate lessons, remote: true, param_name: "page_#{partial}", params: { partial: partial }

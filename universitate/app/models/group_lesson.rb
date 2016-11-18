@@ -11,6 +11,7 @@
 #
 
 class GroupLesson < ApplicationRecord
+  paginates_per 15
   belongs_to :teacher_profile
   has_and_belongs_to_many :students, class_name: 'User', join_table: 'group_lessons_users'
   belongs_to :subject
