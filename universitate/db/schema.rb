@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116015654) do
+ActiveRecord::Schema.define(version: 20161116232830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20161116015654) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "profile_url"
     t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
@@ -126,13 +127,6 @@ ActiveRecord::Schema.define(version: 20161116015654) do
     t.integer "user_id"
     t.decimal "hour_rate"
     t.integer "type_of_service_cd"
-  end
-
-  create_table "teacher_profiles_levels", id: false, force: :cascade do |t|
-    t.integer "level_id"
-    t.integer "teacher_profile_id"
-    t.index ["level_id"], name: "index_teacher_profiles_levels_on_level_id", using: :btree
-    t.index ["teacher_profile_id"], name: "index_teacher_profiles_levels_on_teacher_profile_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

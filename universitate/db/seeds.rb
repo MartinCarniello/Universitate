@@ -32,7 +32,7 @@ Level.find_or_create_by(name: :Universitario)
   if !User.find_by(email: user[:email])
     user = User.create!(user)
     user.add_role :teacher
-    user.create_teacher_profile(description: "Testing #{user.first_name}")
+    user.create_teacher_profile(description: "Testing #{user.first_name}", hour_rate: 10, subject_ids:[1,2])
   end
 end
 

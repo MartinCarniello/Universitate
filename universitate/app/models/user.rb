@@ -114,11 +114,12 @@ class User < ApplicationRecord
   end
 
   def self.find_for_linkedin(auth)
-
+    binding.pry
     identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
       identity.provider = auth.provider
       identity.uid = auth.uid
       identity.user = User.find_by email:(auth.info.email)
+      identity.profile_url = auth.info.urls.public_profile
     end
 
     # user.token = auth.credentials.token
