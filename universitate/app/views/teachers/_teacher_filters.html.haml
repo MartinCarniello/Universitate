@@ -19,7 +19,7 @@
             = f.label I18n.t("views.teacher_profile.edit.subjects")
             %br/
             = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
-      
+
       .row
         .col-xs-4
           .form-group
@@ -39,11 +39,10 @@
           .form-group
             = f.label I18n.t("views.teacher_profile.edit.level")
             %br/
-            = f.select(:level_ids_in, options_from_collection_for_select(Level.all, :id, :name, search.options[:level_ids_in]), {} , { multiple: true, class: "form-control chzn-select", data: { placeholder: '' } } )
-
+            = f.select :level_ids_in, Level.all.map { |level| [level.name, level.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
       .row
         %hr/
-        
+
         %h2.text-center
           %strong.orange
             = I18n.t("views.users.index.teacher_filters.sorts")
