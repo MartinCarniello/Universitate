@@ -43,7 +43,6 @@ class TeachersController < ApplicationController
 
   def update
     @user = current_user
-
     @user.location.try(:destroy) unless params[:location][:name].present?
 
     if @user.update_attributes(teacher_params)
@@ -52,6 +51,7 @@ class TeachersController < ApplicationController
       redirect_to teacher_path(@user)
     else
       @subjects = Subject.all
+      @levels = Level.all
       @studies = @user.teacher_profile_studies
       @works = @user.teacher_profile_works
       @user.build_location if @user.location.blank?
