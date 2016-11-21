@@ -128,7 +128,7 @@ class User < ApplicationRecord
   end
 
   def linkedin_profile_url
-    return identities.where(provider: :linkedin).first.profile_url
+    return Identity.where(provider: :linkedin, user_id: self).first.profile_url
   end
 
 end
