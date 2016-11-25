@@ -2,10 +2,13 @@
 - user_unreaded_messages = @current_user.unreaded_messages || 0
 
 %aside.fixed.skin-6
-  .slimScrollDiv{:style => "position: relative; overflow: hidden; width: auto; height: 100%;"}
-    .sidebar-inner.scrollable-sidebar{:style => "overflow: hidden; width: auto; height: 100%;"}
-      .size-toggle
-        .text-right
+  .slimScrollDiv{style: "position: relative; overflow: hidden; width: auto; height: 100%;"}
+    .sidebar-inner.scrollable-sidebar{style: "overflow: hidden; width: auto; height: 100%;"}
+      .size-toggle{style: "height: 8%;"}
+        .pull-left{style: "margin-top: 5px;"}
+          = link_to  user_registration_path(current_user), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: "No te vayas! Te vamos a extrañar #{current_user.decorate.display_name}" } do
+            = I18n.t('views.aside.delete_account')
+        .pull-right
           = link_to destroy_user_session_path,  method: :delete, class: 'btn btn-sm' do
             = fa_icon 'power-off', class: 'fa-lg'
       .user-block.clearfix
@@ -13,8 +16,6 @@
         .detail
           %strong
             = @current_user.display_name
-      / /user-block
-      / /search-block
       .main-menu
         %ul
           %li{class: "#{'active' if controller_name == 'teachers' && action_name == 'index'}"}
@@ -56,13 +57,6 @@
               %span.text
                 = I18n.t('views.aside.group_classes')
               %span.menu-hover
-          .seperator
-            = link_to  user_registration_path(current_user), method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: "No te vayas! Te vamos a extrañar #{current_user.decorate.display_name}" } do
-              = I18n.t('views.aside.delete_account')
-
-
-
-
             -# %ul.submenu
             -#   %li
             -#
