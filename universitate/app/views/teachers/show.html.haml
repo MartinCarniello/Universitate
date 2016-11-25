@@ -35,5 +35,5 @@
               .col-md-4.col-sm-4
                 = render 'last_ratings', teacher: @user, page: @page
           #edit-profile.tab-pane.fade{ class: "#{'active in' if @tab == 'edit-profile'}" }
-            = render 'teacher_edit', teacher: @user, subjects: @subjects, works: @works, studies: @studies
+            = render 'teacher_edit', teacher: @user, subjects: @subjects, works: @works, studies: @studies, levels: @levels
 #rating-modal.modal.fade

@@ -4,9 +4,9 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-    warden.authenticate! scope: :admin_user
+    redirect_to main_app.root_path unless current_user.is_admin?
   end
-  config.current_user_method(&:current_user)
+  #config.current_user_method(&:current_user)
 
   ## == Cancan ==
   # config.authorize_with :cancan
@@ -19,6 +19,33 @@ RailsAdmin.config do |config|
 
   ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
 
+  config.included_models = ["Subject", "User", "Role","Rating","Level"]
+
+  config.model 'Rating' do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model 'Subject' do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model 'User' do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model 'Role' do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
+  config.model 'Level' do
+    list do
+      exclude_fields :created_at, :updated_at
+    end
+  end
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
@@ -27,12 +54,11 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
-    export
     bulk_delete
     show
     edit
     delete
-    show_in_app
+
 
     ## With an audit adapter, you can add:
     # history_index

@@ -45,3 +45,7 @@
                 = image_tag('LINKEDIN_color.png')
               -else
                 = image_tag('LINKEDIN_grey.png')
+          - else
+            - unless teacher.identities.first.nil?
+              = link_to teacher.linkedin_profile_url, class: "no-padding-left btn" do
+                = image_tag('LINKEDIN_color.png')

@@ -60,10 +60,7 @@
         %label.control-label.col-md-2
           = I18n.t('views.teacher_profile.edit.level')
         .col-md-8
-          - TeacherProfile.levels.keys.each do |level|
-            = teacher_profile_form.radio_button :level_cd, TeacherProfile.levels[level], checked: (@user.teacher_profile.level_cd || TeacherProfile.levels[:all]) == TeacherProfile.levels[level]
-            %span.custom-radio
-            = I18n.t("teacher_profile.level.#{level}")
+          = teacher_profile_form.select(:level_ids, options_from_collection_for_select(levels, :id, :name, teacher_profile_form.object.level_ids), {} , { multiple: true, class: "form-control chzn-select", data: { placeholder: 'Seleccione un nivel de enseñanza' } } )
       %br/
       %br/
       .form-group

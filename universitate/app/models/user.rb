@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_one :teacher_profile
   has_one :location
   has_many :subjects, through: :teacher_profile
+  has_many :levels, through: :teacher_profile
   has_many :ratings, through: :teacher_profile
   has_and_belongs_to_many :group_lessons, join_table: 'group_lessons_users'
   has_many :identities, dependent: :destroy
@@ -113,17 +114,21 @@ class User < ApplicationRecord
   end
 
   def self.find_for_linkedin(auth)
-
     identity = Identity.where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
       identity.provider = auth.provider
       identity.uid = auth.uid
       identity.user = User.find_by email:(auth.info.email)
+      identity.profile_url = auth.info.urls.public_profile
     end
 
     # user.token = auth.credentials.token
     # user.refresh_token = auth.credentials.refresh_token
     # user.save
     return User.find_by email:(auth.info.email)
+  end
+
+  def linkedin_profile_url
+    return Identity.where(provider: :linkedin, user_id: self).first.profile_url
   end
 
 end

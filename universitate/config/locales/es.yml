@@ -20,6 +20,36 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  datetime:
+    distance_in_words:
+      about_x_hours: Horas
+      x_days: Dias
+      x_minutes: Minutos
+  admin:
+    form:
+      optional: Opcional
+    misc:
+      filter: Buscar
+      ago: atrás
+    actions:
+      dashboard:
+        title: Menú Admin
+        breadcrumb: Menú general
+        menu: Modelos
+      index:
+        title: Menú Modelos
+        breadcrumb: Modelos
+        menu: Menú
+      new:
+        menu: Nuevo
+        breadcrumb: Nuevo Modelo
+      export:
+        menu: Exportar
+        link: Link
+      delete:
+        menu: Borrar
+      edit:
+        menu: Editar
   loading: Cargando...
   brand:
     pre: UNIVERSITA
@@ -101,9 +131,9 @@ es:
         teacher_filters:
           search: Buscar
           reset: Borrar Filtros
-          filters: FILTROS
+          filters: FILTRAR POR
           rate_less_than: Tarifa Por Hora Menor A
-          sorts: ORDENAMIENTOS
+          sorts: ORDENAR POR
           distance: Distancia
           rating: Puntaje
           no_sort: Desactivado
@@ -230,6 +260,8 @@ es:
               blank: La descripción no puede estar vacía
             subject_ids:
               blank: Debe seleccionar al menos una materia
+            level_ids:
+              blank: Debe seleccionar al menos un nivel de enseñanza
             hour_rate:
               blank: El precio por hora no puede estar vacío
         rating:

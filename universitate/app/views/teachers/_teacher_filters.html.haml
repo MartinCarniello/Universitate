@@ -19,9 +19,9 @@
             = f.label I18n.t("views.teacher_profile.edit.subjects")
             %br/
             = f.select :subject_eq, Subject.all.map { |subject| [subject.name, subject.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
-      
+
       .row
-        .col-xs-6
+        .col-xs-4
           .form-group
             = f.label I18n.t("views.users.index.teacher_filters.rate_less_than")
             .input-group
@@ -29,9 +29,20 @@
                 $
               = f.text_field :rate_less_than, class: 'form-control input-sm bounceIn animation-delay4 js-decimal-mask'
 
+        .col-xs-4
+          .form-group
+            = f.label I18n.t("views.teacher_profile.edit.type_of_service")
+            %br/
+            = f.select :type_of_service_eq, options_from_collection_for_select(TeacherProfile.type_of_services.hash.to_a.map { |type_of_service| [type_of_service.last, I18n.t("teacher_profile.type_of_service.#{type_of_service.first}")] }, :first, :last, search.options[:type_of_service_eq]), { include_blank: true } , { class: "form-control input-sm bounceIn animation-delay4" }
+        .col-xs-4
+
+          .form-group
+            = f.label I18n.t("views.teacher_profile.edit.level")
+            %br/
+            = f.select :level_ids_in, Level.all.map { |level| [level.name, level.id] } , { include_blank: true }, class: 'form-control input-sm bounceIn animation-delay4'
       .row
         %hr/
-        
+
         %h2.text-center
           %strong.orange
             = I18n.t("views.users.index.teacher_filters.sorts")
