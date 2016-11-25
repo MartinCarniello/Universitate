@@ -5,7 +5,6 @@ class GroupLessonsController < ApplicationController
     @page_my_lessons = params[:page_my_lessons] || 1
     @search = GroupLessonSearch.new(search_params)
     @lessons = @search.results.all_except(current_user).non_expired.page(@page_lessons)
-    binding.pry
     @my_lessons = GroupLesson.my_lessons(current_user).non_expired.page(@page_my_lessons)
     @tab = params[:tab] || 'lessons'
   end
