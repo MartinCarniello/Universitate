@@ -251,13 +251,11 @@ Devise.setup do |config|
 
   #GOOGLE//urlback prod
   require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, '356489399021-cvq2at5v7dmjq9vd0e7v36ddsso0tdpb.apps.googleusercontent.com', 'fJmc89RPRAzZp8tU6H3p25s2', 
+  config.omniauth :google_oauth2, '356489399021-cvq2at5v7dmjq9vd0e7v36ddsso0tdpb.apps.googleusercontent.com', 'fJmc89RPRAzZp8tU6H3p25s2',
   #callback_url: 'http://localhost:3000/users/auth/google_oauth2/callback',
     :strategy_class => OmniAuth::Strategies::GoogleOauth2,
-     :scope => 'email,profile',
+     :scope => 'email, profile, plus.me',
      :select_account => true,
-     :access_type => 'offline',
-     :prompt => "consent",
      :image_aspect_ratio => 'square'
 
   #LINKEDIN

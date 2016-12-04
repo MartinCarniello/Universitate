@@ -24,5 +24,6 @@ module Universitate
     config.time_zone = 'Buenos Aires'
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.action_controller.include_all_helpers = false
   end
 end

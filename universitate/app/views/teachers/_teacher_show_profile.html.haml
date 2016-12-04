@@ -34,18 +34,17 @@
           .new-rating
           - if current_user.id == teacher.id
             = link_to user_google_oauth2_omniauth_authorize_path, class: "no-padding-left btn" do
-              - if current_user.logged?('google_oauth2')
+              - google_logo(current_user)
+          - else
+            - if teacher.logged?('google_oauth2')
+              = link_to teacher.google_profile_url, :target => "_blank", class: "no-padding-left btn" do
                 = image_tag('GooglePlus_color.png')
-              -else
-                = image_tag('GooglePlus_grey.png')
+
           .seperator
           - if current_user.id == teacher.id
             = link_to user_linkedin_omniauth_authorize_path, class: "no-padding-left btn" do
-              - if current_user.logged?('linkedin')
-                = image_tag('LINKEDIN_color.png')
-              -else
-                = image_tag('LINKEDIN_grey.png')
+              - linkedin_logo(current_user)
           - else
-            - unless teacher.identities.first.nil?
-              = link_to teacher.linkedin_profile_url, class: "no-padding-left btn" do
+            - if teacher.logged?('linkedin')
+              = link_to teacher.linkedin_profile_url, :target => "_blank", class: "no-padding-left btn" do
                 = image_tag('LINKEDIN_color.png')

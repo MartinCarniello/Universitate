@@ -105,6 +105,7 @@ class User < ApplicationRecord
       identity.provider = auth.provider
       identity.uid = auth.uid
       identity.user = User.find_by email:(auth.info.email)
+      identity.profile_url = auth.extra.raw_info.profile
     end
 
     # user.token = auth.credentials.token
@@ -129,6 +130,10 @@ class User < ApplicationRecord
 
   def linkedin_profile_url
     return Identity.where(provider: :linkedin, user_id: self).first.profile_url
+  end
+
+  def google_profile_url
+    return Identity.where(provider: :google_oauth2, user_id: self).first.profile_url
   end
 
 end
