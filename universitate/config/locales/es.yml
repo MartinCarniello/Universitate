@@ -129,6 +129,7 @@ es:
         location_sort: Más Cercano A
         rating_sort: Mejor Puntuado
         teacher_filters:
+          collapse_button: Mostrar
           search: Buscar
           reset: Borrar Filtros
           filters: FILTRAR POR

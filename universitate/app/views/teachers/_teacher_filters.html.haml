@@ -1,10 +1,13 @@
 .panel.panel-default
   .panel-heading
+    .pull-right
+      %button.btn.btn-success{data: { toggle: 'collapse', target: '#filters' } }
+        = I18n.t("views.users.index.teacher_filters.collapse_button")
     %h2.text-center
       %strong.orange
         = I18n.t("views.users.index.teacher_filters.filters")
 
-  .panel-body
+  .panel-body.collapse#filters{ class: "#{'in' unless search.options.blank?}" }
     = form_for search, url: url, method: :get, class: 'form-login' do |f|
 
       .row
